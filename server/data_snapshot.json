@@ -608,7 +608,7 @@
       "patientId": "pat_1",
       "patientName": "Eleanor Sterling",
       "date": "2026-08-30",
-      "status": "CLAIM_SUBMITTED",
+      "status": "PARTIAL",
       "groups": [
         {
           "name": "Clinical Consultations & Professional Fees",
@@ -699,37 +699,36 @@
       "discount": 100,
       "total": 3100.4,
       "insuranceClaim": {
-        "claimId": "CLM-2026-8802",
+        "claimId": "CLM-2026-6153",
         "provider": "BlueCross Health Assurance Corp",
         "policyNumber": "BC-992384-H7",
-        "preAuthCode": "AUTH-CAR-7822",
         "claimAmount": 3100.4,
-        "approvedAmount": 2950.4,
+        "approvedAmount": 2945.38,
         "status": "APPROVED",
         "stages": [
           {
-            "stage": "Policy Validation",
+            "stage": "Policy Validator",
             "passed": true,
-            "message": "Policy active, verified in good standing.",
-            "timestamp": "2026-08-30T14:10:00Z"
+            "message": "Policy BC-992384-H7 verified active with BlueCross Health Assurance Corp.",
+            "timestamp": "2026-09-01T07:03:16.030Z"
           },
           {
-            "stage": "Coverage Validation",
+            "stage": "Coverage Validator",
             "passed": true,
-            "message": "Inpatient cardiology and telemetry covered at 95%.",
-            "timestamp": "2026-08-30T14:10:02Z"
+            "message": "Hospital service categories eligible for comprehensive coverage.",
+            "timestamp": "2026-09-01T07:03:16.030Z"
           },
           {
-            "stage": "Amount Validation",
+            "stage": "Amount Validator",
             "passed": true,
-            "message": "Bill amount ($3,100.40) within annual policy limit ($50,000).",
-            "timestamp": "2026-08-30T14:10:05Z"
+            "message": "Claim amount ($3100.40) is within max per-incident threshold.",
+            "timestamp": "2026-09-01T07:03:16.030Z"
           },
           {
-            "stage": "Document Validation",
+            "stage": "Document Validator",
             "passed": true,
-            "message": "Itemized Composite breakdown & physician diagnosis verified.",
-            "timestamp": "2026-08-30T14:10:08Z"
+            "message": "Composite itemized invoice breakdown and medical orders verified.",
+            "timestamp": "2026-09-01T07:03:16.030Z"
           }
         ]
       },
@@ -747,6 +746,13 @@
           "date": "2026-08-30T15:00:00Z",
           "method": "CARD",
           "transactionRef": "TX-CARD-449102"
+        },
+        {
+          "id": "pay_1788246196030",
+          "amount": 2945.38,
+          "date": "2026-09-01T07:03:16.030Z",
+          "method": "INSURANCE",
+          "transactionRef": "TX-INS-359158"
         }
       ]
     }
@@ -860,6 +866,146 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "aud_1788246196030_wpjm",
+      "timestamp": "2026-09-01T07:03:16.030Z",
+      "actor": "Marcus Holloway",
+      "role": "billing_officer",
+      "action": "PROCESS_INSURANCE_CLAIM",
+      "module": "Insurance",
+      "details": "Claim CLM-2026-6153 evaluated via Chain of Responsibility (APPROVED)",
+      "patternUsed": "Chain of Responsibility"
+    },
+    {
+      "id": "aud_1788246191361_nw6h",
+      "timestamp": "2026-09-01T07:03:11.361Z",
+      "actor": "Marcus Holloway",
+      "role": "billing_officer",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role billing_officer",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788246184024_qmr9",
+      "timestamp": "2026-09-01T07:03:04.025Z",
+      "actor": "Sarah Jenkins",
+      "role": "receptionist",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role receptionist",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788246175670_b3p4",
+      "timestamp": "2026-09-01T07:02:55.670Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role doctor",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245905246_2nxi",
+      "timestamp": "2026-09-01T06:58:25.246Z",
+      "actor": "Sarah Jenkins",
+      "role": "receptionist",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role receptionist",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245871650_qja4",
+      "timestamp": "2026-09-01T06:57:51.650Z",
+      "actor": "Dr. Arthur Pendelton",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role admin",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245869625_tvv8",
+      "timestamp": "2026-09-01T06:57:49.625Z",
+      "actor": "David Chen, MSc",
+      "role": "lab_tech",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role lab_tech",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245869191_ivap",
+      "timestamp": "2026-09-01T06:57:49.191Z",
+      "actor": "Elena Rostova, RN",
+      "role": "nurse",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role nurse",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245868640_bipj",
+      "timestamp": "2026-09-01T06:57:48.640Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role doctor",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245868030_74zf",
+      "timestamp": "2026-09-01T06:57:48.030Z",
+      "actor": "Elena Rostova, RN",
+      "role": "nurse",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role nurse",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245867654_p8b9",
+      "timestamp": "2026-09-01T06:57:47.655Z",
+      "actor": "David Chen, MSc",
+      "role": "lab_tech",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role lab_tech",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245867058_mkb9",
+      "timestamp": "2026-09-01T06:57:47.058Z",
+      "actor": "Priya Sharma, PharmD",
+      "role": "pharmacist",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role pharmacist",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245829946_y1x7",
+      "timestamp": "2026-09-01T06:57:09.946Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role doctor",
+      "patternUsed": "Facade"
+    },
+    {
+      "id": "aud_1788245829941_5j89",
+      "timestamp": "2026-09-01T06:57:09.941Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in with role doctor",
+      "patternUsed": "Facade"
+    },
     {
       "id": "aud_1",
       "timestamp": "2026-08-31T22:15:00Z",
@@ -994,5 +1140,5 @@
     },
     "lastUpdated": "2026-09-01T06:52:58.889Z"
   },
-  "savedAt": "2026-09-01T06:52:58.892Z"
+  "savedAt": "2026-09-01T07:03:16.030Z"
 }
