@@ -1,0 +1,998 @@
+{
+  "users": [
+    {
+      "id": "usr_admin",
+      "name": "Dr. Arthur Pendelton",
+      "email": "admin@mediflow.health",
+      "role": "admin",
+      "department": "Hospital Administration",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "title": "Chief Medical Administrator",
+      "permissions": [
+        "all",
+        "admin:manage",
+        "config:write",
+        "analytics:read",
+        "reports:generate",
+        "audit:view"
+      ]
+    },
+    {
+      "id": "usr_rec",
+      "name": "Sarah Jenkins",
+      "email": "reception@mediflow.health",
+      "role": "receptionist",
+      "department": "Front Desk & Triage",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150",
+      "title": "Senior Patient Intake Officer",
+      "permissions": [
+        "patient:register",
+        "patient:read",
+        "patient:update",
+        "appointment:book",
+        "appointment:checkin"
+      ]
+    },
+    {
+      "id": "usr_doc",
+      "name": "Dr. Robert Vance, MD",
+      "email": "doctor@mediflow.health",
+      "role": "doctor",
+      "department": "Cardiology & Internal Medicine",
+      "avatar": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150",
+      "title": "Lead Consultant Cardiologist",
+      "permissions": [
+        "patient:clinical_read",
+        "patient:consult",
+        "lab:order",
+        "prescription:create",
+        "treatment:manage",
+        "admission:create",
+        "discharge:approve"
+      ]
+    },
+    {
+      "id": "usr_nurse",
+      "name": "Elena Rostova, RN",
+      "email": "nurse@mediflow.health",
+      "role": "nurse",
+      "department": "Intensive Care & Inpatient Ward",
+      "avatar": "https://images.unsplash.com/photo-1594824813593-90d56561f71c?w=150",
+      "title": "Head Clinical Nurse Specialist",
+      "permissions": [
+        "patient:read",
+        "vitals:record",
+        "care:coordinate",
+        "medication:administer",
+        "bed:update"
+      ]
+    },
+    {
+      "id": "usr_lab",
+      "name": "David Chen, MSc",
+      "email": "lab@mediflow.health",
+      "role": "lab_tech",
+      "department": "Diagnostic Pathology & Imaging",
+      "avatar": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=150",
+      "title": "Chief Diagnostics Technician",
+      "permissions": [
+        "lab:process",
+        "lab:result_write",
+        "lab:critical_flag",
+        "lab:read"
+      ]
+    },
+    {
+      "id": "usr_pharm",
+      "name": "Priya Sharma, PharmD",
+      "email": "pharmacy@mediflow.health",
+      "role": "pharmacist",
+      "department": "Central Hospital Pharmacy",
+      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150",
+      "title": "Senior Clinical Pharmacist",
+      "permissions": [
+        "prescription:read",
+        "prescription:verify",
+        "medication:dispense",
+        "inventory:read"
+      ]
+    },
+    {
+      "id": "usr_billing",
+      "name": "Marcus Holloway",
+      "email": "billing@mediflow.health",
+      "role": "billing_officer",
+      "department": "Patient Accounts & Insurance Claims",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+      "title": "Insurance Claim & Billing Specialist",
+      "permissions": [
+        "billing:create",
+        "billing:read",
+        "insurance:claim",
+        "payment:record"
+      ]
+    }
+  ],
+  "doctors": [
+    {
+      "id": "doc_1",
+      "name": "Dr. Robert Vance, MD",
+      "department": "Cardiology",
+      "specialization": "Interventional Cardiology & Arrhythmia",
+      "availability": "AVAILABLE",
+      "currentActivePatients": 3,
+      "experienceYears": 16,
+      "email": "doctor@mediflow.health"
+    },
+    {
+      "id": "doc_2",
+      "name": "Dr. Maya Lin, MD",
+      "department": "Neurology",
+      "specialization": "Neurocritical Care & Stroke",
+      "availability": "AVAILABLE",
+      "currentActivePatients": 1,
+      "experienceYears": 12,
+      "email": "maya.lin@mediflow.health"
+    },
+    {
+      "id": "doc_3",
+      "name": "Dr. Julian Foster, MD",
+      "department": "Emergency & Trauma",
+      "specialization": "Acute Trauma & Emergency Resuscitation",
+      "availability": "EMERGENCY_DUTY",
+      "currentActivePatients": 6,
+      "experienceYears": 14,
+      "email": "julian.foster@mediflow.health"
+    },
+    {
+      "id": "doc_4",
+      "name": "Dr. Catherine Blake, MD",
+      "department": "General Surgery",
+      "specialization": "Laparoscopic & Abdominal Surgery",
+      "availability": "AVAILABLE",
+      "currentActivePatients": 2,
+      "experienceYears": 19,
+      "email": "catherine.blake@mediflow.health"
+    }
+  ],
+  "patients": [
+    {
+      "id": "pat_1",
+      "mrn": "MED-2026-0891",
+      "name": "Eleanor Sterling",
+      "age": 58,
+      "gender": "Female",
+      "bloodGroup": "A+",
+      "contactNumber": "+1 (555) 234-5678",
+      "emergencyContact": "Thomas Sterling (Spouse) +1 (555) 234-5679",
+      "registrationType": "REGULAR",
+      "priority": "NORMAL",
+      "status": "ADMITTED",
+      "allergies": [
+        "Penicillin",
+        "Sulfa drugs"
+      ],
+      "diagnosis": "Unstable Angina & Hypertension Stage II",
+      "attendingDoctorId": "doc_1",
+      "room": "Cardio Ward 302",
+      "bed": "Bed C-04",
+      "medicalHistory": [
+        {
+          "id": "hist_1",
+          "date": "2026-08-15",
+          "type": "Consultation",
+          "title": "Initial Outpatient Cardio Review",
+          "description": "Patient presented with intermittent exertional chest tightness radiating to left shoulder.",
+          "doctorName": "Dr. Robert Vance, MD"
+        },
+        {
+          "id": "hist_2",
+          "date": "2026-08-20",
+          "type": "Lab Result",
+          "title": "Comprehensive Lipid & Cardiac Biomarker Panel",
+          "description": "Troponin I baseline within normal limits (0.02 ng/mL). LDL elevated at 162 mg/dL.",
+          "doctorName": "David Chen, MSc"
+        },
+        {
+          "id": "hist_3",
+          "date": "2026-08-28",
+          "type": "Admission",
+          "title": "Inpatient Cardiac Observation",
+          "description": "Admitted for continuous hemodynamic monitoring and titration of anti-anginal therapy.",
+          "doctorName": "Dr. Robert Vance, MD"
+        }
+      ],
+      "createdAt": "2026-08-15T09:30:00Z"
+    },
+    {
+      "id": "pat_2",
+      "mrn": "MED-2026-0944",
+      "name": "Samuel K. Thorne",
+      "age": 42,
+      "gender": "Male",
+      "bloodGroup": "O-",
+      "contactNumber": "+1 (555) 876-5432",
+      "emergencyContact": "Jessica Thorne (Sister) +1 (555) 876-9999",
+      "registrationType": "EMERGENCY",
+      "priority": "CRITICAL",
+      "status": "IN_CONSULTATION",
+      "referralSource": "Metro Paramedic Squad #12",
+      "allergies": [
+        "NSAIDs",
+        "Codeine"
+      ],
+      "diagnosis": "Acute Severe Dyspnea & Suspected Pulmonary Embolism",
+      "attendingDoctorId": "doc_3",
+      "room": "Trauma Bay 1",
+      "bed": "Bed ER-01",
+      "medicalHistory": [
+        {
+          "id": "hist_4",
+          "date": "2026-08-31",
+          "type": "Consultation",
+          "title": "Emergency Resuscitation Assessment",
+          "description": "Brought in via EMS with sudden onset pleuritic chest pain, tachypnea (RR 32), SpO2 88%.",
+          "doctorName": "Dr. Julian Foster, MD"
+        }
+      ],
+      "createdAt": "2026-08-31T22:15:00Z"
+    },
+    {
+      "id": "pat_3",
+      "mrn": "MED-2026-1022",
+      "name": "Amara Patel",
+      "age": 31,
+      "gender": "Female",
+      "bloodGroup": "B+",
+      "contactNumber": "+1 (555) 432-8901",
+      "emergencyContact": "Rohan Patel (Brother) +1 (555) 432-8902",
+      "registrationType": "REFERRED",
+      "priority": "NORMAL",
+      "status": "REGISTERED",
+      "referralSource": "St. Jude Community Clinic",
+      "allergies": [
+        "None known"
+      ],
+      "diagnosis": "Type 2 Diabetes Mellitus & Metabolic Monitoring",
+      "attendingDoctorId": "doc_2",
+      "medicalHistory": [
+        {
+          "id": "hist_5",
+          "date": "2026-08-10",
+          "type": "Consultation",
+          "title": "Referral Intake Evaluation",
+          "description": "Referred for comprehensive endocrinology and diabetic foot risk evaluation.",
+          "doctorName": "Dr. Maya Lin, MD"
+        }
+      ],
+      "createdAt": "2026-08-10T14:00:00Z"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "apt_1",
+      "patientId": "pat_1",
+      "patientName": "Eleanor Sterling",
+      "doctorId": "doc_1",
+      "doctorName": "Dr. Robert Vance, MD",
+      "department": "Cardiology",
+      "date": "2026-09-02",
+      "time": "10:00 AM",
+      "reason": "Follow-up Echocardiogram Review & Medication Optimization",
+      "status": "CHECKED_IN",
+      "priority": "HIGH",
+      "schedulingStrategyUsed": "FIRST_AVAILABLE",
+      "history": [
+        {
+          "from": "NONE",
+          "to": "SCHEDULED",
+          "timestamp": "2026-08-25T11:00:00Z",
+          "action": "BookAppointmentCommand executed",
+          "performedBy": "Sarah Jenkins (Receptionist)"
+        },
+        {
+          "from": "SCHEDULED",
+          "to": "CHECKED_IN",
+          "timestamp": "2026-09-01T08:30:00Z",
+          "action": "Patient Checked In at Reception Desk",
+          "performedBy": "Sarah Jenkins (Receptionist)"
+        }
+      ],
+      "createdAt": "2026-08-25T11:00:00Z"
+    },
+    {
+      "id": "apt_2",
+      "patientId": "pat_2",
+      "patientName": "Samuel K. Thorne",
+      "doctorId": "doc_3",
+      "doctorName": "Dr. Julian Foster, MD",
+      "department": "Emergency & Trauma",
+      "date": "2026-09-01",
+      "time": "11:30 AM",
+      "reason": "Emergency Resuscitation & Diagnostic CT Angio Workup",
+      "status": "IN_CONSULTATION",
+      "priority": "CRITICAL",
+      "schedulingStrategyUsed": "LEAST_BUSY",
+      "history": [
+        {
+          "from": "NONE",
+          "to": "SCHEDULED",
+          "timestamp": "2026-08-31T22:15:00Z",
+          "action": "Emergency Triage Booking Command",
+          "performedBy": "Sarah Jenkins (Receptionist)"
+        },
+        {
+          "from": "SCHEDULED",
+          "to": "CHECKED_IN",
+          "timestamp": "2026-08-31T22:16:00Z",
+          "action": "Immediate EMS Check-In",
+          "performedBy": "Sarah Jenkins (Receptionist)"
+        },
+        {
+          "from": "CHECKED_IN",
+          "to": "IN_CONSULTATION",
+          "timestamp": "2026-08-31T22:20:00Z",
+          "action": "Consultation Initiated in Trauma Bay 1",
+          "performedBy": "Dr. Julian Foster, MD"
+        }
+      ],
+      "createdAt": "2026-08-31T22:15:00Z"
+    },
+    {
+      "id": "apt_3",
+      "patientId": "pat_3",
+      "patientName": "Amara Patel",
+      "doctorId": "doc_2",
+      "doctorName": "Dr. Maya Lin, MD",
+      "department": "Neurology",
+      "date": "2026-09-03",
+      "time": "02:00 PM",
+      "reason": "Comprehensive Neuropathy Screening & HbA1c Review",
+      "status": "SCHEDULED",
+      "priority": "NORMAL",
+      "schedulingStrategyUsed": "MANUAL",
+      "history": [
+        {
+          "from": "NONE",
+          "to": "SCHEDULED",
+          "timestamp": "2026-08-29T15:00:00Z",
+          "action": "Routine Outpatient Booking Command",
+          "performedBy": "Sarah Jenkins (Receptionist)"
+        }
+      ],
+      "createdAt": "2026-08-29T15:00:00Z"
+    }
+  ],
+  "admissions": [
+    {
+      "id": "adm_1",
+      "patientId": "pat_1",
+      "patientName": "Eleanor Sterling",
+      "doctorId": "doc_1",
+      "doctorName": "Dr. Robert Vance, MD",
+      "department": "Cardiology",
+      "ward": "Cardio Inpatient Ward 3",
+      "room": "Room 302",
+      "bed": "Bed C-04",
+      "admissionDate": "2026-08-28T10:00:00Z",
+      "reason": "Unstable angina requiring continuous cardiac telemetry and medication adjustment",
+      "priority": "HIGH",
+      "status": "ADMITTED",
+      "treatmentPlanId": "tp_1",
+      "notes": "Keep on strict telemetry monitoring. Low sodium diet. Bedside echocardiogram on Day 3."
+    }
+  ],
+  "labOrders": [
+    {
+      "id": "lab_1",
+      "orderNumber": "LAB-2026-781",
+      "patientId": "pat_1",
+      "patientName": "Eleanor Sterling",
+      "doctorId": "doc_1",
+      "doctorName": "Dr. Robert Vance, MD",
+      "testCode": "CARD-TROP-I",
+      "testName": "High-Sensitivity Troponin I & CK-MB",
+      "category": "BLOOD",
+      "provider": "INTERNAL",
+      "priority": "URGENT",
+      "status": "COMPLETED",
+      "orderDate": "2026-08-29T08:00:00Z",
+      "completionDate": "2026-08-29T09:45:00Z",
+      "results": {
+        "summary": "Troponin elevated above baseline but below acute infarction cutoff; CK-MB borderline.",
+        "parameters": [
+          {
+            "name": "hs-Troponin I",
+            "value": 0.045,
+            "unit": "ng/mL",
+            "referenceRange": "< 0.014",
+            "status": "HIGH"
+          },
+          {
+            "name": "CK-MB",
+            "value": 4.8,
+            "unit": "ng/mL",
+            "referenceRange": "0.0 - 5.0",
+            "status": "NORMAL"
+          },
+          {
+            "name": "Total Cholesterol",
+            "value": 218,
+            "unit": "mg/dL",
+            "referenceRange": "< 200",
+            "status": "HIGH"
+          }
+        ],
+        "technicianNotes": "Analyzed on Roche Cobas e411 analyzer via Internal Lab Adapter."
+      },
+      "isCritical": false
+    },
+    {
+      "id": "lab_2",
+      "orderNumber": "LAB-2026-795",
+      "patientId": "pat_2",
+      "patientName": "Samuel K. Thorne",
+      "doctorId": "doc_3",
+      "doctorName": "Dr. Julian Foster, MD",
+      "testCode": "RAD-CT-ANGIO-PULM",
+      "testName": "Contrast CT Pulmonary Angiography (CTPA)",
+      "category": "RADIOLOGY",
+      "provider": "RADIOLOGY_CENTER",
+      "priority": "STAT",
+      "status": "PROCESSING",
+      "orderDate": "2026-08-31T22:30:00Z",
+      "results": {
+        "summary": "Imaging ongoing in CT Scanner 2.",
+        "parameters": [
+          {
+            "name": "Contrast Flow Rate",
+            "value": "4.5",
+            "unit": "mL/s",
+            "referenceRange": "4.0 - 5.0",
+            "status": "NORMAL"
+          },
+          {
+            "name": "D-Dimer Pre-scan",
+            "value": 3.8,
+            "unit": "ug/mL FEU",
+            "referenceRange": "< 0.50",
+            "status": "CRITICAL"
+          }
+        ],
+        "technicianNotes": "STAT imaging underway. Radiologist preliminary review requested immediately upon acquisition."
+      },
+      "isCritical": true
+    },
+    {
+      "id": "lab_3",
+      "orderNumber": "LAB-2026-802",
+      "patientId": "pat_3",
+      "patientName": "Amara Patel",
+      "doctorId": "doc_2",
+      "doctorName": "Dr. Maya Lin, MD",
+      "testCode": "EXT-HBA1C-FASTING",
+      "testName": "Comprehensive Glycated Hemoglobin & Microalbumin",
+      "category": "PATHOLOGY",
+      "provider": "EXTERNAL",
+      "priority": "ROUTINE",
+      "status": "PENDING",
+      "orderDate": "2026-09-01T09:00:00Z"
+    }
+  ],
+  "prescriptions": [
+    {
+      "id": "rx_1",
+      "prescriptionNumber": "RX-2026-0412",
+      "patientId": "pat_1",
+      "patientName": "Eleanor Sterling",
+      "doctorId": "doc_1",
+      "doctorName": "Dr. Robert Vance, MD",
+      "date": "2026-08-28",
+      "status": "DISPENSED",
+      "items": [
+        {
+          "medicationId": "med_atorvastatin",
+          "medicationName": "Atorvastatin Calcium",
+          "genericName": "Atorvastatin",
+          "dosage": "40 mg",
+          "frequency": "Once daily at bedtime",
+          "duration": "30 days",
+          "instructions": [
+            "Take 1 tablet (40 mg) orally",
+            "Take at night before sleep with a glass of water",
+            "Take with or without food"
+          ],
+          "warnings": [
+            "Avoid consuming grapefruit or grapefruit juice",
+            "Report any unexplained muscle pain, tenderness, or weakness immediately"
+          ],
+          "dispensed": true
+        },
+        {
+          "medicationId": "med_metoprolol",
+          "medicationName": "Metoprolol Succinate ER",
+          "genericName": "Metoprolol",
+          "dosage": "50 mg",
+          "frequency": "Once daily in the morning",
+          "duration": "30 days",
+          "instructions": [
+            "Take 1 tablet (50 mg) orally every morning",
+            "Take with or immediately after breakfast",
+            "Swallow whole; do not crush or chew"
+          ],
+          "warnings": [
+            "Do not discontinue abruptly without physician consultation",
+            "May cause dizziness upon standing"
+          ],
+          "dispensed": true
+        }
+      ],
+      "notes": "Prescription enriched with Dosage, Timing, and Warning decorators."
+    }
+  ],
+  "treatmentPlans": [
+    {
+      "id": "tp_1",
+      "patientId": "pat_1",
+      "patientName": "Eleanor Sterling",
+      "doctorId": "doc_1",
+      "doctorName": "Dr. Robert Vance, MD",
+      "name": "Post-Acute Coronary Syndrome & Angina Care Protocol",
+      "diagnosis": "Unstable Angina Pectoris (Class III CCS)",
+      "medications": [
+        "Atorvastatin 40mg PO QHS",
+        "Metoprolol Succinate 50mg PO QAM",
+        "Aspirin 81mg PO Daily",
+        "Sublingual Nitroglycerin 0.4mg PRN chest pain"
+      ],
+      "instructions": [
+        "Continuous 3-lead ECG telemetry monitoring in ward",
+        "Daily 12-lead ECG at 07:00 AM",
+        "Strict cardiac salt-restricted diet (< 2g sodium/day)",
+        "Graduated cardiac rehabilitation ambulation program",
+        "Repeat troponin biomarker panel in 48 hours"
+      ],
+      "followUpSchedule": "Cardiology outpatient clinic visit in 2 weeks post-discharge",
+      "status": "ACTIVE",
+      "versions": [
+        {
+          "version": 1,
+          "timestamp": "2026-08-28T10:30:00Z",
+          "note": "Initial treatment plan cloned from Cardiac Protocol Prototype",
+          "snapshot": {
+            "name": "Post-Acute Coronary Syndrome & Angina Care Protocol",
+            "diagnosis": "Unstable Angina Pectoris (Class III CCS)",
+            "medications": [
+              "Atorvastatin 40mg PO QHS",
+              "Aspirin 81mg PO Daily"
+            ],
+            "instructions": [
+              "Continuous telemetry",
+              "Cardiac diet"
+            ],
+            "followUpSchedule": "Review in 2 weeks"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2026-08-29T11:00:00Z",
+          "note": "Added Metoprolol Succinate and Sublingual Nitroglycerin following troponin review",
+          "snapshot": {
+            "name": "Post-Acute Coronary Syndrome & Angina Care Protocol",
+            "diagnosis": "Unstable Angina Pectoris (Class III CCS)",
+            "medications": [
+              "Atorvastatin 40mg PO QHS",
+              "Metoprolol Succinate 50mg PO QAM",
+              "Aspirin 81mg PO Daily",
+              "Sublingual Nitroglycerin 0.4mg PRN chest pain"
+            ],
+            "instructions": [
+              "Continuous 3-lead ECG telemetry monitoring in ward",
+              "Daily 12-lead ECG at 07:00 AM",
+              "Strict cardiac salt-restricted diet (< 2g sodium/day)",
+              "Graduated cardiac rehabilitation ambulation program",
+              "Repeat troponin biomarker panel in 48 hours"
+            ],
+            "followUpSchedule": "Cardiology outpatient clinic visit in 2 weeks post-discharge"
+          }
+        }
+      ],
+      "createdAt": "2026-08-28T10:30:00Z",
+      "updatedAt": "2026-08-29T11:00:00Z"
+    }
+  ],
+  "bills": [
+    {
+      "id": "bill_1",
+      "invoiceNumber": "INV-2026-1049",
+      "patientId": "pat_1",
+      "patientName": "Eleanor Sterling",
+      "date": "2026-08-30",
+      "status": "CLAIM_SUBMITTED",
+      "groups": [
+        {
+          "name": "Clinical Consultations & Professional Fees",
+          "items": [
+            {
+              "id": "bi_1",
+              "name": "Lead Cardiologist Inpatient Consultation",
+              "category": "Consultation",
+              "amount": 250,
+              "quantity": 2
+            },
+            {
+              "id": "bi_2",
+              "name": "Emergency Triage & Assessment Fee",
+              "category": "Consultation",
+              "amount": 120,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Diagnostic Laboratory & Imaging",
+          "items": [
+            {
+              "id": "bi_3",
+              "name": "hs-Troponin I & CK-MB Quantitative Panel",
+              "category": "Laboratory",
+              "amount": 180,
+              "quantity": 2
+            },
+            {
+              "id": "bi_4",
+              "name": "Lipid Profile & Metabolic Screen",
+              "category": "Laboratory",
+              "amount": 95,
+              "quantity": 1
+            },
+            {
+              "id": "bi_5",
+              "name": "12-Lead Diagnostic Electrocardiogram (ECG)",
+              "category": "Diagnostics",
+              "amount": 85,
+              "quantity": 3
+            }
+          ]
+        },
+        {
+          "name": "Inpatient Ward & Telemetry Room Charges",
+          "items": [
+            {
+              "id": "bi_6",
+              "name": "Cardiac Telemetry Inpatient Bed (per day)",
+              "category": "Room",
+              "amount": 450,
+              "quantity": 3
+            },
+            {
+              "id": "bi_7",
+              "name": "Nursing Care & Vitals Telemetry Fee",
+              "category": "Nursing",
+              "amount": 150,
+              "quantity": 3
+            }
+          ]
+        },
+        {
+          "name": "Pharmacy & Medical Supplies",
+          "items": [
+            {
+              "id": "bi_8",
+              "name": "Atorvastatin Calcium 40mg (30 Tablets)",
+              "category": "Pharmacy",
+              "amount": 45,
+              "quantity": 1
+            },
+            {
+              "id": "bi_9",
+              "name": "Metoprolol Succinate ER 50mg (30 Tablets)",
+              "category": "Pharmacy",
+              "amount": 38,
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "subtotal": 3048,
+      "tax": 152.4,
+      "discount": 100,
+      "total": 3100.4,
+      "insuranceClaim": {
+        "claimId": "CLM-2026-8802",
+        "provider": "BlueCross Health Assurance Corp",
+        "policyNumber": "BC-992384-H7",
+        "preAuthCode": "AUTH-CAR-7822",
+        "claimAmount": 3100.4,
+        "approvedAmount": 2950.4,
+        "status": "APPROVED",
+        "stages": [
+          {
+            "stage": "Policy Validation",
+            "passed": true,
+            "message": "Policy active, verified in good standing.",
+            "timestamp": "2026-08-30T14:10:00Z"
+          },
+          {
+            "stage": "Coverage Validation",
+            "passed": true,
+            "message": "Inpatient cardiology and telemetry covered at 95%.",
+            "timestamp": "2026-08-30T14:10:02Z"
+          },
+          {
+            "stage": "Amount Validation",
+            "passed": true,
+            "message": "Bill amount ($3,100.40) within annual policy limit ($50,000).",
+            "timestamp": "2026-08-30T14:10:05Z"
+          },
+          {
+            "stage": "Document Validation",
+            "passed": true,
+            "message": "Itemized Composite breakdown & physician diagnosis verified.",
+            "timestamp": "2026-08-30T14:10:08Z"
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "pay_1",
+          "amount": 2950.4,
+          "date": "2026-08-30T14:15:00Z",
+          "method": "INSURANCE",
+          "transactionRef": "TX-INS-987123"
+        },
+        {
+          "id": "pay_2",
+          "amount": 150,
+          "date": "2026-08-30T15:00:00Z",
+          "method": "CARD",
+          "transactionRef": "TX-CARD-449102"
+        }
+      ]
+    }
+  ],
+  "vitalsRecords": [
+    {
+      "id": "vit_1",
+      "patientId": "pat_1",
+      "patientName": "Eleanor Sterling",
+      "recordedBy": "Elena Rostova, RN",
+      "timestamp": "2026-09-01T08:00:00Z",
+      "temperature": 36.8,
+      "heartRate": 72,
+      "bloodPressureSys": 128,
+      "bloodPressureDia": 82,
+      "respiratoryRate": 16,
+      "oxygenSaturation": 98,
+      "alertsGenerated": []
+    },
+    {
+      "id": "vit_2",
+      "patientId": "pat_2",
+      "patientName": "Samuel K. Thorne",
+      "recordedBy": "Elena Rostova, RN",
+      "timestamp": "2026-09-01T08:15:00Z",
+      "temperature": 39.4,
+      "heartRate": 118,
+      "bloodPressureSys": 92,
+      "bloodPressureDia": 58,
+      "respiratoryRate": 28,
+      "oxygenSaturation": 90,
+      "alertsGenerated": [
+        "CRITICAL: High Pyrexia (Temp 39.4°C > 39.0°C)",
+        "CRITICAL: Hypoxia Warning (SpO2 90% < 92%)",
+        "HIGH: Severe Tachycardia (Heart Rate 118 bpm > 100 bpm)"
+      ]
+    }
+  ],
+  "clinicalRules": [
+    {
+      "id": "rule_1",
+      "name": "High Pyrexia / Severe Hyperthermia",
+      "field": "temperature",
+      "operator": ">",
+      "value": 39,
+      "action": "CREATE_CRITICAL_ALERT",
+      "severity": "CRITICAL",
+      "message": "Patient temperature exceeds 39.0°C. Immediate antipyretic intervention and infectious disease screen required.",
+      "isActive": true
+    },
+    {
+      "id": "rule_2",
+      "name": "Critical Hypoxia Alert",
+      "field": "oxygenSaturation",
+      "operator": "<",
+      "value": 92,
+      "action": "ORDER_OXYGEN",
+      "severity": "CRITICAL",
+      "message": "Blood oxygen saturation dropped below 92%. Initiate supplementary O2 delivery immediately.",
+      "isActive": true
+    },
+    {
+      "id": "rule_3",
+      "name": "Tachycardia Warning",
+      "field": "heartRate",
+      "operator": ">",
+      "value": 100,
+      "action": "NOTIFY_PHYSICIAN",
+      "severity": "HIGH",
+      "message": "Resting heart rate exceeds 100 bpm. Evaluate for arrhythmia, pain, or hemodynamic instability.",
+      "isActive": true
+    },
+    {
+      "id": "rule_4",
+      "name": "Hypotension Warning",
+      "field": "bloodPressureSys",
+      "operator": "<",
+      "value": 90,
+      "action": "URGENT_TRIAGE",
+      "severity": "HIGH",
+      "message": "Systolic blood pressure below 90 mmHg indicates hypoperfusion or potential circulatory shock.",
+      "isActive": true
+    }
+  ],
+  "careEvents": [
+    {
+      "id": "care_1",
+      "patientId": "pat_2",
+      "patientName": "Samuel K. Thorne",
+      "senderRole": "Doctor",
+      "senderName": "Dr. Julian Foster, MD",
+      "targetDepartment": "Diagnostic Pathology & Imaging",
+      "eventType": "LAB_TEST_REQUIRED",
+      "urgency": "EMERGENCY",
+      "message": "Immediate CTPA and D-Dimer test processing for acute suspected pulmonary embolism in Trauma Bay 1.",
+      "status": "IN_PROGRESS",
+      "timestamp": "2026-08-31T22:32:00Z"
+    },
+    {
+      "id": "care_2",
+      "patientId": "pat_2",
+      "patientName": "Samuel K. Thorne",
+      "senderRole": "Nurse",
+      "senderName": "Elena Rostova, RN",
+      "targetDepartment": "Central Hospital Pharmacy",
+      "eventType": "MEDICATION_REQUIRED",
+      "urgency": "URGENT",
+      "message": "STAT Low-Molecular-Weight Heparin (Enoxaparin 80mg) syringe required at Trauma Bay 1.",
+      "status": "OPEN",
+      "timestamp": "2026-08-31T22:45:00Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud_1",
+      "timestamp": "2026-08-31T22:15:00Z",
+      "actor": "Sarah Jenkins",
+      "role": "Receptionist",
+      "action": "Patient Registered (Emergency Type)",
+      "module": "Patient Management",
+      "details": "Created emergency patient draft via EmergencyPatientCreator (Priority: CRITICAL)",
+      "patternUsed": "Factory Method"
+    },
+    {
+      "id": "aud_2",
+      "timestamp": "2026-08-31T22:15:30Z",
+      "actor": "Sarah Jenkins",
+      "role": "Receptionist",
+      "action": "Doctor Assignment & Appointment Creation",
+      "module": "Appointments",
+      "details": "Selected Dr. Julian Foster using LeastBusyStrategy algorithm",
+      "patternUsed": "Strategy + Command"
+    },
+    {
+      "id": "aud_3",
+      "timestamp": "2026-08-31T22:30:00Z",
+      "actor": "Dr. Julian Foster, MD",
+      "role": "Doctor",
+      "action": "Diagnostic Order Dispatched",
+      "module": "Diagnostics",
+      "details": "Created radiology CTPA order via RadiologyFactory and RadiologyAdapter",
+      "patternUsed": "Abstract Factory + Bridge + Adapter"
+    },
+    {
+      "id": "aud_4",
+      "timestamp": "2026-09-01T08:15:00Z",
+      "actor": "Elena Rostova, RN",
+      "role": "Nurse",
+      "action": "Clinical Vitals Evaluated",
+      "module": "Clinical Rule Engine",
+      "details": "Interpreter AST evaluated 4 rules; triggered 3 high/critical alerts",
+      "patternUsed": "Interpreter + Observer"
+    }
+  ],
+  "config": {
+    "hospitalName": "MediFlow Metropolitan Medical Center",
+    "tagline": "Precision Care & Advanced Architectural Clinical Intelligence",
+    "licenseNumber": "HOSP-LIC-2026-MED-9941",
+    "emergencyHotline": "+1 (800) 555-FLOW (3569)",
+    "workingHours": "24/7 Continuous Clinical Operations",
+    "address": "450 Health Sciences Parkway, Innovation District, Suite 100",
+    "supportedRoles": [
+      "admin",
+      "receptionist",
+      "doctor",
+      "nurse",
+      "lab_tech",
+      "pharmacist",
+      "billing_officer"
+    ],
+    "departments": [
+      {
+        "id": "dep_cardio",
+        "name": "Cardiology & Vascular Center",
+        "head": "Dr. Robert Vance, MD",
+        "totalBeds": 40,
+        "occupiedBeds": 28
+      },
+      {
+        "id": "dep_neuro",
+        "name": "Neurology & Stroke Institute",
+        "head": "Dr. Maya Lin, MD",
+        "totalBeds": 30,
+        "occupiedBeds": 18
+      },
+      {
+        "id": "dep_trauma",
+        "name": "Emergency & Trauma Care",
+        "head": "Dr. Julian Foster, MD",
+        "totalBeds": 25,
+        "occupiedBeds": 22
+      },
+      {
+        "id": "dep_surg",
+        "name": "General & Minimally Invasive Surgery",
+        "head": "Dr. Catherine Blake, MD",
+        "totalBeds": 35,
+        "occupiedBeds": 20
+      },
+      {
+        "id": "dep_icu",
+        "name": "Intensive Critical Care Unit (ICU)",
+        "head": "Dr. Arthur Pendelton",
+        "totalBeds": 20,
+        "occupiedBeds": 16
+      }
+    ],
+    "wards": [
+      {
+        "id": "ward_c3",
+        "name": "Cardiology Ward 3",
+        "department": "Cardiology",
+        "capacity": 20,
+        "occupied": 15
+      },
+      {
+        "id": "ward_t1",
+        "name": "Emergency Trauma Bays",
+        "department": "Emergency & Trauma",
+        "capacity": 15,
+        "occupied": 12
+      },
+      {
+        "id": "ward_icu",
+        "name": "Main ICU Wing",
+        "department": "ICU",
+        "capacity": 20,
+        "occupied": 16
+      },
+      {
+        "id": "ward_s2",
+        "name": "Surgical Recovery Ward",
+        "department": "General Surgery",
+        "capacity": 25,
+        "occupied": 14
+      }
+    ],
+    "systemPolicies": {
+      "emergencyAutoAdmit": true,
+      "telemetrySamplingRateSeconds": 5,
+      "autoClaimValidation": true,
+      "strictRoleAccessControl": true,
+      "maxVitalsRetentionDays": 365,
+      "mementoMaxSnapshots": 50
+    },
+    "lastUpdated": "2026-09-01T06:52:58.889Z"
+  },
+  "savedAt": "2026-09-01T06:52:58.892Z"
+}

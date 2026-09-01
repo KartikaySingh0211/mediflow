@@ -1,0 +1,6756 @@
+# MediFlow
+
+## Design Rationale, System Scope and Design Pattern Strategy
+
+### Review 1 – Project Proposal Write-up
+
+---
+
+# 1. Project Overview
+
+## Project Title
+
+# **MediFlow**
+
+### *An Interactive Hospital Management and Clinical Workflow System*
+
+---
+
+## Project Description
+
+**MediFlow** is a full-stack Hospital Management System designed to manage and coordinate essential hospital operations including patient registration, appointments, admissions, laboratory diagnostics, prescriptions, pharmacy operations, billing, insurance processing, discharge, and medical reporting.
+
+The primary objective of the project is not simply to create another CRUD-based Hospital Management System. Instead, MediFlow is designed as a **practical demonstration of software design patterns in a realistic application domain**.
+
+The system implements the **23 Gang of Four (GoF) Design Patterns** across real hospital workflows. Each pattern is selected to solve a specific architectural or operational problem rather than being artificially added for academic coverage.
+
+The system follows the philosophy:
+
+> # **Minimal Infrastructure. Maximum Functionality. Maximum Architectural Demonstration.**
+
+---
+
+# 2. Why a Hospital Management System?
+
+A Hospital Management System was selected because healthcare environments naturally contain a wide variety of interacting entities, workflows, states, services, and access restrictions.
+
+Unlike a simple e-commerce or CRUD application, a hospital system contains:
+
+* Multiple user roles
+* Different levels of authorization
+* Complex entity relationships
+* Stateful workflows
+* Event-driven communication
+* Multiple service providers
+* Approval processes
+* Hierarchical structures
+* Historical records
+* Configurable workflows
+
+These characteristics make the domain particularly suitable for demonstrating all three categories of GoF patterns:
+
+* Creational Patterns
+* Structural Patterns
+* Behavioral Patterns
+
+---
+
+# 3. The Problem with Traditional Design Pattern Projects
+
+Most academic design pattern projects follow one of two approaches.
+
+## Approach 1: Isolated Pattern Examples
+
+For example:
+
+```text
+Click "Factory Pattern"
+
+↓
+
+Create a Car
+
+↓
+
+Factory creates object
+```
+
+This demonstrates the syntax of a pattern but does not demonstrate:
+
+* Why the pattern is necessary
+* What problem it solves
+* How it interacts with other components
+* How it behaves in a real application
+
+---
+
+## Approach 2: Overly Large Enterprise Application
+
+The opposite approach is attempting to build a complete production-grade system with:
+
+* Microservices
+* Kubernetes
+* Docker orchestration
+* Kafka
+* Redis
+* Cloud infrastructure
+* External integrations
+
+This creates a different problem.
+
+The project becomes infrastructure-heavy and the actual **design pattern implementation becomes difficult to observe and explain**.
+
+---
+
+# 4. The MediFlow Approach
+
+MediFlow combines the advantages of both approaches.
+
+```text
+              MEDIFLOW APPROACH
+
+
+        REAL APPLICATION WORKFLOWS
+                   │
+                   ▼
+             REAL CRUD DATA
+                   │
+                   ▼
+        FUNCTIONAL SIMULATIONS
+                   │
+                   ▼
+       DESIGN PATTERN IMPLEMENTATION
+                   │
+                   ▼
+       LIVE PATTERN VISIBILITY
+```
+
+The application will perform genuine operations such as:
+
+* Registering patients
+* Scheduling appointments
+* Admitting patients
+* Ordering laboratory tests
+* Creating prescriptions
+* Generating bills
+* Processing insurance claims
+* Discharging patients
+
+However, infrastructure-heavy processes such as laboratory integrations, payment gateways, and insurance systems will be represented through **controlled functional simulations**.
+
+This allows the project to focus on:
+
+> **Software architecture and design decisions rather than infrastructure complexity.**
+
+---
+
+# 5. Core Design Philosophy
+
+The system is designed around four principles.
+
+---
+
+## 5.1 Real CRUD Operations
+
+The primary entities of the system will persist actual data.
+
+Users can perform:
+
+* Create
+* Read
+* Update
+* Archive/Delete where appropriate
+
+on hospital entities.
+
+For example:
+
+```text
+PATIENT
+   │
+   ├── Register
+   ├── View
+   ├── Update
+   └── Archive
+```
+
+This prevents the project from becoming merely a pattern simulator.
+
+---
+
+# 5.2 Realistic Workflows
+
+Hospital operations follow realistic sequences.
+
+For example:
+
+```text
+PATIENT REGISTRATION
+
+        ↓
+
+APPOINTMENT
+
+        ↓
+
+CHECK-IN
+
+        ↓
+
+CONSULTATION
+
+        ↓
+
+DIAGNOSIS
+
+        ↓
+
+LABORATORY / PRESCRIPTION
+
+        ↓
+
+TREATMENT
+
+        ↓
+
+BILLING
+
+        ↓
+
+DISCHARGE
+```
+
+Each workflow provides a natural environment for design patterns.
+
+---
+
+# 5.3 Controlled Simulations
+
+Certain real-world systems are intentionally simulated.
+
+For example:
+
+```text
+External Laboratory
+        │
+        ▼
+   Mock Provider
+        │
+        ▼
+Test Processing
+        │
+        ▼
+Result Generated
+```
+
+The architectural interaction remains realistic without requiring an actual external laboratory API.
+
+---
+
+# 5.4 Pattern Visibility
+
+A major feature of MediFlow will be the ability to observe the architectural patterns involved in an operation.
+
+For example:
+
+```text
+USER CHANGES APPOINTMENT STATUS
+
+            ↓
+
+       COMMAND
+
+            ↓
+
+        STATE
+
+            ↓
+
+       OBSERVER
+
+       /       \
+
+NOTIFICATION   AUDIT LOG
+```
+
+The application will show a **Live Pattern Execution Trace**.
+
+This allows the project to demonstrate:
+
+* The pattern involved
+* The classes involved
+* The execution sequence
+* The resulting system behaviour
+
+---
+
+# 6. System Scope
+
+MediFlow will consist of the following primary modules.
+
+```text
+MEDIFLOW
+│
+├── Authentication & Access Control
+│
+├── Patient Management
+│
+├── Appointment Management
+│
+├── Admission & Clinical Workflow
+│
+├── Laboratory & Diagnostics
+│
+├── Prescription & Pharmacy
+│
+├── Billing & Insurance
+│
+├── Discharge & Reporting
+│
+├── Clinical Rule Engine
+│
+├── Care Coordination
+│
+└── Architecture Explorer
+```
+
+---
+
+# 7. System Personas
+
+The hospital environment contains multiple actors with different responsibilities.
+
+This provides a natural basis for demonstrating authorization and object interaction.
+
+---
+
+## 7.1 Hospital Administrator
+
+The administrator manages the overall system configuration.
+
+### Responsibilities
+
+* Manage users
+* Manage departments
+* Manage staff
+* Manage rooms and beds
+* Configure system settings
+* View hospital analytics
+
+### Primary Modules
+
+```text
+Administration
+Users
+Departments
+Rooms
+Configuration
+Analytics
+```
+
+---
+
+# 7.2 Receptionist
+
+The receptionist manages the patient's entry into the hospital system.
+
+### Responsibilities
+
+* Register patients
+* Search patients
+* Update patient details
+* Schedule appointments
+* Cancel appointments
+* Check in patients
+
+### Primary Workflow
+
+```text
+REGISTER PATIENT
+
+        ↓
+
+BOOK APPOINTMENT
+
+        ↓
+
+CHECK-IN
+
+        ↓
+
+CONSULTATION
+```
+
+---
+
+# 7.3 Doctor
+
+The doctor manages clinical interactions.
+
+### Responsibilities
+
+* View patients
+* Conduct consultations
+* Create diagnoses
+* Order laboratory tests
+* Create prescriptions
+* Create treatment plans
+* Approve discharge
+
+---
+
+# 7.4 Nurse
+
+The nurse manages patient care activities.
+
+### Responsibilities
+
+* View admitted patients
+* Record vital signs
+* Update care status
+* Record medication administration
+* Assist in patient discharge
+
+---
+
+# 7.5 Laboratory Technician
+
+### Responsibilities
+
+* View laboratory requests
+* Process diagnostic tests
+* Update test status
+* Enter results
+* Mark critical results
+
+---
+
+# 7.6 Pharmacist
+
+### Responsibilities
+
+* View prescriptions
+* Verify medications
+* Dispense medication
+* Update prescription status
+
+---
+
+# 7.7 Billing Officer
+
+### Responsibilities
+
+* Generate bills
+* Add hospital charges
+* Process insurance claims
+* Record payments
+* Generate invoices
+
+---
+
+# 8. Overall System Flow
+
+The primary system flow represents the journey of a patient.
+
+```text
+                    PATIENT
+
+                       │
+                       ▼
+
+                REGISTRATION
+
+                       │
+                       ▼
+
+                APPOINTMENT
+
+                       │
+                       ▼
+
+                  CHECK-IN
+
+                       │
+                       ▼
+
+                CONSULTATION
+
+                  /          \
+
+                 /            \
+
+                ▼              ▼
+
+           LAB ORDER      PRESCRIPTION
+
+                │              │
+
+                ▼              ▼
+
+            LAB RESULT      PHARMACY
+
+                 \            /
+
+                  \          /
+
+                       ▼
+
+                   TREATMENT
+
+                       │
+                       ▼
+
+                    BILLING
+
+                       │
+                       ▼
+
+                   DISCHARGE
+
+                       │
+                       ▼
+
+                     REPORT
+```
+
+This flow creates a coherent application where multiple modules interact.
+
+---
+
+# 9. Design Pattern Strategy
+
+The system will implement all **23 Gang of Four Design Patterns**.
+
+However, the project does not treat patterns as isolated requirements.
+
+The selection principle is:
+
+> **A design pattern should only be used when it provides a meaningful solution to an actual system problem.**
+
+The following sections explain the architectural reason behind each pattern.
+
+---
+
+# PART I — CREATIONAL PATTERNS
+
+---
+
+# 10. Singleton Pattern
+
+## Module
+
+### Authentication & System Configuration
+
+---
+
+## Problem
+
+The hospital system contains global configuration information such as:
+
+* Hospital name
+* Working hours
+* System preferences
+* Notification settings
+* Default policies
+
+Creating multiple independent configuration managers can result in:
+
+* Inconsistent configuration
+* Duplicate state
+* Difficult configuration management
+
+---
+
+## Solution
+
+A Singleton ensures that the application has one controlled instance of the configuration manager.
+
+```text
+               APPLICATION
+
+                    │
+
+                    ▼
+
+           HospitalConfig
+
+                    │
+
+          ┌─────────┴─────────┐
+
+          ▼                   ▼
+
+      Module A             Module B
+
+          │                   │
+
+          └─────────┬─────────┘
+
+                    ▼
+
+            SAME INSTANCE
+```
+
+---
+
+## Implementation Concept
+
+```typescript
+class HospitalConfig {
+  private static instance: HospitalConfig;
+
+  private constructor() {}
+
+  static getInstance(): HospitalConfig {
+    if (!HospitalConfig.instance) {
+      HospitalConfig.instance =
+        new HospitalConfig();
+    }
+
+    return HospitalConfig.instance;
+  }
+}
+```
+
+---
+
+## Advantage
+
+* Controlled global access
+* Prevents unnecessary instances
+* Centralized configuration
+* Consistent application state
+
+---
+
+## Why It Fits MediFlow
+
+Hospital-wide configuration logically represents a shared system resource.
+
+The pattern demonstrates controlled object creation in a practical scenario.
+
+---
+
+# 11. Factory Method Pattern
+
+## Module
+
+### Patient Management
+
+---
+
+## Problem
+
+Patients can enter the system through different registration processes.
+
+For example:
+
+```text
+Regular Patient
+
+Emergency Patient
+
+Referred Patient
+```
+
+Each registration type may require different initialization.
+
+For example:
+
+```text
+Emergency Patient
+
+Priority = CRITICAL
+Registration Flow = EMERGENCY
+```
+
+Creating all patient types directly throughout the application would tightly couple the registration system to concrete patient implementations.
+
+---
+
+## Solution
+
+The Factory Method delegates object creation to specialized creators.
+
+```text
+              PatientCreator
+
+                    │
+
+        ┌───────────┼───────────┐
+
+        ▼           ▼           ▼
+
+    Regular      Emergency    Referral
+
+     Creator      Creator      Creator
+```
+
+---
+
+## Implementation Concept
+
+```typescript
+abstract class PatientCreator {
+  abstract createPatient(
+    data: PatientData
+  ): Patient;
+}
+
+class EmergencyPatientCreator
+  extends PatientCreator {
+
+  createPatient(data: PatientData) {
+    return new Patient({
+      ...data,
+      registrationType: "EMERGENCY",
+      priority: "HIGH"
+    });
+  }
+}
+```
+
+---
+
+## Advantage
+
+* Encapsulates object creation
+* Reduces coupling
+* Supports new patient types
+* Keeps registration logic extensible
+
+---
+
+# 12. Abstract Factory Pattern
+
+## Module
+
+### Laboratory & Diagnostics
+
+---
+
+## Problem
+
+MediFlow may work with multiple diagnostic providers.
+
+For the project:
+
+```text
+Internal Laboratory
+
+External Laboratory
+
+Radiology Provider
+```
+
+Each provider may require a family of related components.
+
+For example:
+
+```text
+Provider
+│
+├── Test Submission
+├── Result Formatter
+└── Result Processor
+```
+
+Creating these components individually throughout the application would create provider-specific dependencies.
+
+---
+
+## Solution
+
+An Abstract Factory creates related families of diagnostic components.
+
+```text
+       DiagnosticProviderFactory
+
+                 │
+
+         ┌───────┴────────┐
+
+         ▼                ▼
+
+ InternalLabFactory   ExternalLabFactory
+
+         │                │
+
+   ┌─────┴─────┐    ┌─────┴─────┐
+
+   ▼           ▼    ▼           ▼
+
+Adapter    Formatter Adapter  Formatter
+```
+
+---
+
+## Advantage
+
+* Creates compatible component families
+* Supports new providers
+* Reduces provider coupling
+* Provides consistent interfaces
+
+---
+
+## Why It Fits MediFlow
+
+Diagnostic systems naturally contain provider-specific implementations while requiring a consistent hospital interface.
+
+---
+
+# 13. Builder Pattern
+
+## Module
+
+### Patient Admission
+
+---
+
+## Problem
+
+An admission is a complex object.
+
+It may require:
+
+* Patient
+* Doctor
+* Department
+* Room
+* Bed
+* Admission reason
+* Priority
+* Initial treatment plan
+
+Creating the object through a single constructor would result in a large and difficult-to-maintain initialization process.
+
+---
+
+## Solution
+
+The Builder constructs the admission step by step.
+
+```text
+            AdmissionBuilder
+
+                   │
+
+          Add Patient
+
+                   ↓
+
+          Assign Doctor
+
+                   ↓
+
+          Assign Department
+
+                   ↓
+
+          Assign Room
+
+                   ↓
+
+               BUILD
+
+                   ↓
+
+              ADMISSION
+```
+
+---
+
+## Implementation Concept
+
+```typescript
+const admission =
+  new AdmissionBuilder()
+    .setPatient(patientId)
+    .assignDoctor(doctorId)
+    .assignRoom(roomId)
+    .setPriority("HIGH")
+    .build();
+```
+
+---
+
+## Advantage
+
+* Simplifies complex object construction
+* Improves readability
+* Allows optional properties
+* Supports different admission configurations
+
+---
+
+# 14. Prototype Pattern
+
+## Module
+
+### Treatment Plan Management
+
+---
+
+## Problem
+
+Hospitals often use reusable treatment plan templates.
+
+For example:
+
+```text
+Post-Surgery Recovery Plan
+
+Diabetes Management Plan
+
+General Observation Plan
+```
+
+Doctors may need to create a patient-specific version.
+
+Creating every plan manually would duplicate information.
+
+---
+
+## Solution
+
+A treatment plan template can be cloned and customized.
+
+```text
+     Diabetes Treatment Template
+
+                 │
+
+                 │ CLONE
+
+                 ▼
+
+      Patient-Specific Treatment Plan
+
+                 │
+
+                 ▼
+
+            CUSTOMIZATION
+```
+
+---
+
+## Advantage
+
+* Reuses complex objects
+* Reduces repetitive construction
+* Supports templates
+* Allows independent customization
+
+---
+
+# PART II — STRUCTURAL PATTERNS
+
+---
+
+# 15. Adapter Pattern
+
+## Module
+
+### Laboratory & Diagnostics
+
+---
+
+## Problem
+
+Different diagnostic providers expose different interfaces.
+
+For example:
+
+```text
+Internal Lab
+
+submitTest()
+
+getResult()
+```
+
+while another provider may expose:
+
+```text
+sendSample()
+
+fetchReport()
+```
+
+The hospital application should not need different code for every provider.
+
+---
+
+## Solution
+
+Adapters convert provider-specific interfaces into a common MediFlow interface.
+
+```text
+          MEDIFLOW
+
+             │
+
+             ▼
+
+        LabAdapter
+
+       /     |      \
+
+      ▼      ▼       ▼
+
+Internal External Radiology
+```
+
+---
+
+## Common Interface
+
+```typescript
+interface LabAdapter {
+  submitTest(test: LabTest): Promise<void>;
+
+  getResult(
+    testId: string
+  ): Promise<LabResult>;
+}
+```
+
+---
+
+## Advantage
+
+* Integrates incompatible interfaces
+* Reduces external dependencies
+* Simplifies provider replacement
+* Creates a consistent application interface
+
+---
+
+# 16. Bridge Pattern
+
+## Module
+
+### Laboratory & Diagnostics
+
+---
+
+## Problem
+
+The type of diagnostic request and the provider are independent dimensions.
+
+For example:
+
+```text
+Diagnostic Request
+
+Blood Test
+X-Ray
+MRI
+```
+
+and:
+
+```text
+Provider
+
+Internal Lab
+External Lab
+Radiology Center
+```
+
+Without separation, the number of classes could increase significantly.
+
+---
+
+## Solution
+
+The Bridge separates the abstraction from its implementation.
+
+```text
+        DIAGNOSTIC REQUEST
+
+                 │
+
+                 │
+
+                 ▼
+
+        DIAGNOSTIC PROVIDER
+
+            /          \
+
+           ▼            ▼
+
+      Internal       External
+```
+
+---
+
+## Advantage
+
+* Separates abstraction and implementation
+* Avoids class explosion
+* Supports independent expansion
+* Improves flexibility
+
+---
+
+# 17. Composite Pattern
+
+## Module
+
+### Billing & Insurance
+
+---
+
+## Problem
+
+A hospital bill is naturally hierarchical.
+
+```text
+HOSPITAL BILL
+
+├── Consultation
+│
+├── Laboratory
+│   ├── Blood Test
+│   └── X-Ray
+│
+├── Medication
+│
+└── Room Charges
+```
+
+The system should treat:
+
+```text
+Individual Item
+```
+
+and:
+
+```text
+Group of Items
+```
+
+in the same manner.
+
+---
+
+## Solution
+
+The Composite Pattern provides a common component interface.
+
+```text
+            BillComponent
+
+              /       \
+
+             ▼         ▼
+
+        BillItem    BillGroup
+
+                       │
+
+                 ┌─────┼─────┐
+
+                 ▼     ▼     ▼
+
+               Item  Item  Item
+```
+
+---
+
+## Advantage
+
+* Represents hierarchies naturally
+* Simplifies recursive calculations
+* Treats groups and individual objects uniformly
+* Makes billing structures extensible
+
+---
+
+# 18. Decorator Pattern
+
+## Module
+
+### Prescription & Pharmacy
+
+---
+
+## Problem
+
+Prescription instructions may need additional information.
+
+Base instruction:
+
+```text
+Take medication
+```
+
+Additional information:
+
+```text
+Take medication
+
++
+
+After meals
+
++
+
+Twice daily
+
++
+
+Do not drive
+```
+
+Creating separate classes for every combination would create unnecessary complexity.
+
+---
+
+## Solution
+
+Decorators dynamically add behaviour.
+
+```text
+Basic Prescription
+
+        ↓
+
+Dosage Decorator
+
+        ↓
+
+Timing Decorator
+
+        ↓
+
+Warning Decorator
+```
+
+---
+
+## Advantage
+
+* Adds behaviour dynamically
+* Avoids excessive subclassing
+* Supports flexible combinations
+* Keeps base objects simple
+
+---
+
+# 19. Facade Pattern
+
+## Module
+
+### Authentication and Patient Services
+
+---
+
+## Problem
+
+A single hospital operation may involve multiple internal services.
+
+For example, logging in may require:
+
+```text
+Authentication
+
+↓
+
+Load Profile
+
+↓
+
+Load Role
+
+↓
+
+Load Permissions
+
+↓
+
+Create Session
+```
+
+The user interface should not coordinate every internal service.
+
+---
+
+## Solution
+
+A Facade provides a simplified interface.
+
+```text
+              USER
+
+                │
+
+                ▼
+
+       HospitalAuthFacade
+
+                │
+
+      ┌─────────┼─────────┐
+
+      ▼         ▼         ▼
+
+   Auth      Roles    Permissions
+```
+
+---
+
+## Advantage
+
+* Simplifies complex subsystems
+* Reduces coupling
+* Provides cleaner APIs
+* Improves maintainability
+
+---
+
+# 20. Flyweight Pattern
+
+## Module
+
+### Pharmacy and Medication Management
+
+---
+
+## Problem
+
+Medication information may contain shared information.
+
+For example:
+
+```text
+Medication Name
+
+Category
+
+Manufacturer
+
+Standard Warnings
+```
+
+This information can be shared by many prescriptions.
+
+Creating repeated objects for identical metadata wastes memory conceptually and duplicates information.
+
+---
+
+## Solution
+
+The Flyweight Factory manages shared metadata objects.
+
+```text
+            Medication Factory
+
+                    │
+
+             ┌──────┴──────┐
+
+             ▼             ▼
+
+         Paracetamol    Ibuprofen
+
+             │
+
+     Shared Metadata Object
+```
+
+---
+
+## Advantage
+
+* Encourages shared object reuse
+* Reduces duplication
+* Separates intrinsic and contextual data
+* Demonstrates efficient object management
+
+---
+
+# 21. Proxy Pattern
+
+## Module
+
+### Patient Record Access
+
+---
+
+## Problem
+
+Patient records contain sensitive information.
+
+Different users have different permissions.
+
+For example:
+
+```text
+Doctor
+
+Full Clinical Access
+```
+
+```text
+Receptionist
+
+Basic Patient Information
+```
+
+```text
+Billing Officer
+
+Billing Information
+```
+
+The system requires controlled access.
+
+---
+
+## Solution
+
+A Proxy acts as a controlled access layer.
+
+```text
+            USER
+
+              │
+
+              ▼
+
+       PatientRecordProxy
+
+              │
+
+       Check Permission
+
+          /         \
+
+       DENY        ALLOW
+
+                     │
+
+                     ▼
+
+              Patient Record
+```
+
+---
+
+## Advantage
+
+* Controlled access
+* Authorization checks
+* Separation of security concerns
+* Transparent service access
+
+---
+
+# PART III — BEHAVIORAL PATTERNS
+
+---
+
+# 22. Chain of Responsibility
+
+## Module
+
+### Insurance Claim Processing
+
+---
+
+## Problem
+
+An insurance claim requires multiple validation stages.
+
+```text
+CLAIM
+
+  ↓
+
+Basic Validation
+
+  ↓
+
+Policy Validation
+
+  ↓
+
+Coverage Validation
+
+  ↓
+
+Amount Validation
+
+  ↓
+
+Approval
+```
+
+Each validation stage should be independent.
+
+A single large conditional statement would become difficult to maintain.
+
+---
+
+## Solution
+
+Each handler processes the request and passes it forward.
+
+```text
+Claim
+
+  │
+
+  ▼
+
+BasicValidator
+
+  │
+
+  ▼
+
+PolicyValidator
+
+  │
+
+  ▼
+
+AmountValidator
+
+  │
+
+  ▼
+
+ApprovalHandler
+```
+
+---
+
+## Advantage
+
+* Decouples sender and handlers
+* Simplifies validation logic
+* Supports new validation stages
+* Provides flexible processing pipelines
+
+---
+
+# 23. Command Pattern
+
+## Module
+
+### Appointment Management
+
+---
+
+## Problem
+
+Appointment actions should be represented as explicit operations.
+
+Examples:
+
+```text
+Book Appointment
+
+Cancel Appointment
+
+Reschedule Appointment
+```
+
+The system may also need to maintain an operation history.
+
+---
+
+## Solution
+
+Each action becomes a command object.
+
+```text
+              COMMAND
+
+                 │
+
+       ┌─────────┼──────────┐
+
+       ▼         ▼          ▼
+
+     Book      Cancel    Reschedule
+```
+
+---
+
+## Advantage
+
+* Encapsulates operations
+* Supports operation history
+* Enables undo/redo demonstrations
+* Separates UI actions from business logic
+
+---
+
+## Why It Fits MediFlow
+
+Appointment operations are clear, discrete business actions.
+
+This makes the Command Pattern highly visible and easy to demonstrate.
+
+---
+
+# 24. Interpreter Pattern
+
+## Module
+
+### Clinical Rule Engine
+
+---
+
+## Problem
+
+Hospital systems often need configurable rules.
+
+Examples:
+
+```text
+IF temperature > 39
+
+THEN
+
+CREATE CRITICAL ALERT
+```
+
+Another:
+
+```text
+IF laboratory_result = CRITICAL
+
+THEN
+
+NOTIFY DOCTOR
+```
+
+Hardcoding every rule would make the system inflexible.
+
+---
+
+## Solution
+
+The system interprets structured expressions.
+
+```text
+            RULE
+
+             │
+
+             ▼
+
+         PARSER
+
+             │
+
+             ▼
+
+        EXPRESSION
+
+             │
+
+             ▼
+
+        INTERPRET
+
+             │
+
+             ▼
+
+         ACTION
+```
+
+---
+
+## Example
+
+```json
+{
+  "field": "temperature",
+  "operator": ">",
+  "value": 39,
+  "action": "CREATE_ALERT"
+}
+```
+
+---
+
+## Advantage
+
+* Supports configurable rules
+* Separates rules from application code
+* Demonstrates expression evaluation
+* Allows future expansion
+
+---
+
+# 25. Iterator Pattern
+
+## Module
+
+### Patient Medical History
+
+---
+
+## Problem
+
+Patient history contains different types of records.
+
+```text
+Appointments
+
+Laboratory Results
+
+Prescriptions
+
+Admissions
+
+Vitals
+```
+
+The application should traverse these records without exposing the internal storage structure.
+
+---
+
+## Solution
+
+An Iterator provides sequential access.
+
+```text
+PATIENT HISTORY
+
+      │
+
+      ▼
+
+    ITERATOR
+
+      │
+
+      ├── Appointment
+
+      ├── Lab Result
+
+      ├── Prescription
+
+      └── Admission
+```
+
+---
+
+## Advantage
+
+* Simplifies collection traversal
+* Hides internal representation
+* Supports consistent navigation
+* Makes traversal logic reusable
+
+---
+
+# 26. Mediator Pattern
+
+## Module
+
+### Care Coordination
+
+---
+
+## Problem
+
+Hospital departments interact frequently.
+
+Without coordination:
+
+```text
+Doctor → Nurse
+
+Doctor → Lab
+
+Doctor → Pharmacy
+
+Nurse → Doctor
+
+Lab → Doctor
+
+Pharmacy → Doctor
+```
+
+Direct communication creates tightly coupled components.
+
+---
+
+## Solution
+
+A Mediator coordinates communication.
+
+```text
+                CARE MEDIATOR
+
+           /        |        \
+
+          ▼         ▼         ▼
+
+       Doctor     Nurse      Lab
+
+                      \
+
+                       ▼
+
+                    Pharmacy
+```
+
+---
+
+## Advantage
+
+* Reduces direct dependencies
+* Centralizes coordination
+* Simplifies communication
+* Improves maintainability
+
+---
+
+# 27. Memento Pattern
+
+## Module
+
+### Treatment Plan Management
+
+---
+
+## Problem
+
+Treatment plans may change over time.
+
+Doctors may need to restore an earlier version.
+
+```text
+PLAN VERSION 1
+
+        ↓
+
+PLAN VERSION 2
+
+        ↓
+
+PLAN VERSION 3
+
+        ↓
+
+RESTORE VERSION 1
+```
+
+The system must preserve historical states.
+
+---
+
+## Solution
+
+The Memento captures object state.
+
+```text
+          Treatment Plan
+
+                │
+
+          Create Snapshot
+
+                │
+
+                ▼
+
+             MEMENTO
+
+                │
+
+                ▼
+
+         Snapshot History
+```
+
+---
+
+## Advantage
+
+* Preserves history
+* Supports restoration
+* Keeps object internals encapsulated
+* Demonstrates version management
+
+---
+
+# 28. Observer Pattern
+
+## Module
+
+### Clinical Events and Notifications
+
+---
+
+## Problem
+
+A single hospital event may affect multiple components.
+
+For example:
+
+```text
+PRESCRIPTION CREATED
+```
+
+This may require:
+
+```text
+Notify Pharmacy
+
+Update Patient Record
+
+Create Audit Log
+```
+
+The prescription service should not directly depend on every service.
+
+---
+
+## Solution
+
+Observers subscribe to events.
+
+```text
+        PRESCRIPTION SERVICE
+
+                 │
+
+              EVENT
+
+                 │
+
+        ┌────────┼─────────┐
+
+        ▼        ▼         ▼
+
+    Pharmacy Notification Audit
+```
+
+---
+
+## Advantage
+
+* Loose coupling
+* Event-driven communication
+* Supports multiple subscribers
+* Easy to add new reactions
+
+---
+
+# 29. State Pattern
+
+## Module
+
+### Appointment and Admission Management
+
+---
+
+## Problem
+
+Hospital workflows have defined states.
+
+An appointment can be:
+
+```text
+SCHEDULED
+
+↓
+
+CHECKED-IN
+
+↓
+
+IN CONSULTATION
+
+↓
+
+COMPLETED
+```
+
+Certain actions should only be possible in specific states.
+
+For example:
+
+```text
+A completed appointment cannot be checked in.
+```
+
+---
+
+## Solution
+
+Each state controls valid behaviour.
+
+```text
+              APPOINTMENT
+
+                   │
+
+        ┌──────────┼──────────┐
+
+        ▼          ▼          ▼
+
+    Scheduled   Checked-In  Completed
+```
+
+---
+
+## Advantage
+
+* Encapsulates state-specific behaviour
+* Avoids large conditional statements
+* Makes workflow transitions explicit
+* Supports new states
+
+---
+
+# 30. Strategy Pattern
+
+## Module
+
+### Appointment Scheduling
+
+---
+
+## Problem
+
+Doctors can be assigned using different scheduling algorithms.
+
+Examples:
+
+```text
+Manual Selection
+```
+
+```text
+First Available
+```
+
+```text
+Least Busy Doctor
+```
+
+The scheduling mechanism should be replaceable.
+
+---
+
+## Solution
+
+Each algorithm implements a common strategy interface.
+
+```text
+           Scheduling Strategy
+
+                    │
+
+         ┌──────────┼──────────┐
+
+         ▼          ▼          ▼
+
+      Manual     Available   Least Busy
+```
+
+---
+
+## Advantage
+
+* Algorithms are interchangeable
+* Removes conditional selection logic
+* Supports future scheduling methods
+* Improves extensibility
+
+---
+
+# 31. Template Method Pattern
+
+## Module
+
+### Medical Report Generation
+
+---
+
+## Problem
+
+Different reports follow a similar overall process.
+
+```text
+Patient Report
+
+Billing Report
+
+Discharge Summary
+```
+
+All reports generally perform:
+
+```text
+Collect Data
+
+↓
+
+Validate Data
+
+↓
+
+Format Data
+
+↓
+
+Generate Output
+```
+
+However, the individual implementation differs.
+
+---
+
+## Solution
+
+The Template Method defines the common workflow.
+
+```text
+             GENERATE REPORT
+
+                    │
+
+             Collect Data
+
+                    ↓
+
+             Validate Data
+
+                    ↓
+
+             Format Data
+
+                    ↓
+
+              Export Report
+```
+
+Specific report types customize individual steps.
+
+---
+
+## Advantage
+
+* Reuses common workflow
+* Reduces duplication
+* Maintains consistent report generation
+* Allows controlled customization
+
+---
+
+# 32. Visitor Pattern
+
+## Module
+
+### Reporting and Analytics
+
+---
+
+## Problem
+
+Hospital entities may require different operations.
+
+For example:
+
+```text
+Patient
+
+Admission
+
+Prescription
+
+Laboratory Order
+```
+
+The system may need to perform:
+
+```text
+Generate Report
+
+Calculate Analytics
+
+Export Data
+```
+
+Adding all operations directly to every entity would make entities increasingly complex.
+
+---
+
+## Solution
+
+Visitors separate operations from the object structure.
+
+```text
+             REPORT VISITOR
+
+                    │
+
+       ┌────────────┼────────────┐
+
+       ▼            ▼            ▼
+
+    Patient      Admission   Prescription
+```
+
+---
+
+## Advantage
+
+* Separates operations from data structures
+* Supports new operations
+* Keeps domain entities focused
+* Demonstrates double dispatch
+
+---
+
+# 33. Complete Pattern-to-Module Mapping
+
+## Creational Patterns
+
+| Pattern          | Module             | Hospital Problem                       |
+| ---------------- | ------------------ | -------------------------------------- |
+| Singleton        | Configuration      | Shared hospital configuration          |
+| Factory Method   | Patient Management | Different patient registration types   |
+| Abstract Factory | Laboratory         | Different diagnostic provider families |
+| Builder          | Admissions         | Complex admission creation             |
+| Prototype        | Treatment Plans    | Clone reusable treatment templates     |
+
+---
+
+## Structural Patterns
+
+| Pattern   | Module          | Hospital Problem                             |
+| --------- | --------------- | -------------------------------------------- |
+| Adapter   | Laboratory      | Normalize different provider interfaces      |
+| Bridge    | Diagnostics     | Separate requests from providers             |
+| Composite | Billing         | Hierarchical bill structure                  |
+| Decorator | Pharmacy        | Dynamically enrich prescription instructions |
+| Facade    | Authentication  | Simplify multiple security services          |
+| Flyweight | Medication      | Reuse shared drug metadata                   |
+| Proxy     | Patient Records | Controlled access to sensitive records       |
+
+---
+
+## Behavioral Patterns
+
+| Pattern                 | Module                  | Hospital Problem                             |
+| ----------------------- | ----------------------- | -------------------------------------------- |
+| Chain of Responsibility | Insurance               | Multi-stage claim validation                 |
+| Command                 | Appointments            | Encapsulated appointment operations          |
+| Interpreter             | Clinical Rules          | Configurable hospital rules                  |
+| Iterator                | Medical History         | Traverse patient records                     |
+| Mediator                | Care Coordination       | Coordinate hospital departments              |
+| Memento                 | Treatment Plans         | Restore previous plan versions               |
+| Observer                | Notifications           | React to clinical events                     |
+| State                   | Appointments/Admissions | Manage workflow lifecycle                    |
+| Strategy                | Scheduling              | Interchangeable doctor assignment algorithms |
+| Template Method         | Reports                 | Standardized report generation workflow      |
+| Visitor                 | Analytics               | Operations across hospital entities          |
+
+---
+
+# 34. Pattern Interaction
+
+One of the major advantages of MediFlow is that patterns will not exist independently.
+
+They will interact.
+
+Consider the following scenario.
+
+## Emergency Patient Registration
+
+```text
+RECEPTIONIST
+
+       │
+
+       ▼
+
+REGISTER EMERGENCY PATIENT
+
+       │
+
+       ▼
+
+FACTORY METHOD
+
+EmergencyPatientCreator
+
+       │
+
+       ▼
+
+PATIENT CREATED
+
+       │
+
+       ▼
+
+OBSERVER EVENT
+
+       │
+
+   ┌───┼────┐
+
+   ▼   ▼    ▼
+
+Notify Audit Update
+Staff  Log   Dashboard
+```
+
+Multiple patterns contribute to one business operation.
+
+---
+
+# 35. Example: Appointment Flow
+
+```text
+RECEPTIONIST
+
+      │
+
+      ▼
+
+BOOK APPOINTMENT
+
+      │
+
+      ▼
+
+STRATEGY
+
+Select Scheduling Algorithm
+
+      │
+
+      ▼
+
+COMMAND
+
+BookAppointmentCommand
+
+      │
+
+      ▼
+
+STATE
+
+Appointment = SCHEDULED
+
+      │
+
+      ▼
+
+OBSERVER
+
+Notification Created
+```
+
+This is significantly stronger than demonstrating:
+
+> "Here is a Strategy Pattern example."
+
+Instead, the application demonstrates:
+
+> "This is the business problem that required the Strategy Pattern."
+
+---
+
+# 36. Example: Patient Admission Flow
+
+```text
+CREATE ADMISSION
+
+       │
+
+       ▼
+
+BUILDER
+
+Construct Admission
+
+       │
+
+       ▼
+
+STATE
+
+ADMITTED
+
+       │
+
+       ▼
+
+MEDIATOR
+
+Coordinate Care
+
+       │
+
+       ▼
+
+MEMENTO
+
+Save Treatment Snapshot
+```
+
+---
+
+# 37. Example: Laboratory Flow
+
+```text
+DOCTOR ORDERS TEST
+
+        │
+
+        ▼
+
+ABSTRACT FACTORY
+
+Select Provider Components
+
+        │
+
+        ▼
+
+BRIDGE
+
+Request ↔ Provider
+
+        │
+
+        ▼
+
+ADAPTER
+
+Normalize Provider API
+
+        │
+
+        ▼
+
+LAB PROCESSING
+
+        │
+
+        ▼
+
+OBSERVER
+
+Notify Doctor
+```
+
+---
+
+# 38. Example: Billing Flow
+
+```text
+PATIENT SERVICES
+
+        │
+
+        ▼
+
+CONSULTATION
+
+LAB TEST
+
+MEDICATION
+
+ROOM
+
+        │
+
+        ▼
+
+COMPOSITE
+
+Build Bill Structure
+
+        │
+
+        ▼
+
+INSURANCE CLAIM
+
+        │
+
+        ▼
+
+CHAIN OF RESPONSIBILITY
+
+Validate Claim
+
+        │
+
+        ▼
+
+APPROVAL
+```
+
+---
+
+# 39. Architecture Explorer
+
+MediFlow will include an **Architecture Explorer**.
+
+This is a dedicated part of the application designed specifically to make the implementation understandable.
+
+---
+
+## Architecture Explorer Structure
+
+```text
+ARCHITECTURE EXPLORER
+
+│
+
+├── CREATIONAL
+│
+│   ├── Singleton
+│   ├── Factory Method
+│   ├── Abstract Factory
+│   ├── Builder
+│   └── Prototype
+│
+├── STRUCTURAL
+│
+│   ├── Adapter
+│   ├── Bridge
+│   ├── Composite
+│   ├── Decorator
+│   ├── Facade
+│   ├── Flyweight
+│   └── Proxy
+│
+└── BEHAVIORAL
+    │
+    ├── Chain of Responsibility
+    ├── Command
+    ├── Interpreter
+    ├── Iterator
+    ├── Mediator
+    ├── Memento
+    ├── Observer
+    ├── State
+    ├── Strategy
+    ├── Template Method
+    └── Visitor
+```
+
+---
+
+# 40. Pattern Visibility
+
+Each pattern will contain the following information.
+
+## Pattern Name
+
+Example:
+
+> Observer Pattern
+
+---
+
+## Category
+
+> Behavioral Pattern
+
+---
+
+## Problem
+
+> Multiple components need to respond to a hospital event without creating direct dependencies.
+
+---
+
+## MediFlow Implementation
+
+```text
+Prescription Created
+
+        │
+
+        ▼
+
+Event Publisher
+
+        │
+
+   ┌────┼────┐
+
+   ▼    ▼    ▼
+
+Pharmacy Patient Audit
+```
+
+---
+
+## Where It Is Used
+
+```text
+Prescription Module
+
+Laboratory Module
+
+Notification System
+
+Audit System
+```
+
+---
+
+## Advantages
+
+* Loose coupling
+* Extensibility
+* Event-driven behaviour
+
+---
+
+## Live Example
+
+The user can trigger a real application action and view the resulting pattern interaction.
+
+---
+
+# 41. Live Pattern Execution Trace
+
+This feature is central to the project.
+
+Whenever a significant operation occurs, MediFlow can display the architectural execution.
+
+---
+
+## Example
+
+### Laboratory Test Ordered
+
+```text
+LIVE PATTERN TRACE
+
+
+STEP 1
+
+Factory Pattern
+
+Provider Factory Selected
+
+
+↓
+
+STEP 2
+
+Adapter Pattern
+
+Hospital Test Request Converted
+
+
+↓
+
+STEP 3
+
+Bridge Pattern
+
+Request Connected to Provider
+
+
+↓
+
+STEP 4
+
+State Pattern
+
+Order State = PENDING
+
+
+↓
+
+STEP 5
+
+Observer Pattern
+
+Doctor and Laboratory Notified
+```
+
+---
+
+# 42. Why This Improves the Project
+
+The Live Pattern Trace provides several advantages.
+
+---
+
+## Academic Advantage
+
+The evaluator can clearly see:
+
+* Which pattern is being used
+* Where it is being used
+* Why it was selected
+* What happens during execution
+
+---
+
+## Demonstration Advantage
+
+During a viva, the project can demonstrate patterns visually rather than relying only on code explanation.
+
+---
+
+## Learning Advantage
+
+The system connects:
+
+```text
+THEORY
+
+↓
+
+DESIGN DECISION
+
+↓
+
+CODE
+
+↓
+
+SYSTEM BEHAVIOUR
+```
+
+---
+
+# 43. Technology Philosophy
+
+The project will use a lightweight full-stack architecture.
+
+```text
+                   MEDIFLOW
+
+                       │
+
+                       ▼
+
+                FRONTEND
+
+            React + TypeScript
+
+                       │
+
+                       ▼
+
+                  SUPABASE
+
+                       │
+
+        ┌──────────────┼──────────────┐
+
+        ▼              ▼              ▼
+
+    PostgreSQL         Auth       Backend Logic
+```
+
+---
+
+# 44. Why Minimal Infrastructure?
+
+The objective of the project is:
+
+> **To demonstrate software design patterns in a functional application.**
+
+Therefore, the project should not unnecessarily introduce infrastructure complexity.
+
+The following will intentionally not be required:
+
+```text
+Microservices
+
+Kubernetes
+
+Kafka
+
+Redis
+
+Docker Orchestration
+
+Cloud Deployment Pipelines
+
+Real Laboratory APIs
+
+Real Payment Gateways
+```
+
+---
+
+## Instead
+
+The project will use:
+
+```text
+Persistent CRUD
+
+↓
+
+Functional Workflows
+
+↓
+
+Controlled Simulations
+
+↓
+
+Visible Pattern Interactions
+```
+
+---
+
+# 45. Real vs Simulated Components
+
+## Real Components
+
+The following features will use persistent application data.
+
+### Patient Management
+
+* Register
+* View
+* Update
+* Archive
+
+### Appointments
+
+* Create
+* Update
+* Cancel
+* Check-in
+
+### Admissions
+
+* Create admission
+* Assign rooms
+* Update status
+
+### Laboratory
+
+* Create test orders
+* Update status
+* Record results
+
+### Pharmacy
+
+* Create prescriptions
+* Dispense medication
+
+### Billing
+
+* Create charges
+* Calculate bills
+
+### Reports
+
+* Generate hospital reports
+
+---
+
+# Simulated Components
+
+These will have realistic system behaviour without external infrastructure.
+
+### Laboratory Processing
+
+```text
+PENDING
+
+↓
+
+PROCESSING
+
+↓
+
+COMPLETED
+```
+
+---
+
+### Insurance Processing
+
+```text
+SUBMITTED
+
+↓
+
+VALIDATED
+
+↓
+
+APPROVED / REJECTED
+```
+
+---
+
+### Payments
+
+```text
+PENDING
+
+↓
+
+PROCESSING
+
+↓
+
+PAID / FAILED
+```
+
+---
+
+# 46. Project Advantages
+
+---
+
+## 46.1 Complete Syllabus Coverage
+
+The project provides an implementation context for all 23 GoF patterns.
+
+---
+
+## 46.2 Realistic Application
+
+The project is based on a recognizable real-world domain.
+
+---
+
+## 46.3 Minimal Infrastructure
+
+The project remains manageable within academic constraints.
+
+---
+
+## 46.4 Maximum Pattern Visibility
+
+Patterns are visible through:
+
+* Architecture Explorer
+* Pattern Mapping
+* Live Execution Trace
+* Workflow Diagrams
+* Source Code Structure
+
+---
+
+## 46.5 Strong Software Engineering Demonstration
+
+The project demonstrates:
+
+* Object-oriented design
+* Software architecture
+* Separation of concerns
+* Loose coupling
+* Extensibility
+* Maintainability
+* Design pattern selection
+* Pattern comparison
+* Real-world application
+
+---
+
+# 47. Key Academic Strength
+
+The strongest aspect of MediFlow is that it does not simply answer:
+
+> **"How can I implement all 23 design patterns?"**
+
+Instead, it asks:
+
+> **"What problems occur in a realistic Hospital Management System, and which design patterns provide the most appropriate solutions?"**
+
+This changes the project from a pattern demonstration application into an **architecture-driven software engineering project**.
+
+---
+
+# 48. Project Differentiator
+
+Most Hospital Management Systems focus primarily on:
+
+```text
+Patients
+
+Doctors
+
+Appointments
+
+Billing
+```
+
+and implement them using standard CRUD operations.
+
+MediFlow introduces another dimension.
+
+```text
+                    MEDIFLOW
+
+
+            HOSPITAL MANAGEMENT
+
+                    +
+
+           SOFTWARE ARCHITECTURE
+
+                    +
+
+           DESIGN PATTERNS
+
+                    +
+
+        LIVE PATTERN VISIBILITY
+```
+
+The application therefore has two purposes.
+
+---
+
+## Purpose 1
+
+### Functional Hospital Management
+
+Users can manage realistic hospital workflows.
+
+---
+
+## Purpose 2
+
+### Interactive Software Architecture Demonstration
+
+Users and evaluators can understand:
+
+* Which patterns exist
+* Where they are used
+* Why they were selected
+* How they interact
+
+---
+
+# 49. Proposed Outcome
+
+The final application will demonstrate a complete patient journey.
+
+```text
+REGISTRATION
+
+      ↓
+
+APPOINTMENT
+
+      ↓
+
+CONSULTATION
+
+      ↓
+
+DIAGNOSTICS
+
+      ↓
+
+PRESCRIPTION
+
+      ↓
+
+ADMISSION
+
+      ↓
+
+TREATMENT
+
+      ↓
+
+BILLING
+
+      ↓
+
+DISCHARGE
+
+      ↓
+
+REPORTING
+```
+
+Throughout this journey, different GoF patterns will solve specific architectural problems.
+
+---
+
+# 50. Conclusion
+
+MediFlow is designed to bridge the gap between **design pattern theory and practical software development**.
+
+Rather than creating isolated demonstrations of the 23 Gang of Four patterns, the project integrates them into a cohesive Hospital Management System where each pattern addresses a specific real-world problem.
+
+The project deliberately balances functionality and complexity through the principle:
+
+> # **Minimal Infrastructure. Maximum Functionality. Maximum Architectural Demonstration.**
+
+The Hospital Management domain provides a rich environment containing multiple users, complex workflows, state transitions, hierarchical structures, event-driven communication, configurable rules, access control, and integrations.
+
+This makes it an ideal environment for demonstrating:
+
+* All Creational Patterns
+* All Structural Patterns
+* All Behavioral Patterns
+
+The addition of an **Architecture Explorer** and **Live Pattern Execution Trace** ensures that the patterns are not hidden inside the source code. Instead, the application's architecture becomes visible and explainable during demonstrations and evaluations.
+
+Ultimately, MediFlow is intended to be both:
+
+> **A functional Hospital Management System**
+
+and
+
+> **A practical demonstration of how software design patterns are selected and applied to solve real architectural problems.**
+
+---
+
+## Recommended Review 1 Pitch Deck Structure
+
+For your **Review 1**, I would turn this write-up into approximately **12–14 slides**:
+
+1. **Title – MediFlow**
+2. **Problem with traditional design pattern projects**
+3. **Why Hospital Management System?**
+4. **Our Design Philosophy**
+5. **System Overview**
+6. **Personas**
+7. **End-to-End Patient Journey**
+8. **Module Architecture**
+9. **Creational Patterns**
+10. **Structural Patterns**
+11. **Behavioral Patterns**
+12. **Pattern Interaction in Real Workflows**
+13. **Architecture Explorer + Live Pattern Trace**
+14. **Technology Stack, Scope & Expected Outcome**
+
+**My recommendation for the next step is to convert this into a much tighter, presentation-oriented Review 1 narrative—not just summarize it into slides.** We should decide exactly **what each slide says, what diagram it contains, and what you should verbally explain to the teacher.**
+# MediFlow — Pattern Implementation Contracts
+
+## Final Technical Input for Lovable
+
+This document is the **implementation contract**. Lovable should treat these requirements as mandatory.
+
+The goal is:
+
+> Every GoF pattern must exist as real TypeScript code, be integrated into a real hospital workflow, be triggered by a user action or workflow event, and be visibly explainable through the Architecture Explorer.
+
+---
+
+# 0. Global Contract
+
+## Required Architecture
+
+```text
+src/
+│
+├── components/
+├── pages/
+├── services/
+├── hooks/
+├── context/
+├── types/
+│
+├── patterns/
+│   ├── creational/
+│   │   ├── Singleton.ts
+│   │   ├── FactoryMethod.ts
+│   │   ├── AbstractFactory.ts
+│   │   ├── Builder.ts
+│   │   └── Prototype.ts
+│   │
+│   ├── structural/
+│   │   ├── Adapter.ts
+│   │   ├── Bridge.ts
+│   │   ├── Composite.ts
+│   │   ├── Decorator.ts
+│   │   ├── Facade.ts
+│   │   ├── Flyweight.ts
+│   │   └── Proxy.ts
+│   │
+│   └── behavioral/
+│       ├── ChainOfResponsibility.ts
+│       ├── Command.ts
+│       ├── Interpreter.ts
+│       ├── Iterator.ts
+│       ├── Mediator.ts
+│       ├── Memento.ts
+│       ├── Observer.ts
+│       ├── State.ts
+│       ├── Strategy.ts
+│       ├── TemplateMethod.ts
+│       └── Visitor.ts
+│
+└── pattern-tracing/
+    ├── PatternTraceContext.tsx
+    ├── PatternTraceService.ts
+    └── types.ts
+```
+
+---
+
+# Mandatory Rule
+
+Lovable **must not implement patterns as isolated demo classes**.
+
+Every pattern must satisfy:
+
+```text
+REAL TYPESCRIPT IMPLEMENTATION
+        +
+REAL MODULE INTEGRATION
+        +
+USER OR WORKFLOW TRIGGER
+        +
+VISIBLE EXECUTION TRACE
+```
+
+---
+
+# Universal Pattern Contract
+
+Every pattern implementation must have:
+
+| Requirement                             | Mandatory |
+| --------------------------------------- | --------- |
+| Dedicated TypeScript file               | Yes       |
+| Interface/abstraction where appropriate | Yes       |
+| Concrete implementations                | Yes       |
+| Used by application workflow            | Yes       |
+| Triggerable from UI/workflow            | Yes       |
+| Pattern trace generated                 | Yes       |
+| Visible in Architecture Explorer        | Yes       |
+
+---
+
+# Global Trace Contract
+
+Every pattern integrates with:
+
+```typescript
+tracePattern({
+  pattern: "Factory Method",
+  module: "Patient Management",
+  step: 1,
+  message: "Selected EmergencyPatientCreator"
+});
+```
+
+---
+
+## Trace Type
+
+```typescript
+export interface PatternTrace {
+  id: string;
+  pattern: string;
+  category:
+    | "Creational"
+    | "Structural"
+    | "Behavioral";
+
+  module: string;
+  step: number;
+  message: string;
+  timestamp: Date;
+}
+```
+
+---
+
+# Trace Service
+
+```typescript
+export class PatternTraceService {
+
+  static emit(trace: Omit<
+    PatternTrace,
+    "id" | "timestamp"
+  >) {
+
+    const event = new CustomEvent(
+      "pattern-trace",
+      {
+        detail: {
+          ...trace,
+          id: crypto.randomUUID(),
+          timestamp: new Date()
+        }
+      }
+    );
+
+    window.dispatchEvent(event);
+  }
+
+}
+```
+
+Every pattern must call this service.
+
+---
+
+# PART I — CREATIONAL PATTERNS
+
+---
+
+# CONTRACT 1 — SINGLETON
+
+## Module
+
+```text
+Authentication & System Configuration
+```
+
+## File
+
+```text
+src/patterns/creational/Singleton.ts
+```
+
+## Purpose
+
+Provide one globally accessible hospital configuration instance.
+
+---
+
+## Required Class
+
+```typescript
+class HospitalConfig
+```
+
+---
+
+## Required Properties
+
+```typescript
+hospitalName
+workingHours
+supportedRoles
+```
+
+---
+
+## Required Methods
+
+```typescript
+getInstance()
+getHospitalName()
+getSupportedRoles()
+```
+
+---
+
+## Contract
+
+```typescript
+export class HospitalConfig {
+
+  private static instance: HospitalConfig;
+
+  private constructor() {}
+
+  static getInstance(): HospitalConfig {
+
+    if (!HospitalConfig.instance) {
+
+      HospitalConfig.instance =
+        new HospitalConfig();
+
+      PatternTraceService.emit({
+        pattern: "Singleton",
+        category: "Creational",
+        module: "System Configuration",
+        step: 1,
+        message:
+          "Created HospitalConfig singleton instance"
+      });
+
+    }
+
+    return HospitalConfig.instance;
+
+  }
+
+}
+```
+
+---
+
+## Integration
+
+Used by:
+
+```text
+Application Startup
+Authentication
+Role Validation
+System Settings
+```
+
+---
+
+## User Trigger
+
+```text
+USER OPENS APPLICATION
+```
+
+---
+
+## Trace
+
+```text
+Singleton
+↓
+Checking configuration instance
+↓
+Creating/reusing instance
+↓
+Configuration available
+```
+
+---
+
+# CONTRACT 2 — FACTORY METHOD
+
+## Module
+
+```text
+Patient Management
+```
+
+## File
+
+```text
+src/patterns/creational/FactoryMethod.ts
+```
+
+---
+
+## Problem
+
+Different registration types create patients with different defaults.
+
+```text
+Regular
+Emergency
+Referred
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface PatientCreator {
+
+  createPatient(
+    data: PatientInput
+  ): PatientDraft;
+
+}
+```
+
+---
+
+## Required Implementations
+
+```text
+RegularPatientCreator
+
+EmergencyPatientCreator
+
+ReferredPatientCreator
+```
+
+---
+
+## Required Behavior
+
+### Regular
+
+```text
+Priority = NORMAL
+```
+
+### Emergency
+
+```text
+Priority = CRITICAL
+
+Immediate workflow flag = true
+```
+
+### Referred
+
+```text
+Priority = NORMAL
+
+Referral source required
+```
+
+---
+
+## Integration
+
+```text
+PatientRegistrationForm
+        ↓
+Select Registration Type
+        ↓
+PatientCreator selected
+        ↓
+Patient Draft Created
+        ↓
+Save to Supabase
+```
+
+---
+
+## User Trigger
+
+```text
+REGISTER PATIENT
+```
+
+---
+
+## Trace
+
+```text
+Factory Method
+
+Step 1
+Registration type selected
+
+Step 2
+EmergencyPatientCreator selected
+
+Step 3
+Patient draft created
+
+Step 4
+Priority automatically assigned
+```
+
+---
+
+# CONTRACT 3 — ABSTRACT FACTORY
+
+## Module
+
+```text
+Laboratory & Diagnostics
+```
+
+## File
+
+```text
+src/patterns/creational/AbstractFactory.ts
+```
+
+---
+
+## Required Interfaces
+
+```typescript
+export interface DiagnosticProcessor {
+
+  process(
+    order: LabOrder
+  ): Promise<void>;
+
+}
+```
+
+```typescript
+export interface DiagnosticResultFormatter {
+
+  format(
+    result: unknown
+  ): FormattedResult;
+
+}
+```
+
+---
+
+## Required Factory
+
+```typescript
+export interface DiagnosticFactory {
+
+  createProcessor():
+    DiagnosticProcessor;
+
+  createFormatter():
+    DiagnosticResultFormatter;
+
+}
+```
+
+---
+
+## Required Factories
+
+```text
+InternalLabFactory
+
+ExternalLabFactory
+
+RadiologyFactory
+```
+
+---
+
+## Integration
+
+```text
+Create Lab Order
+
+        ↓
+
+Select Provider
+
+        ↓
+
+Diagnostic Factory Selected
+
+        ↓
+
+Create Processor
+
++
+
+Create Result Formatter
+
+        ↓
+
+Process Order
+```
+
+---
+
+## User Trigger
+
+```text
+DOCTOR CREATES LAB ORDER
+```
+
+---
+
+## Trace
+
+```text
+Abstract Factory
+
+Step 1
+Provider family selected
+
+Step 2
+InternalLabFactory instantiated
+
+Step 3
+Internal processor created
+
+Step 4
+Internal formatter created
+```
+
+---
+
+# CONTRACT 4 — BUILDER
+
+## Module
+
+```text
+Patient Admission
+```
+
+## File
+
+```text
+src/patterns/creational/Builder.ts
+```
+
+---
+
+## Required Class
+
+```typescript
+AdmissionBuilder
+```
+
+---
+
+## Required Methods
+
+```typescript
+setPatient()
+assignDoctor()
+assignDepartment()
+assignRoom()
+assignBed()
+setPriority()
+setAdmissionReason()
+build()
+```
+
+---
+
+## Required Rule
+
+The builder must support partially constructed admission drafts.
+
+---
+
+## Integration
+
+```text
+Admission Form
+
+Patient
+↓
+Doctor
+↓
+Department
+↓
+Room
+↓
+Bed
+↓
+Priority
+↓
+AdmissionBuilder.build()
+↓
+Save Admission
+```
+
+---
+
+## User Trigger
+
+```text
+CREATE ADMISSION
+```
+
+---
+
+## Trace
+
+```text
+Builder
+
+Step 1
+Admission builder initialized
+
+Step 2
+Patient assigned
+
+Step 3
+Doctor assigned
+
+Step 4
+Bed assigned
+
+Step 5
+Admission object built
+```
+
+---
+
+# CONTRACT 5 — PROTOTYPE
+
+## Module
+
+```text
+Treatment Plans
+```
+
+## File
+
+```text
+src/patterns/creational/Prototype.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface Prototype<T> {
+
+  clone(): T;
+
+}
+```
+
+---
+
+## Required Class
+
+```typescript
+TreatmentPlanTemplate
+```
+
+---
+
+## Required Properties
+
+```text
+name
+
+diagnosis
+
+medications
+
+instructions
+
+followUpSchedule
+```
+
+---
+
+## Required Behavior
+
+```text
+Select Template
+
+↓
+
+Clone Template
+
+↓
+
+Create independent copy
+
+↓
+
+Customize for patient
+
+↓
+
+Save as Treatment Plan
+```
+
+---
+
+## Important
+
+Clone arrays and nested objects properly.
+
+Do not reuse references.
+
+---
+
+## User Trigger
+
+```text
+USE TEMPLATE
+```
+
+---
+
+## Trace
+
+```text
+Prototype
+
+Step 1
+Treatment template selected
+
+Step 2
+Template cloned
+
+Step 3
+Independent treatment plan created
+
+Step 4
+Patient-specific customization started
+```
+
+---
+
+# PART II — STRUCTURAL PATTERNS
+
+---
+
+# CONTRACT 6 — ADAPTER
+
+## Module
+
+```text
+Laboratory Integration
+```
+
+## File
+
+```text
+src/patterns/structural/Adapter.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface LabProviderAdapter {
+
+  submitOrder(
+    order: LabOrder
+  ): Promise<ProviderResponse>;
+
+}
+```
+
+---
+
+## Required Implementations
+
+```text
+InternalLabAdapter
+
+ExternalLabAdapter
+
+RadiologyAdapter
+```
+
+---
+
+## Required Behavior
+
+Different provider data formats must be normalized.
+
+Example:
+
+```text
+Internal:
+
+patientId
+testCode
+```
+
+```text
+External:
+
+patient_identifier
+requested_test
+```
+
+Both must expose:
+
+```typescript
+submitOrder(order)
+```
+
+---
+
+## Integration
+
+```text
+Lab Order
+   ↓
+Provider Selected
+   ↓
+Adapter Selected
+   ↓
+Provider-specific transformation
+   ↓
+Normalized Response
+```
+
+---
+
+## User Trigger
+
+```text
+SUBMIT LAB ORDER
+```
+
+---
+
+## Trace
+
+```text
+Adapter
+
+Step 1
+External provider selected
+
+Step 2
+ExternalLabAdapter initialized
+
+Step 3
+MediFlow order transformed
+
+Step 4
+External response normalized
+```
+
+---
+
+# CONTRACT 7 — BRIDGE
+
+## Module
+
+```text
+Diagnostics
+```
+
+## File
+
+```text
+src/patterns/structural/Bridge.ts
+```
+
+---
+
+## Required Abstraction
+
+```typescript
+abstract class DiagnosticRequest
+```
+
+---
+
+## Required Implementors
+
+```text
+InternalDiagnosticProvider
+
+ExternalDiagnosticProvider
+```
+
+---
+
+## Required Refined Abstractions
+
+```text
+BloodTestRequest
+
+XRayRequest
+
+MRIRequest
+```
+
+---
+
+## Required Principle
+
+These combinations must be possible:
+
+```text
+Blood Test + Internal
+
+Blood Test + External
+
+MRI + Internal
+
+MRI + External
+
+X-Ray + Internal
+
+X-Ray + External
+```
+
+Without creating:
+
+```text
+InternalBloodTest
+
+ExternalBloodTest
+
+InternalMRI
+
+ExternalMRI
+```
+
+---
+
+## Integration
+
+```text
+Test Type
+     +
+Provider
+     ↓
+DiagnosticRequest
+     ↓
+DiagnosticProvider
+```
+
+---
+
+## User Trigger
+
+```text
+CREATE DIAGNOSTIC REQUEST
+```
+
+---
+
+# CONTRACT 8 — COMPOSITE
+
+## Module
+
+```text
+Billing
+```
+
+## File
+
+```text
+src/patterns/structural/Composite.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface BillComponent {
+
+  getTotal(): number;
+
+  getDescription(): string;
+
+}
+```
+
+---
+
+## Required Leaf
+
+```text
+BillItem
+```
+
+---
+
+## Required Composite
+
+```text
+BillGroup
+```
+
+---
+
+## Required Structure
+
+```text
+Hospital Bill
+
+├── Consultation
+│
+├── Laboratory
+│   ├── Blood Test
+│   └── X-Ray
+│
+├── Pharmacy
+│   ├── Medication A
+│   └── Medication B
+│
+└── Room Charges
+```
+
+---
+
+## Integration
+
+The UI should allow:
+
+```text
+Add Bill Item
+
+Create Bill Group
+
+Nest Items
+
+Calculate Total
+```
+
+---
+
+## User Trigger
+
+```text
+GENERATE BILL
+```
+
+---
+
+## Trace
+
+```text
+Composite
+
+Step 1
+Bill group created
+
+Step 2
+Consultation item added
+
+Step 3
+Laboratory group added
+
+Step 4
+Child totals calculated
+
+Step 5
+Composite total calculated
+```
+
+---
+
+# CONTRACT 9 — DECORATOR
+
+## Module
+
+```text
+Prescriptions
+```
+
+## File
+
+```text
+src/patterns/structural/Decorator.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface PrescriptionComponent {
+
+  getDescription(): string;
+
+  getInstructions(): string[];
+
+}
+```
+
+---
+
+## Base Component
+
+```text
+BasicPrescription
+```
+
+---
+
+## Required Decorators
+
+```text
+DosageDecorator
+
+TimingDecorator
+
+FoodInstructionDecorator
+
+WarningDecorator
+```
+
+---
+
+## Required Example
+
+```text
+Basic Prescription
+
+↓
+
+Add Dosage
+
+↓
+
+Add Timing
+
+↓
+
+Add Food Instruction
+
+↓
+
+Add Warning
+```
+
+---
+
+## User Trigger
+
+```text
+ADD PRESCRIPTION INSTRUCTIONS
+```
+
+---
+
+## Trace
+
+```text
+Decorator
+
+Basic prescription created
+
+↓
+
+Dosage decorator applied
+
+↓
+
+Timing decorator applied
+
+↓
+
+Food instruction decorator applied
+```
+
+---
+
+# CONTRACT 10 — FACADE
+
+## Module
+
+```text
+Authentication
+```
+
+## File
+
+```text
+src/patterns/structural/Facade.ts
+```
+
+---
+
+## Required Class
+
+```typescript
+AuthFacade
+```
+
+---
+
+## Required Dependencies
+
+```text
+AuthService
+
+ProfileService
+
+RoleService
+
+PermissionService
+```
+
+---
+
+## Required Public Method
+
+```typescript
+login(
+  email: string,
+  password: string
+)
+```
+
+---
+
+## Required Internal Workflow
+
+```text
+Authenticate User
+
+↓
+
+Load Profile
+
+↓
+
+Load Role
+
+↓
+
+Load Permissions
+
+↓
+
+Create Application Session
+```
+
+---
+
+## Integration
+
+Login page must call:
+
+```typescript
+authFacade.login()
+```
+
+Not individual services directly.
+
+---
+
+## User Trigger
+
+```text
+LOGIN
+```
+
+---
+
+## Trace
+
+```text
+Facade
+
+Step 1
+Authentication requested
+
+Step 2
+Credentials validated
+
+Step 3
+Profile loaded
+
+Step 4
+Role loaded
+
+Step 5
+Permissions loaded
+
+Step 6
+Session established
+```
+
+---
+
+# CONTRACT 11 — FLYWEIGHT
+
+## Module
+
+```text
+Pharmacy
+```
+
+## File
+
+```text
+src/patterns/structural/Flyweight.ts
+```
+
+---
+
+## Required Flyweight
+
+```typescript
+MedicationMetadata
+```
+
+---
+
+## Intrinsic State
+
+```text
+Medication Name
+
+Generic Name
+
+Category
+
+Manufacturer
+```
+
+---
+
+## Extrinsic State
+
+```text
+Patient
+
+Dosage
+
+Quantity
+
+Instructions
+```
+
+---
+
+## Required Factory
+
+```typescript
+MedicationFlyweightFactory
+```
+
+---
+
+## Required Method
+
+```typescript
+getMedication(
+  medicationId: string
+)
+```
+
+---
+
+## Integration
+
+When multiple prescriptions use the same medication:
+
+```text
+Medication Metadata
+        ↓
+Retrieved from Factory
+        ↓
+Existing Flyweight reused
+```
+
+---
+
+## User Trigger
+
+```text
+ADD MEDICATION
+```
+
+---
+
+## Trace
+
+```text
+Flyweight
+
+Step 1
+Medication requested
+
+Step 2
+Search cache
+
+Step 3
+Existing metadata reused
+
+OR
+
+New metadata created
+```
+
+---
+
+# CONTRACT 12 — PROXY
+
+## Module
+
+```text
+Patient Record Security
+```
+
+## File
+
+```text
+src/patterns/structural/Proxy.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface PatientRecordService {
+
+  getPatientRecord(
+    patientId: string
+  ): Promise<PatientRecord>;
+
+}
+```
+
+---
+
+## Required Classes
+
+```text
+RealPatientRecordService
+
+SecurePatientRecordProxy
+```
+
+---
+
+## Required Behavior
+
+```text
+Request Patient Record
+
+↓
+
+Proxy Intercepts Request
+
+↓
+
+Check User Role
+
+↓
+
+Check Permission
+
+↓
+
+ALLOW
+
+OR
+
+DENY
+```
+
+---
+
+## Important
+
+This pattern demonstrates application-level access control.
+
+Supabase RLS must still enforce actual database security.
+
+---
+
+## User Trigger
+
+```text
+VIEW PATIENT RECORD
+```
+
+---
+
+## Trace
+
+```text
+Proxy
+
+Step 1
+Record request intercepted
+
+Step 2
+User role checked
+
+Step 3
+Permission validated
+
+Step 4
+Access granted
+```
+
+---
+
+# PART III — BEHAVIORAL PATTERNS
+
+---
+
+# CONTRACT 13 — CHAIN OF RESPONSIBILITY
+
+## Module
+
+```text
+Insurance Claims
+```
+
+## File
+
+```text
+src/patterns/behavioral/ChainOfResponsibility.ts
+```
+
+---
+
+## Required Base Class
+
+```typescript
+abstract class ClaimHandler
+```
+
+---
+
+## Required Handlers
+
+```text
+PolicyValidator
+
+CoverageValidator
+
+AmountValidator
+
+DocumentValidator
+```
+
+---
+
+## Required Chain
+
+```text
+Policy Validator
+
+↓
+
+Coverage Validator
+
+↓
+
+Amount Validator
+
+↓
+
+Document Validator
+```
+
+---
+
+## Required Behavior
+
+Each handler must:
+
+```text
+Validate
+
+↓
+
+Pass to next handler
+
+OR
+
+Reject immediately
+```
+
+---
+
+## User Trigger
+
+```text
+SUBMIT INSURANCE CLAIM
+```
+
+---
+
+## Trace
+
+```text
+Chain of Responsibility
+
+Step 1
+Policy validation passed
+
+Step 2
+Coverage validation passed
+
+Step 3
+Amount validation passed
+
+Step 4
+Document validation failed
+
+↓
+
+Claim rejected
+```
+
+---
+
+# CONTRACT 14 — COMMAND
+
+## Module
+
+```text
+Appointments
+```
+
+## File
+
+```text
+src/patterns/behavioral/Command.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface Command {
+
+  execute(): Promise<void>;
+
+}
+```
+
+---
+
+## Required Commands
+
+```text
+BookAppointmentCommand
+
+RescheduleAppointmentCommand
+
+CancelAppointmentCommand
+```
+
+---
+
+## Required Receiver
+
+```text
+AppointmentService
+```
+
+---
+
+## Required Invoker
+
+```text
+AppointmentCommandInvoker
+```
+
+---
+
+## Required Flow
+
+```text
+USER ACTION
+
+↓
+
+COMMAND CREATED
+
+↓
+
+COMMAND INVOKER
+
+↓
+
+COMMAND EXECUTED
+
+↓
+
+APPOINTMENT SERVICE
+
+↓
+
+DATABASE
+```
+
+---
+
+## User Triggers
+
+```text
+BOOK
+
+RESCHEDULE
+
+CANCEL
+```
+
+---
+
+# CONTRACT 15 — INTERPRETER
+
+## Module
+
+```text
+Clinical Rule Engine
+```
+
+## File
+
+```text
+src/patterns/behavioral/Interpreter.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface Expression {
+
+  interpret(
+    context: RuleContext
+  ): boolean;
+
+}
+```
+
+---
+
+## Required Expressions
+
+```text
+GreaterThanExpression
+
+LessThanExpression
+
+EqualsExpression
+```
+
+---
+
+## Required UI
+
+A visual rule builder:
+
+```text
+IF
+
+[Temperature]
+
+[Greater Than]
+
+[39]
+
+THEN
+
+[Create Critical Alert]
+```
+
+---
+
+## Required Flow
+
+```text
+Create Rule
+
+↓
+
+Save Rule
+
+↓
+
+Evaluate Patient Context
+
+↓
+
+Expression Interprets Context
+
+↓
+
+TRUE / FALSE
+
+↓
+
+Execute Action
+```
+
+---
+
+## User Trigger
+
+```text
+SAVE RULE
+
+or
+
+UPDATE VITALS
+```
+
+---
+
+# CONTRACT 16 — ITERATOR
+
+## Module
+
+```text
+Medical History
+```
+
+## File
+
+```text
+src/patterns/behavioral/Iterator.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface Iterator<T> {
+
+  hasNext(): boolean;
+
+  next(): T;
+
+}
+```
+
+---
+
+## Required Class
+
+```text
+MedicalHistoryIterator
+```
+
+---
+
+## Required Collections
+
+The iterator should traverse:
+
+```text
+Consultations
+
+Lab Results
+
+Admissions
+
+Prescriptions
+```
+
+---
+
+## Integration
+
+```text
+Patient Selected
+
+↓
+
+Collect Timeline Records
+
+↓
+
+Sort Chronologically
+
+↓
+
+MedicalHistoryIterator
+
+↓
+
+Render Timeline
+```
+
+---
+
+## User Trigger
+
+```text
+OPEN MEDICAL HISTORY
+```
+
+---
+
+# CONTRACT 17 — MEDIATOR
+
+## Module
+
+```text
+Care Coordination
+```
+
+## File
+
+```text
+src/patterns/behavioral/Mediator.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface CareMediator {
+
+  notify(
+    sender: CareParticipant,
+    event: CareEvent
+  ): void;
+
+}
+```
+
+---
+
+## Required Mediator
+
+```text
+HospitalCareMediator
+```
+
+---
+
+## Required Participants
+
+```text
+Doctor
+
+Nurse
+
+Laboratory
+
+Pharmacy
+```
+
+---
+
+## Required Events
+
+```text
+LAB_TEST_REQUIRED
+
+MEDICATION_REQUIRED
+
+PATIENT_MONITORING_REQUIRED
+```
+
+---
+
+## Required Flow
+
+```text
+Doctor
+
+↓
+
+Mediator
+
+↓
+
+Determine Relevant Department
+
+↓
+
+Send Care Request
+
+↓
+
+Department Updates Status
+
+↓
+
+Mediator Coordinates Response
+```
+
+---
+
+## User Trigger
+
+```text
+CREATE CARE REQUEST
+```
+
+---
+
+# CONTRACT 18 — MEMENTO
+
+## Module
+
+```text
+Treatment Plan Versioning
+```
+
+## File
+
+```text
+src/patterns/behavioral/Memento.ts
+```
+
+---
+
+## Required Classes
+
+```text
+TreatmentPlanOriginator
+
+TreatmentPlanMemento
+
+TreatmentPlanHistory
+```
+
+---
+
+## Required Flow
+
+```text
+Treatment Plan
+
+↓
+
+Modify
+
+↓
+
+Save Memento
+
+↓
+
+Version Created
+
+↓
+
+Modify Again
+
+↓
+
+Restore Previous Version
+```
+
+---
+
+## Important
+
+The memento should contain a snapshot of the treatment plan state.
+
+---
+
+## Database
+
+Persist versions in:
+
+```text
+treatment_plan_versions
+```
+
+---
+
+## User Trigger
+
+```text
+SAVE VERSION
+
+RESTORE VERSION
+```
+
+---
+
+# CONTRACT 19 — OBSERVER
+
+## Module
+
+```text
+Notifications
+```
+
+## File
+
+```text
+src/patterns/behavioral/Observer.ts
+```
+
+---
+
+## Required Interfaces
+
+```typescript
+export interface Observer {
+
+  update(
+    event: HospitalEvent
+  ): void;
+
+}
+```
+
+---
+
+```typescript
+export interface Subject {
+
+  subscribe(
+    observer: Observer
+  ): void;
+
+  unsubscribe(
+    observer: Observer
+  ): void;
+
+  notify(
+    event: HospitalEvent
+  ): void;
+
+}
+```
+
+---
+
+## Required Observers
+
+```text
+NotificationObserver
+
+AuditObserver
+
+DashboardObserver
+```
+
+---
+
+## Required Events
+
+```text
+APPOINTMENT_CREATED
+
+LAB_RESULT_READY
+
+PRESCRIPTION_CREATED
+
+PATIENT_ADMITTED
+
+CLAIM_APPROVED
+```
+
+---
+
+## Integration
+
+```text
+Hospital Event
+
+↓
+
+Event Subject
+
+↓
+
+Observers
+
+├── Notification
+├── Audit Log
+└── Dashboard Update
+```
+
+---
+
+## User Trigger
+
+Any relevant workflow event.
+
+---
+
+# CONTRACT 20 — STATE
+
+## Module
+
+```text
+Appointment Lifecycle
+```
+
+## File
+
+```text
+src/patterns/behavioral/State.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface AppointmentState {
+
+  checkIn(
+    context: AppointmentContext
+  ): void;
+
+  startConsultation(
+    context: AppointmentContext
+  ): void;
+
+  complete(
+    context: AppointmentContext
+  ): void;
+
+  cancel(
+    context: AppointmentContext
+  ): void;
+
+}
+```
+
+---
+
+## Required States
+
+```text
+ScheduledState
+
+CheckedInState
+
+InConsultationState
+
+CompletedState
+
+CancelledState
+```
+
+---
+
+## Required Lifecycle
+
+```text
+SCHEDULED
+
+↓
+
+CHECKED IN
+
+↓
+
+IN CONSULTATION
+
+↓
+
+COMPLETED
+```
+
+Alternative:
+
+```text
+SCHEDULED
+
+↓
+
+CANCELLED
+```
+
+---
+
+## Invalid transitions must be rejected.
+
+Example:
+
+```text
+COMPLETED
+
+↓
+
+CHECK IN
+
+❌ INVALID
+```
+
+---
+
+## User Triggers
+
+```text
+CHECK IN
+
+START CONSULTATION
+
+COMPLETE
+
+CANCEL
+```
+
+---
+
+# CONTRACT 21 — STRATEGY
+
+## Module
+
+```text
+Appointment Scheduling
+```
+
+## File
+
+```text
+src/patterns/behavioral/Strategy.ts
+```
+
+---
+
+## Required Interface
+
+```typescript
+export interface SchedulingStrategy {
+
+  selectDoctor(
+    doctors: Doctor[]
+  ): Doctor;
+
+}
+```
+
+---
+
+## Required Strategies
+
+```text
+ManualSchedulingStrategy
+
+FirstAvailableStrategy
+
+LeastBusyStrategy
+```
+
+---
+
+## Integration
+
+```text
+Appointment Form
+
+↓
+
+Scheduling Method
+
+↓
+
+Strategy Selected
+
+↓
+
+Doctor Selected
+
+↓
+
+Create Appointment
+```
+
+---
+
+## User Trigger
+
+```text
+SCHEDULE APPOINTMENT
+```
+
+---
+
+# CONTRACT 22 — TEMPLATE METHOD
+
+## Module
+
+```text
+Reporting
+```
+
+## File
+
+```text
+src/patterns/behavioral/TemplateMethod.ts
+```
+
+---
+
+## Required Abstract Class
+
+```typescript
+export abstract class ReportGenerator {
+
+  generate() {
+
+    const data =
+      this.collectData();
+
+    this.validate(data);
+
+    const processed =
+      this.process(data);
+
+    return this.format(processed);
+
+  }
+
+  abstract collectData(): unknown;
+
+  abstract validate(
+    data: unknown
+  ): void;
+
+  abstract process(
+    data: unknown
+  ): unknown;
+
+  abstract format(
+    data: unknown
+  ): Report;
+
+}
+```
+
+---
+
+## Required Reports
+
+```text
+PatientReportGenerator
+
+BillingReportGenerator
+
+LaboratoryReportGenerator
+```
+
+---
+
+## Required Principle
+
+The overall algorithm:
+
+```text
+Collect
+
+↓
+
+Validate
+
+↓
+
+Process
+
+↓
+
+Format
+```
+
+Must remain fixed.
+
+Subclasses vary implementation.
+
+---
+
+## User Trigger
+
+```text
+GENERATE REPORT
+```
+
+---
+
+# CONTRACT 23 — VISITOR
+
+## Module
+
+```text
+Analytics
+```
+
+## File
+
+```text
+src/patterns/behavioral/Visitor.ts
+```
+
+---
+
+## Required Visitor Interface
+
+```typescript
+export interface HospitalVisitor {
+
+  visitPatient(
+    patient: Patient
+  ): void;
+
+  visitAdmission(
+    admission: Admission
+  ): void;
+
+  visitLabOrder(
+    labOrder: LabOrder
+  ): void;
+
+}
+```
+
+---
+
+## Required Visitor
+
+```text
+AnalyticsVisitor
+```
+
+---
+
+## Required Elements
+
+```text
+Patient
+
+Admission
+
+LabOrder
+```
+
+---
+
+## Required Method
+
+```typescript
+accept(
+  visitor: HospitalVisitor
+)
+```
+
+---
+
+## Integration
+
+```text
+Analytics Dashboard
+
+↓
+
+Select Analytics Operation
+
+↓
+
+Create Visitor
+
+↓
+
+Visit Entities
+
+↓
+
+Collect Metrics
+
+↓
+
+Render Dashboard
+```
+
+---
+
+# 24. Pattern-to-Database Contract
+
+Patterns must not bypass the application's persistence layer.
+
+```text
+UI
+│
+▼
+PATTERN
+│
+▼
+SERVICE
+│
+▼
+SUPABASE
+```
+
+Not:
+
+```text
+UI
+│
+▼
+SUPABASE
+```
+
+The pattern should participate in the workflow where appropriate.
+
+---
+
+# Example: Factory Method
+
+```text
+PatientRegistrationForm
+
+↓
+
+PatientCreator
+
+↓
+
+PatientDraft
+
+↓
+
+PatientService.create()
+
+↓
+
+Supabase patients table
+```
+
+---
+
+# Example: Command
+
+```text
+AppointmentPage
+
+↓
+
+BookAppointmentCommand
+
+↓
+
+AppointmentCommandInvoker
+
+↓
+
+AppointmentService
+
+↓
+
+Supabase
+```
+
+---
+
+# 25. Pattern Integration Rules
+
+## Rule 1 — No Fake Patterns
+
+Do not create:
+
+```typescript
+class FactoryDemo {}
+```
+
+that is never used.
+
+Every class must participate in production workflow.
+
+---
+
+# Rule 2 — No Pattern Simulation Buttons
+
+Avoid:
+
+```text
+[Run Factory Pattern]
+
+[Run Observer Pattern]
+```
+
+as the primary implementation.
+
+Patterns should naturally execute during workflows.
+
+---
+
+# Rule 3 — Architecture Explorer Is Secondary
+
+The Explorer explains:
+
+```text
+WHAT happened
+
+WHY it happened
+
+HOW the code works
+```
+
+But does not replace actual application integration.
+
+---
+
+# Rule 4 — Pattern Traces Are Observability
+
+The trace system should observe execution.
+
+It should not become a second fake implementation.
+
+---
+
+# Rule 5 — Keep Implementations Lightweight
+
+Patterns should be:
+
+```text
+Minimal
+
+Readable
+
+Typed
+
+Functional
+
+Integrated
+```
+
+Avoid enterprise overengineering.
+
+---
+
+# 26. Architecture Explorer Contract
+
+## Page
+
+```text
+/architecture
+```
+
+---
+
+## Required Categories
+
+```text
+Creational
+
+Structural
+
+Behavioral
+```
+
+---
+
+## Pattern Card
+
+Every pattern card must show:
+
+```text
+Pattern Name
+
+Category
+
+Hospital Module
+
+Problem
+
+Solution
+
+Participants
+
+Real File Path
+
+Trigger
+
+Execution Trace
+```
+
+---
+
+# Pattern Detail Page
+
+```text
+Factory Method
+
+CATEGORY
+
+Creational
+
+MODULE
+
+Patient Management
+
+
+PROBLEM
+
+Different patient types require
+different initialization.
+
+
+PARTICIPANTS
+
+PatientCreator
+
+RegularPatientCreator
+
+EmergencyPatientCreator
+
+ReferredPatientCreator
+
+
+FILE
+
+src/patterns/creational/FactoryMethod.ts
+
+
+TRIGGER
+
+Register Patient
+
+
+LIVE EXECUTION
+
+1. Registration type selected
+
+2. EmergencyPatientCreator selected
+
+3. Patient draft created
+
+4. Priority assigned
+```
+
+---
+
+# Code Visibility
+
+Lovable should show a **read-only code representation**.
+
+It does not need to dynamically read the local source file.
+
+Store pattern metadata such as:
+
+```typescript
+export interface PatternDocumentation {
+
+  name: string;
+
+  category: string;
+
+  module: string;
+
+  problem: string;
+
+  solution: string;
+
+  filePath: string;
+
+  trigger: string;
+
+  participants: string[];
+
+  codeExample: string;
+
+}
+```
+
+---
+
+# 27. Pattern Metadata Contract
+
+Create:
+
+```text
+src/data/patternDocumentation.ts
+```
+
+---
+
+## Required Pattern Metadata
+
+All 23 patterns must exist.
+
+Example:
+
+```typescript
+{
+  name: "Factory Method",
+
+  category: "Creational",
+
+  module: "Patient Management",
+
+  filePath:
+    "src/patterns/creational/FactoryMethod.ts",
+
+  trigger:
+    "Register Patient",
+
+  participants: [
+
+    "PatientCreator",
+
+    "RegularPatientCreator",
+
+    "EmergencyPatientCreator",
+
+    "ReferredPatientCreator"
+
+  ]
+
+}
+```
+
+---
+
+# 28. Global Workflow Contract
+
+The system should demonstrate pattern combinations.
+
+---
+
+## Emergency Patient Workflow
+
+```text
+Receptionist
+
+↓
+
+Register Patient
+
+↓
+
+FACTORY METHOD
+
+↓
+
+EmergencyPatient Created
+
+↓
+
+OBSERVER
+
+↓
+
+Notification
+
++
+
+Audit Log
+```
+
+---
+
+# Appointment Workflow
+
+```text
+Receptionist
+
+↓
+
+Select Scheduling Method
+
+↓
+
+STRATEGY
+
+↓
+
+Doctor Selected
+
+↓
+
+COMMAND
+
+↓
+
+Appointment Created
+
+↓
+
+STATE
+
+↓
+
+Scheduled
+
+↓
+
+OBSERVER
+
+↓
+
+Notification
+```
+
+---
+
+# Admission Workflow
+
+```text
+Doctor
+
+↓
+
+Admission Details
+
+↓
+
+BUILDER
+
+↓
+
+Admission Created
+
+↓
+
+OBSERVER
+
+↓
+
+Nurse Notification
+```
+
+---
+
+# Treatment Workflow
+
+```text
+Doctor
+
+↓
+
+Select Template
+
+↓
+
+PROTOTYPE
+
+↓
+
+Clone Plan
+
+↓
+
+Customize
+
+↓
+
+MEMENTO
+
+↓
+
+Save Version
+```
+
+---
+
+# Laboratory Workflow
+
+```text
+Doctor
+
+↓
+
+Select Provider
+
+↓
+
+ABSTRACT FACTORY
+
+↓
+
+Provider Components Created
+
+↓
+
+BRIDGE
+
+↓
+
+Test + Provider Combined
+
+↓
+
+ADAPTER
+
+↓
+
+Provider Format Transformed
+
+↓
+
+Submit Order
+
+↓
+
+OBSERVER
+
+↓
+
+Result Notification
+```
+
+---
+
+# Prescription Workflow
+
+```text
+Doctor
+
+↓
+
+Select Medication
+
+↓
+
+FLYWEIGHT
+
+↓
+
+Medication Metadata
+
+↓
+
+Create Prescription
+
+↓
+
+DECORATOR
+
+↓
+
+Add Instructions
+
+↓
+
+OBSERVER
+
+↓
+
+Pharmacist Notification
+```
+
+---
+
+# Billing Workflow
+
+```text
+Billing Officer
+
+↓
+
+Load Services
+
+↓
+
+COMPOSITE
+
+↓
+
+Build Bill
+
+↓
+
+Calculate Total
+
+↓
+
+CHAIN OF RESPONSIBILITY
+
+↓
+
+Validate Insurance
+
+↓
+
+Generate Result
+```
+
+---
+
+# Clinical Workflow
+
+```text
+Nurse Updates Vitals
+
+↓
+
+INTERPRETER
+
+↓
+
+Evaluate Clinical Rules
+
+↓
+
+Critical Condition Detected
+
+↓
+
+MEDIATOR
+
+↓
+
+Coordinate Departments
+
+↓
+
+OBSERVER
+
+↓
+
+Send Notifications
+```
+
+---
+
+# Reporting Workflow
+
+```text
+Administrator
+
+↓
+
+Select Report
+
+↓
+
+TEMPLATE METHOD
+
+↓
+
+Collect Data
+
+↓
+
+Validate
+
+↓
+
+Process
+
+↓
+
+Format
+
+↓
+
+Display Report
+```
+
+---
+
+# Analytics Workflow
+
+```text
+Administrator
+
+↓
+
+Select Analysis
+
+↓
+
+VISITOR
+
+↓
+
+Visit Patients
+
+↓
+
+Visit Admissions
+
+↓
+
+Visit Lab Orders
+
+↓
+
+Collect Metrics
+
+↓
+
+Dashboard
+```
+
+---
+
+# 29. Mandatory Lovable Acceptance Criteria
+
+The project is complete only if:
+
+## Application
+
+```text
+✓ Authentication works
+
+✓ Role-based dashboards work
+
+✓ All core modules have CRUD
+
+✓ Supabase persistence works
+
+✓ Forms validate input
+
+✓ Tables support viewing data
+
+✓ Edit functionality works
+
+✓ Archive/cancel workflows work
+```
+
+---
+
+## Patterns
+
+```text
+✓ All 23 GoF patterns implemented
+
+✓ Every pattern has dedicated code
+
+✓ Every pattern is used
+
+✓ Every pattern has a hospital context
+
+✓ Every pattern can be traced
+
+✓ Every pattern is documented
+
+✓ Patterns are not isolated demos
+```
+
+---
+
+## Architecture Explorer
+
+```text
+✓ All 23 patterns visible
+
+✓ Three categories visible
+
+✓ Module mapping visible
+
+✓ Problem visible
+
+✓ Solution visible
+
+✓ Participants visible
+
+✓ File path visible
+
+✓ Trigger visible
+
+✓ Code example visible
+
+✓ Live trace visible
+```
+
+---
+
+# 30. Quality Rules for Lovable
+
+## TypeScript
+
+Use:
+
+```text
+Strict TypeScript
+```
+
+Avoid:
+
+```typescript
+any
+```
+
+except where genuinely unavoidable.
+
+---
+
+## Components
+
+Prefer:
+
+```text
+Small components
+
+Reusable components
+
+Typed props
+```
+
+---
+
+## Services
+
+Database access should be organized:
+
+```text
+PatientService
+
+AppointmentService
+
+AdmissionService
+
+LabService
+
+PrescriptionService
+
+BillingService
+
+InsuranceService
+```
+
+---
+
+## UI
+
+Every CRUD module should consistently use:
+
+```text
+List
+
+↓
+
+Create
+
+↓
+
+View
+
+↓
+
+Edit
+
+↓
+
+Status Action
+```
+
+---
+
+# 31. What Lovable Must NOT Do
+
+```text
+DO NOT add microservices
+
+DO NOT add Docker
+
+DO NOT add Kubernetes
+
+DO NOT add unnecessary backend infrastructure
+
+DO NOT create fake pattern demos
+
+DO NOT implement patterns without integrating them
+
+DO NOT use patterns merely as naming conventions
+
+DO NOT duplicate pattern logic unnecessarily
+
+DO NOT use Redux unless absolutely required
+
+DO NOT create dozens of unnecessary database tables
+```
+
+---
+
+# 32. Final Lovable Instruction
+
+The final implementation should follow this principle:
+
+> **MediFlow is a functioning Hospital Management System first and a Design Pattern Showcase second.**
+
+A user should be able to:
+
+```text
+Register a patient
+
+↓
+
+Schedule an appointment
+
+↓
+
+Check in
+
+↓
+
+Consult a doctor
+
+↓
+
+Create lab orders
+
+↓
+
+Receive results
+
+↓
+
+Create treatment plans
+
+↓
+
+Prescribe medication
+
+↓
+
+Admit patients
+
+↓
+
+Generate bills
+
+↓
+
+Process insurance
+
+↓
+
+Generate reports
+```
+
+While the system simultaneously demonstrates:
+
+```text
+23 GoF Design Patterns
+```
+
+through actual architecture and execution.
+
+---
+
+# FINAL CONTRACT SUMMARY
+
+```text
+                    MEDIFLOW
+
+                         │
+                         ▼
+
+              REAL HOSPITAL SYSTEM
+
+                         │
+       ┌─────────────────┼─────────────────┐
+       │                 │                 │
+       ▼                 ▼                 ▼
+
+      CRUD           WORKFLOWS         PERSONAS
+
+       │                 │                 │
+       └─────────────────┼─────────────────┘
+                         │
+                         ▼
+
+                  PATTERN LAYER
+
+                         │
+
+       ┌─────────────────┼─────────────────┐
+
+       ▼                 ▼                 ▼
+
+   CREATIONAL        STRUCTURAL       BEHAVIORAL
+
+      5                  7                 11
+
+       │                 │                 │
+
+       └─────────────────┼─────────────────┘
+                         │
+                         ▼
+
+                 LIVE TRACE SYSTEM
+
+                         │
+                         ▼
+
+              ARCHITECTURE EXPLORER
+```
+
+## The final instruction to Lovable should therefore contain:
+
+1. **Project/Product specification**
+2. **Personas and role permissions**
+3. **Module-specific CRUD requirements**
+4. **User workflows**
+5. **Supabase schema**
+6. **UI/screen specification**
+7. **These 23 Pattern Implementation Contracts**
+8. **Architecture Explorer specification**
+9. **Acceptance criteria**
+
+**These contracts should be our final technical design-pattern input.** The next step should be assembling everything into **one master Lovable build prompt**, with no ambiguity about what to build.
