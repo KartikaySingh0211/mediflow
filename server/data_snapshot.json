@@ -1024,6 +1024,7 @@
   ],
   "auditLogs": [
     {
+      "_id": "6acc936003dec323a92f81af",
       "id": "aud_1791791968568_5h4d",
       "timestamp": "2026-10-12T07:59:28.568Z",
       "actor": "Dr. Robert Vance, MD",
@@ -1031,9 +1032,13 @@
       "action": "AI_CLINICAL_ANALYSIS",
       "module": "Clinical AI Intelligence",
       "details": "Computed AI Acuity Risk (98/100 [CRITICAL]) for Samuel K. Thorne",
-      "patternUsed": "Expert System / AI"
+      "patternUsed": "Expert System / AI",
+      "createdAt": "2026-10-12T07:59:28.570Z",
+      "updatedAt": "2026-10-12T07:59:28.570Z",
+      "__v": 0
     },
     {
+      "_id": "6acc935603dec323a92f819c",
       "id": "aud_1791791958528_0u37",
       "timestamp": "2026-10-12T07:59:18.528Z",
       "actor": "Marcus Holloway",
@@ -1041,9 +1046,13 @@
       "action": "AI_CLAIM_AUDIT",
       "module": "Financial AI Intelligence",
       "details": "Pre-submission AI Denial Risk audit (12% [LOW]) for Invoice #INV-2026-1049",
-      "patternUsed": "Predictive AI / Rules"
+      "patternUsed": "Predictive AI / Rules",
+      "createdAt": "2026-10-12T07:59:18.534Z",
+      "updatedAt": "2026-10-12T07:59:18.534Z",
+      "__v": 0
     },
     {
+      "_id": "6acc935603dec323a92f8198",
       "id": "aud_1791791958457_vxe7",
       "timestamp": "2026-10-12T07:59:18.457Z",
       "actor": "Dr. Robert Vance, MD",
@@ -1051,7 +1060,10 @@
       "action": "AI_CLINICAL_ANALYSIS",
       "module": "Clinical AI Intelligence",
       "details": "Computed AI Acuity Risk (25/100 [LOW]) for Eleanor Sterling",
-      "patternUsed": "Expert System / AI"
+      "patternUsed": "Expert System / AI",
+      "createdAt": "2026-10-12T07:59:18.459Z",
+      "updatedAt": "2026-10-12T07:59:18.459Z",
+      "__v": 0
     },
     {
       "_id": "6acc7d4760a527a6ba6dda28",
@@ -1212,5 +1224,5 @@
     },
     "lastUpdated": "2026-10-12T06:25:09.893Z"
   },
-  "savedAt": "2026-10-12T07:59:28.568Z"
+  "savedAt": "2026-10-12T09:56:12.218Z"
 }
