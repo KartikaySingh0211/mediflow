@@ -1,6 +1,7 @@
 {
   "users": [
     {
+      "_id": "6acc7d4760a527a6ba6dd9de",
       "id": "usr_admin",
       "name": "Dr. Arthur Pendelton",
       "email": "admin@mediflow.health",
@@ -15,9 +16,13 @@
         "analytics:read",
         "reports:generate",
         "audit:view"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.369Z",
+      "updatedAt": "2026-10-12T06:25:11.369Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9df",
       "id": "usr_rec",
       "name": "Sarah Jenkins",
       "email": "reception@mediflow.health",
@@ -31,9 +36,13 @@
         "patient:update",
         "appointment:book",
         "appointment:checkin"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.370Z",
+      "updatedAt": "2026-10-12T06:25:11.370Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e0",
       "id": "usr_doc",
       "name": "Dr. Robert Vance, MD",
       "email": "doctor@mediflow.health",
@@ -49,9 +58,13 @@
         "treatment:manage",
         "admission:create",
         "discharge:approve"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.370Z",
+      "updatedAt": "2026-10-12T06:25:11.370Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e1",
       "id": "usr_nurse",
       "name": "Elena Rostova, RN",
       "email": "nurse@mediflow.health",
@@ -65,9 +78,13 @@
         "care:coordinate",
         "medication:administer",
         "bed:update"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.370Z",
+      "updatedAt": "2026-10-12T06:25:11.370Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e2",
       "id": "usr_lab",
       "name": "David Chen, MSc",
       "email": "lab@mediflow.health",
@@ -80,9 +97,13 @@
         "lab:result_write",
         "lab:critical_flag",
         "lab:read"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.370Z",
+      "updatedAt": "2026-10-12T06:25:11.370Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e3",
       "id": "usr_pharm",
       "name": "Priya Sharma, PharmD",
       "email": "pharmacy@mediflow.health",
@@ -95,9 +116,13 @@
         "prescription:verify",
         "medication:dispense",
         "inventory:read"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.370Z",
+      "updatedAt": "2026-10-12T06:25:11.370Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e4",
       "id": "usr_billing",
       "name": "Marcus Holloway",
       "email": "billing@mediflow.health",
@@ -110,11 +135,15 @@
         "billing:read",
         "insurance:claim",
         "payment:record"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.370Z",
+      "updatedAt": "2026-10-12T06:25:11.370Z"
     }
   ],
   "doctors": [
     {
+      "_id": "6acc7d4760a527a6ba6dd9e5",
       "id": "doc_1",
       "name": "Dr. Robert Vance, MD",
       "department": "Cardiology",
@@ -122,9 +151,13 @@
       "availability": "AVAILABLE",
       "currentActivePatients": 3,
       "experienceYears": 16,
-      "email": "doctor@mediflow.health"
+      "email": "doctor@mediflow.health",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.372Z",
+      "updatedAt": "2026-10-12T06:25:11.372Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e6",
       "id": "doc_2",
       "name": "Dr. Maya Lin, MD",
       "department": "Neurology",
@@ -132,9 +165,13 @@
       "availability": "AVAILABLE",
       "currentActivePatients": 1,
       "experienceYears": 12,
-      "email": "maya.lin@mediflow.health"
+      "email": "maya.lin@mediflow.health",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.372Z",
+      "updatedAt": "2026-10-12T06:25:11.372Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e7",
       "id": "doc_3",
       "name": "Dr. Julian Foster, MD",
       "department": "Emergency & Trauma",
@@ -142,9 +179,13 @@
       "availability": "EMERGENCY_DUTY",
       "currentActivePatients": 6,
       "experienceYears": 14,
-      "email": "julian.foster@mediflow.health"
+      "email": "julian.foster@mediflow.health",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.372Z",
+      "updatedAt": "2026-10-12T06:25:11.372Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9e8",
       "id": "doc_4",
       "name": "Dr. Catherine Blake, MD",
       "department": "General Surgery",
@@ -152,11 +193,15 @@
       "availability": "AVAILABLE",
       "currentActivePatients": 2,
       "experienceYears": 19,
-      "email": "catherine.blake@mediflow.health"
+      "email": "catherine.blake@mediflow.health",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.372Z",
+      "updatedAt": "2026-10-12T06:25:11.372Z"
     }
   ],
   "patients": [
     {
+      "_id": "6acc7d4760a527a6ba6dd9e9",
       "id": "pat_1",
       "mrn": "MED-2026-0891",
       "name": "Eleanor Sterling",
@@ -183,7 +228,8 @@
           "type": "Consultation",
           "title": "Initial Outpatient Cardio Review",
           "description": "Patient presented with intermittent exertional chest tightness radiating to left shoulder.",
-          "doctorName": "Dr. Robert Vance, MD"
+          "doctorName": "Dr. Robert Vance, MD",
+          "_id": "6acc7d4760a527a6ba6dd9ea"
         },
         {
           "id": "hist_2",
@@ -191,7 +237,8 @@
           "type": "Lab Result",
           "title": "Comprehensive Lipid & Cardiac Biomarker Panel",
           "description": "Troponin I baseline within normal limits (0.02 ng/mL). LDL elevated at 162 mg/dL.",
-          "doctorName": "David Chen, MSc"
+          "doctorName": "David Chen, MSc",
+          "_id": "6acc7d4760a527a6ba6dd9eb"
         },
         {
           "id": "hist_3",
@@ -199,12 +246,16 @@
           "type": "Admission",
           "title": "Inpatient Cardiac Observation",
           "description": "Admitted for continuous hemodynamic monitoring and titration of anti-anginal therapy.",
-          "doctorName": "Dr. Robert Vance, MD"
+          "doctorName": "Dr. Robert Vance, MD",
+          "_id": "6acc7d4760a527a6ba6dd9ec"
         }
       ],
-      "createdAt": "2026-08-15T09:30:00Z"
+      "createdAt": "2026-08-15T09:30:00Z",
+      "__v": 0,
+      "updatedAt": "2026-10-12T06:25:11.372Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9ed",
       "id": "pat_2",
       "mrn": "MED-2026-0944",
       "name": "Samuel K. Thorne",
@@ -232,12 +283,16 @@
           "type": "Consultation",
           "title": "Emergency Resuscitation Assessment",
           "description": "Brought in via EMS with sudden onset pleuritic chest pain, tachypnea (RR 32), SpO2 88%.",
-          "doctorName": "Dr. Julian Foster, MD"
+          "doctorName": "Dr. Julian Foster, MD",
+          "_id": "6acc7d4760a527a6ba6dd9ee"
         }
       ],
-      "createdAt": "2026-08-31T22:15:00Z"
+      "createdAt": "2026-08-31T22:15:00Z",
+      "__v": 0,
+      "updatedAt": "2026-10-12T06:25:11.373Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9ef",
       "id": "pat_3",
       "mrn": "MED-2026-1022",
       "name": "Amara Patel",
@@ -262,14 +317,18 @@
           "type": "Consultation",
           "title": "Referral Intake Evaluation",
           "description": "Referred for comprehensive endocrinology and diabetic foot risk evaluation.",
-          "doctorName": "Dr. Maya Lin, MD"
+          "doctorName": "Dr. Maya Lin, MD",
+          "_id": "6acc7d4760a527a6ba6dd9f0"
         }
       ],
-      "createdAt": "2026-08-10T14:00:00Z"
+      "createdAt": "2026-08-10T14:00:00Z",
+      "__v": 0,
+      "updatedAt": "2026-10-12T06:25:11.373Z"
     }
   ],
   "appointments": [
     {
+      "_id": "6acc7d4760a527a6ba6dd9f1",
       "id": "apt_1",
       "patientId": "pat_1",
       "patientName": "Eleanor Sterling",
@@ -288,19 +347,24 @@
           "to": "SCHEDULED",
           "timestamp": "2026-08-25T11:00:00Z",
           "action": "BookAppointmentCommand executed",
-          "performedBy": "Sarah Jenkins (Receptionist)"
+          "performedBy": "Sarah Jenkins (Receptionist)",
+          "_id": "6acc7d4760a527a6ba6dd9f2"
         },
         {
           "from": "SCHEDULED",
           "to": "CHECKED_IN",
           "timestamp": "2026-09-01T08:30:00Z",
           "action": "Patient Checked In at Reception Desk",
-          "performedBy": "Sarah Jenkins (Receptionist)"
+          "performedBy": "Sarah Jenkins (Receptionist)",
+          "_id": "6acc7d4760a527a6ba6dd9f3"
         }
       ],
-      "createdAt": "2026-08-25T11:00:00Z"
+      "createdAt": "2026-08-25T11:00:00Z",
+      "__v": 0,
+      "updatedAt": "2026-10-12T06:25:11.373Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9f4",
       "id": "apt_2",
       "patientId": "pat_2",
       "patientName": "Samuel K. Thorne",
@@ -319,26 +383,32 @@
           "to": "SCHEDULED",
           "timestamp": "2026-08-31T22:15:00Z",
           "action": "Emergency Triage Booking Command",
-          "performedBy": "Sarah Jenkins (Receptionist)"
+          "performedBy": "Sarah Jenkins (Receptionist)",
+          "_id": "6acc7d4760a527a6ba6dd9f5"
         },
         {
           "from": "SCHEDULED",
           "to": "CHECKED_IN",
           "timestamp": "2026-08-31T22:16:00Z",
           "action": "Immediate EMS Check-In",
-          "performedBy": "Sarah Jenkins (Receptionist)"
+          "performedBy": "Sarah Jenkins (Receptionist)",
+          "_id": "6acc7d4760a527a6ba6dd9f6"
         },
         {
           "from": "CHECKED_IN",
           "to": "IN_CONSULTATION",
           "timestamp": "2026-08-31T22:20:00Z",
           "action": "Consultation Initiated in Trauma Bay 1",
-          "performedBy": "Dr. Julian Foster, MD"
+          "performedBy": "Dr. Julian Foster, MD",
+          "_id": "6acc7d4760a527a6ba6dd9f7"
         }
       ],
-      "createdAt": "2026-08-31T22:15:00Z"
+      "createdAt": "2026-08-31T22:15:00Z",
+      "__v": 0,
+      "updatedAt": "2026-10-12T06:25:11.373Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9f8",
       "id": "apt_3",
       "patientId": "pat_3",
       "patientName": "Amara Patel",
@@ -357,14 +427,18 @@
           "to": "SCHEDULED",
           "timestamp": "2026-08-29T15:00:00Z",
           "action": "Routine Outpatient Booking Command",
-          "performedBy": "Sarah Jenkins (Receptionist)"
+          "performedBy": "Sarah Jenkins (Receptionist)",
+          "_id": "6acc7d4760a527a6ba6dd9f9"
         }
       ],
-      "createdAt": "2026-08-29T15:00:00Z"
+      "createdAt": "2026-08-29T15:00:00Z",
+      "__v": 0,
+      "updatedAt": "2026-10-12T06:25:11.373Z"
     }
   ],
   "admissions": [
     {
+      "_id": "6acc7d4760a527a6ba6dd9fa",
       "id": "adm_1",
       "patientId": "pat_1",
       "patientName": "Eleanor Sterling",
@@ -379,11 +453,15 @@
       "priority": "HIGH",
       "status": "ADMITTED",
       "treatmentPlanId": "tp_1",
-      "notes": "Keep on strict telemetry monitoring. Low sodium diet. Bedside echocardiogram on Day 3."
+      "notes": "Keep on strict telemetry monitoring. Low sodium diet. Bedside echocardiogram on Day 3.",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.374Z",
+      "updatedAt": "2026-10-12T06:25:11.374Z"
     }
   ],
   "labOrders": [
     {
+      "_id": "6acc7d4760a527a6ba6dd9fb",
       "id": "lab_1",
       "orderNumber": "LAB-2026-781",
       "patientId": "pat_1",
@@ -406,28 +484,35 @@
             "value": 0.045,
             "unit": "ng/mL",
             "referenceRange": "< 0.014",
-            "status": "HIGH"
+            "status": "HIGH",
+            "_id": "6acc7d4760a527a6ba6dd9fc"
           },
           {
             "name": "CK-MB",
             "value": 4.8,
             "unit": "ng/mL",
             "referenceRange": "0.0 - 5.0",
-            "status": "NORMAL"
+            "status": "NORMAL",
+            "_id": "6acc7d4760a527a6ba6dd9fd"
           },
           {
             "name": "Total Cholesterol",
             "value": 218,
             "unit": "mg/dL",
             "referenceRange": "< 200",
-            "status": "HIGH"
+            "status": "HIGH",
+            "_id": "6acc7d4760a527a6ba6dd9fe"
           }
         ],
         "technicianNotes": "Analyzed on Roche Cobas e411 analyzer via Internal Lab Adapter."
       },
-      "isCritical": false
+      "isCritical": false,
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.376Z",
+      "updatedAt": "2026-10-12T06:25:11.376Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dd9ff",
       "id": "lab_2",
       "orderNumber": "LAB-2026-795",
       "patientId": "pat_2",
@@ -449,21 +534,27 @@
             "value": "4.5",
             "unit": "mL/s",
             "referenceRange": "4.0 - 5.0",
-            "status": "NORMAL"
+            "status": "NORMAL",
+            "_id": "6acc7d4760a527a6ba6dda00"
           },
           {
             "name": "D-Dimer Pre-scan",
             "value": 3.8,
             "unit": "ug/mL FEU",
             "referenceRange": "< 0.50",
-            "status": "CRITICAL"
+            "status": "CRITICAL",
+            "_id": "6acc7d4760a527a6ba6dda01"
           }
         ],
         "technicianNotes": "STAT imaging underway. Radiologist preliminary review requested immediately upon acquisition."
       },
-      "isCritical": true
+      "isCritical": true,
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.376Z",
+      "updatedAt": "2026-10-12T06:25:11.376Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dda02",
       "id": "lab_3",
       "orderNumber": "LAB-2026-802",
       "patientId": "pat_3",
@@ -476,11 +567,19 @@
       "provider": "EXTERNAL",
       "priority": "ROUTINE",
       "status": "PENDING",
-      "orderDate": "2026-09-01T09:00:00Z"
+      "orderDate": "2026-09-01T09:00:00Z",
+      "results": {
+        "parameters": []
+      },
+      "isCritical": false,
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.376Z",
+      "updatedAt": "2026-10-12T06:25:11.376Z"
     }
   ],
   "prescriptions": [
     {
+      "_id": "6acc7d4760a527a6ba6dda03",
       "id": "rx_1",
       "prescriptionNumber": "RX-2026-0412",
       "patientId": "pat_1",
@@ -506,7 +605,8 @@
             "Avoid consuming grapefruit or grapefruit juice",
             "Report any unexplained muscle pain, tenderness, or weakness immediately"
           ],
-          "dispensed": true
+          "dispensed": true,
+          "_id": "6acc7d4760a527a6ba6dda04"
         },
         {
           "medicationId": "med_metoprolol",
@@ -524,14 +624,19 @@
             "Do not discontinue abruptly without physician consultation",
             "May cause dizziness upon standing"
           ],
-          "dispensed": true
+          "dispensed": true,
+          "_id": "6acc7d4760a527a6ba6dda05"
         }
       ],
-      "notes": "Prescription enriched with Dosage, Timing, and Warning decorators."
+      "notes": "Prescription enriched with Dosage, Timing, and Warning decorators.",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.374Z",
+      "updatedAt": "2026-10-12T06:25:11.374Z"
     }
   ],
   "treatmentPlans": [
     {
+      "_id": "6acc7d4760a527a6ba6dda06",
       "id": "tp_1",
       "patientId": "pat_1",
       "patientName": "Eleanor Sterling",
@@ -571,7 +676,8 @@
               "Cardiac diet"
             ],
             "followUpSchedule": "Review in 2 weeks"
-          }
+          },
+          "_id": "6acc7d4760a527a6ba6dda07"
         },
         {
           "version": 2,
@@ -594,21 +700,24 @@
               "Repeat troponin biomarker panel in 48 hours"
             ],
             "followUpSchedule": "Cardiology outpatient clinic visit in 2 weeks post-discharge"
-          }
+          },
+          "_id": "6acc7d4760a527a6ba6dda08"
         }
       ],
       "createdAt": "2026-08-28T10:30:00Z",
-      "updatedAt": "2026-08-29T11:00:00Z"
+      "updatedAt": "2026-08-29T11:00:00Z",
+      "__v": 0
     }
   ],
   "bills": [
     {
+      "_id": "6acc7d4760a527a6ba6dda09",
       "id": "bill_1",
       "invoiceNumber": "INV-2026-1049",
       "patientId": "pat_1",
       "patientName": "Eleanor Sterling",
       "date": "2026-08-30",
-      "status": "PARTIAL",
+      "status": "CLAIM_SUBMITTED",
       "groups": [
         {
           "name": "Clinical Consultations & Professional Fees",
@@ -618,16 +727,19 @@
               "name": "Lead Cardiologist Inpatient Consultation",
               "category": "Consultation",
               "amount": 250,
-              "quantity": 2
+              "quantity": 2,
+              "_id": "6acc7d4760a527a6ba6dda0b"
             },
             {
               "id": "bi_2",
               "name": "Emergency Triage & Assessment Fee",
               "category": "Consultation",
               "amount": 120,
-              "quantity": 1
+              "quantity": 1,
+              "_id": "6acc7d4760a527a6ba6dda0c"
             }
-          ]
+          ],
+          "_id": "6acc7d4760a527a6ba6dda0a"
         },
         {
           "name": "Diagnostic Laboratory & Imaging",
@@ -637,23 +749,27 @@
               "name": "hs-Troponin I & CK-MB Quantitative Panel",
               "category": "Laboratory",
               "amount": 180,
-              "quantity": 2
+              "quantity": 2,
+              "_id": "6acc7d4760a527a6ba6dda0e"
             },
             {
               "id": "bi_4",
               "name": "Lipid Profile & Metabolic Screen",
               "category": "Laboratory",
               "amount": 95,
-              "quantity": 1
+              "quantity": 1,
+              "_id": "6acc7d4760a527a6ba6dda0f"
             },
             {
               "id": "bi_5",
               "name": "12-Lead Diagnostic Electrocardiogram (ECG)",
               "category": "Diagnostics",
               "amount": 85,
-              "quantity": 3
+              "quantity": 3,
+              "_id": "6acc7d4760a527a6ba6dda10"
             }
-          ]
+          ],
+          "_id": "6acc7d4760a527a6ba6dda0d"
         },
         {
           "name": "Inpatient Ward & Telemetry Room Charges",
@@ -663,16 +779,19 @@
               "name": "Cardiac Telemetry Inpatient Bed (per day)",
               "category": "Room",
               "amount": 450,
-              "quantity": 3
+              "quantity": 3,
+              "_id": "6acc7d4760a527a6ba6dda12"
             },
             {
               "id": "bi_7",
               "name": "Nursing Care & Vitals Telemetry Fee",
               "category": "Nursing",
               "amount": 150,
-              "quantity": 3
+              "quantity": 3,
+              "_id": "6acc7d4760a527a6ba6dda13"
             }
-          ]
+          ],
+          "_id": "6acc7d4760a527a6ba6dda11"
         },
         {
           "name": "Pharmacy & Medical Supplies",
@@ -682,16 +801,19 @@
               "name": "Atorvastatin Calcium 40mg (30 Tablets)",
               "category": "Pharmacy",
               "amount": 45,
-              "quantity": 1
+              "quantity": 1,
+              "_id": "6acc7d4760a527a6ba6dda15"
             },
             {
               "id": "bi_9",
               "name": "Metoprolol Succinate ER 50mg (30 Tablets)",
               "category": "Pharmacy",
               "amount": 38,
-              "quantity": 1
+              "quantity": 1,
+              "_id": "6acc7d4760a527a6ba6dda16"
             }
-          ]
+          ],
+          "_id": "6acc7d4760a527a6ba6dda14"
         }
       ],
       "subtotal": 3048,
@@ -699,36 +821,41 @@
       "discount": 100,
       "total": 3100.4,
       "insuranceClaim": {
-        "claimId": "CLM-2026-6153",
+        "claimId": "CLM-2026-8802",
         "provider": "BlueCross Health Assurance Corp",
         "policyNumber": "BC-992384-H7",
+        "preAuthCode": "AUTH-CAR-7822",
         "claimAmount": 3100.4,
-        "approvedAmount": 2945.38,
+        "approvedAmount": 2950.4,
         "status": "APPROVED",
         "stages": [
           {
-            "stage": "Policy Validator",
+            "stage": "Policy Validation",
             "passed": true,
-            "message": "Policy BC-992384-H7 verified active with BlueCross Health Assurance Corp.",
-            "timestamp": "2026-09-01T07:03:16.030Z"
+            "message": "Policy active, verified in good standing.",
+            "timestamp": "2026-08-30T14:10:00Z",
+            "_id": "6acc7d4760a527a6ba6dda17"
           },
           {
-            "stage": "Coverage Validator",
+            "stage": "Coverage Validation",
             "passed": true,
-            "message": "Hospital service categories eligible for comprehensive coverage.",
-            "timestamp": "2026-09-01T07:03:16.030Z"
+            "message": "Inpatient cardiology and telemetry covered at 95%.",
+            "timestamp": "2026-08-30T14:10:02Z",
+            "_id": "6acc7d4760a527a6ba6dda18"
           },
           {
-            "stage": "Amount Validator",
+            "stage": "Amount Validation",
             "passed": true,
-            "message": "Claim amount ($3100.40) is within max per-incident threshold.",
-            "timestamp": "2026-09-01T07:03:16.030Z"
+            "message": "Bill amount ($3,100.40) within annual policy limit ($50,000).",
+            "timestamp": "2026-08-30T14:10:05Z",
+            "_id": "6acc7d4760a527a6ba6dda19"
           },
           {
-            "stage": "Document Validator",
+            "stage": "Document Validation",
             "passed": true,
-            "message": "Composite itemized invoice breakdown and medical orders verified.",
-            "timestamp": "2026-09-01T07:03:16.030Z"
+            "message": "Itemized Composite breakdown & physician diagnosis verified.",
+            "timestamp": "2026-08-30T14:10:08Z",
+            "_id": "6acc7d4760a527a6ba6dda1a"
           }
         ]
       },
@@ -738,27 +865,26 @@
           "amount": 2950.4,
           "date": "2026-08-30T14:15:00Z",
           "method": "INSURANCE",
-          "transactionRef": "TX-INS-987123"
+          "transactionRef": "TX-INS-987123",
+          "_id": "6acc7d4760a527a6ba6dda1b"
         },
         {
           "id": "pay_2",
           "amount": 150,
           "date": "2026-08-30T15:00:00Z",
           "method": "CARD",
-          "transactionRef": "TX-CARD-449102"
-        },
-        {
-          "id": "pay_1788246196030",
-          "amount": 2945.38,
-          "date": "2026-09-01T07:03:16.030Z",
-          "method": "INSURANCE",
-          "transactionRef": "TX-INS-359158"
+          "transactionRef": "TX-CARD-449102",
+          "_id": "6acc7d4760a527a6ba6dda1c"
         }
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.376Z",
+      "updatedAt": "2026-10-12T06:25:11.376Z"
     }
   ],
   "vitalsRecords": [
     {
+      "_id": "6acc7d4760a527a6ba6dda1d",
       "id": "vit_1",
       "patientId": "pat_1",
       "patientName": "Eleanor Sterling",
@@ -770,9 +896,13 @@
       "bloodPressureDia": 82,
       "respiratoryRate": 16,
       "oxygenSaturation": 98,
-      "alertsGenerated": []
+      "alertsGenerated": [],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.374Z",
+      "updatedAt": "2026-10-12T06:25:11.374Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dda1e",
       "id": "vit_2",
       "patientId": "pat_2",
       "patientName": "Samuel K. Thorne",
@@ -788,11 +918,15 @@
         "CRITICAL: High Pyrexia (Temp 39.4°C > 39.0°C)",
         "CRITICAL: Hypoxia Warning (SpO2 90% < 92%)",
         "HIGH: Severe Tachycardia (Heart Rate 118 bpm > 100 bpm)"
-      ]
+      ],
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.374Z",
+      "updatedAt": "2026-10-12T06:25:11.374Z"
     }
   ],
   "clinicalRules": [
     {
+      "_id": "6acc7d4760a527a6ba6dda1f",
       "id": "rule_1",
       "name": "High Pyrexia / Severe Hyperthermia",
       "field": "temperature",
@@ -801,9 +935,13 @@
       "action": "CREATE_CRITICAL_ALERT",
       "severity": "CRITICAL",
       "message": "Patient temperature exceeds 39.0°C. Immediate antipyretic intervention and infectious disease screen required.",
-      "isActive": true
+      "isActive": true,
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dda20",
       "id": "rule_2",
       "name": "Critical Hypoxia Alert",
       "field": "oxygenSaturation",
@@ -812,9 +950,13 @@
       "action": "ORDER_OXYGEN",
       "severity": "CRITICAL",
       "message": "Blood oxygen saturation dropped below 92%. Initiate supplementary O2 delivery immediately.",
-      "isActive": true
+      "isActive": true,
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dda21",
       "id": "rule_3",
       "name": "Tachycardia Warning",
       "field": "heartRate",
@@ -823,9 +965,13 @@
       "action": "NOTIFY_PHYSICIAN",
       "severity": "HIGH",
       "message": "Resting heart rate exceeds 100 bpm. Evaluate for arrhythmia, pain, or hemodynamic instability.",
-      "isActive": true
+      "isActive": true,
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dda22",
       "id": "rule_4",
       "name": "Hypotension Warning",
       "field": "bloodPressureSys",
@@ -834,11 +980,15 @@
       "action": "URGENT_TRIAGE",
       "severity": "HIGH",
       "message": "Systolic blood pressure below 90 mmHg indicates hypoperfusion or potential circulatory shock.",
-      "isActive": true
+      "isActive": true,
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
     }
   ],
   "careEvents": [
     {
+      "_id": "6acc7d4760a527a6ba6dda23",
       "id": "care_1",
       "patientId": "pat_2",
       "patientName": "Samuel K. Thorne",
@@ -849,9 +999,13 @@
       "urgency": "EMERGENCY",
       "message": "Immediate CTPA and D-Dimer test processing for acute suspected pulmonary embolism in Trauma Bay 1.",
       "status": "IN_PROGRESS",
-      "timestamp": "2026-08-31T22:32:00Z"
+      "timestamp": "2026-08-31T22:32:00Z",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
     },
     {
+      "_id": "6acc7d4760a527a6ba6dda24",
       "id": "care_2",
       "patientId": "pat_2",
       "patientName": "Samuel K. Thorne",
@@ -862,181 +1016,45 @@
       "urgency": "URGENT",
       "message": "STAT Low-Molecular-Weight Heparin (Enoxaparin 80mg) syringe required at Trauma Bay 1.",
       "status": "OPEN",
-      "timestamp": "2026-08-31T22:45:00Z"
+      "timestamp": "2026-08-31T22:45:00Z",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
     }
   ],
   "auditLogs": [
     {
-      "id": "aud_1788246196030_wpjm",
-      "timestamp": "2026-09-01T07:03:16.030Z",
+      "id": "aud_1791791968568_5h4d",
+      "timestamp": "2026-10-12T07:59:28.568Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "AI_CLINICAL_ANALYSIS",
+      "module": "Clinical AI Intelligence",
+      "details": "Computed AI Acuity Risk (98/100 [CRITICAL]) for Samuel K. Thorne",
+      "patternUsed": "Expert System / AI"
+    },
+    {
+      "id": "aud_1791791958528_0u37",
+      "timestamp": "2026-10-12T07:59:18.528Z",
       "actor": "Marcus Holloway",
-      "role": "billing_officer",
-      "action": "PROCESS_INSURANCE_CLAIM",
-      "module": "Insurance",
-      "details": "Claim CLM-2026-6153 evaluated via Chain of Responsibility (APPROVED)",
-      "patternUsed": "Chain of Responsibility"
+      "role": "billing",
+      "action": "AI_CLAIM_AUDIT",
+      "module": "Financial AI Intelligence",
+      "details": "Pre-submission AI Denial Risk audit (12% [LOW]) for Invoice #INV-2026-1049",
+      "patternUsed": "Predictive AI / Rules"
     },
     {
-      "id": "aud_1788246191361_nw6h",
-      "timestamp": "2026-09-01T07:03:11.361Z",
-      "actor": "Marcus Holloway",
-      "role": "billing_officer",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role billing_officer",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788246184024_qmr9",
-      "timestamp": "2026-09-01T07:03:04.025Z",
-      "actor": "Sarah Jenkins",
-      "role": "receptionist",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role receptionist",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788246175670_b3p4",
-      "timestamp": "2026-09-01T07:02:55.670Z",
+      "id": "aud_1791791958457_vxe7",
+      "timestamp": "2026-10-12T07:59:18.457Z",
       "actor": "Dr. Robert Vance, MD",
       "role": "doctor",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role doctor",
-      "patternUsed": "Facade"
+      "action": "AI_CLINICAL_ANALYSIS",
+      "module": "Clinical AI Intelligence",
+      "details": "Computed AI Acuity Risk (25/100 [LOW]) for Eleanor Sterling",
+      "patternUsed": "Expert System / AI"
     },
     {
-      "id": "aud_1788245905246_2nxi",
-      "timestamp": "2026-09-01T06:58:25.246Z",
-      "actor": "Sarah Jenkins",
-      "role": "receptionist",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role receptionist",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245871650_qja4",
-      "timestamp": "2026-09-01T06:57:51.650Z",
-      "actor": "Dr. Arthur Pendelton",
-      "role": "admin",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role admin",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245869625_tvv8",
-      "timestamp": "2026-09-01T06:57:49.625Z",
-      "actor": "David Chen, MSc",
-      "role": "lab_tech",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role lab_tech",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245869191_ivap",
-      "timestamp": "2026-09-01T06:57:49.191Z",
-      "actor": "Elena Rostova, RN",
-      "role": "nurse",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role nurse",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245868640_bipj",
-      "timestamp": "2026-09-01T06:57:48.640Z",
-      "actor": "Dr. Robert Vance, MD",
-      "role": "doctor",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role doctor",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245868030_74zf",
-      "timestamp": "2026-09-01T06:57:48.030Z",
-      "actor": "Elena Rostova, RN",
-      "role": "nurse",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role nurse",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245867654_p8b9",
-      "timestamp": "2026-09-01T06:57:47.655Z",
-      "actor": "David Chen, MSc",
-      "role": "lab_tech",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role lab_tech",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245867058_mkb9",
-      "timestamp": "2026-09-01T06:57:47.058Z",
-      "actor": "Priya Sharma, PharmD",
-      "role": "pharmacist",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role pharmacist",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245829946_y1x7",
-      "timestamp": "2026-09-01T06:57:09.946Z",
-      "actor": "Dr. Robert Vance, MD",
-      "role": "doctor",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role doctor",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1788245829941_5j89",
-      "timestamp": "2026-09-01T06:57:09.941Z",
-      "actor": "Dr. Robert Vance, MD",
-      "role": "doctor",
-      "action": "USER_LOGIN",
-      "module": "Authentication",
-      "details": "User logged in with role doctor",
-      "patternUsed": "Facade"
-    },
-    {
-      "id": "aud_1",
-      "timestamp": "2026-08-31T22:15:00Z",
-      "actor": "Sarah Jenkins",
-      "role": "Receptionist",
-      "action": "Patient Registered (Emergency Type)",
-      "module": "Patient Management",
-      "details": "Created emergency patient draft via EmergencyPatientCreator (Priority: CRITICAL)",
-      "patternUsed": "Factory Method"
-    },
-    {
-      "id": "aud_2",
-      "timestamp": "2026-08-31T22:15:30Z",
-      "actor": "Sarah Jenkins",
-      "role": "Receptionist",
-      "action": "Doctor Assignment & Appointment Creation",
-      "module": "Appointments",
-      "details": "Selected Dr. Julian Foster using LeastBusyStrategy algorithm",
-      "patternUsed": "Strategy + Command"
-    },
-    {
-      "id": "aud_3",
-      "timestamp": "2026-08-31T22:30:00Z",
-      "actor": "Dr. Julian Foster, MD",
-      "role": "Doctor",
-      "action": "Diagnostic Order Dispatched",
-      "module": "Diagnostics",
-      "details": "Created radiology CTPA order via RadiologyFactory and RadiologyAdapter",
-      "patternUsed": "Abstract Factory + Bridge + Adapter"
-    },
-    {
+      "_id": "6acc7d4760a527a6ba6dda28",
       "id": "aud_4",
       "timestamp": "2026-09-01T08:15:00Z",
       "actor": "Elena Rostova, RN",
@@ -1044,7 +1062,52 @@
       "action": "Clinical Vitals Evaluated",
       "module": "Clinical Rule Engine",
       "details": "Interpreter AST evaluated 4 rules; triggered 3 high/critical alerts",
-      "patternUsed": "Interpreter + Observer"
+      "patternUsed": "Interpreter + Observer",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
+    },
+    {
+      "_id": "6acc7d4760a527a6ba6dda27",
+      "id": "aud_3",
+      "timestamp": "2026-08-31T22:30:00Z",
+      "actor": "Dr. Julian Foster, MD",
+      "role": "Doctor",
+      "action": "Diagnostic Order Dispatched",
+      "module": "Diagnostics",
+      "details": "Created radiology CTPA order via RadiologyFactory and RadiologyAdapter",
+      "patternUsed": "Abstract Factory + Bridge + Adapter",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
+    },
+    {
+      "_id": "6acc7d4760a527a6ba6dda26",
+      "id": "aud_2",
+      "timestamp": "2026-08-31T22:15:30Z",
+      "actor": "Sarah Jenkins",
+      "role": "Receptionist",
+      "action": "Doctor Assignment & Appointment Creation",
+      "module": "Appointments",
+      "details": "Selected Dr. Julian Foster using LeastBusyStrategy algorithm",
+      "patternUsed": "Strategy + Command",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
+    },
+    {
+      "_id": "6acc7d4760a527a6ba6dda25",
+      "id": "aud_1",
+      "timestamp": "2026-08-31T22:15:00Z",
+      "actor": "Sarah Jenkins",
+      "role": "Receptionist",
+      "action": "Patient Registered (Emergency Type)",
+      "module": "Patient Management",
+      "details": "Created emergency patient draft via EmergencyPatientCreator (Priority: CRITICAL)",
+      "patternUsed": "Factory Method",
+      "__v": 0,
+      "createdAt": "2026-10-12T06:25:11.375Z",
+      "updatedAt": "2026-10-12T06:25:11.375Z"
     }
   ],
   "config": {
@@ -1069,35 +1132,40 @@
         "name": "Cardiology & Vascular Center",
         "head": "Dr. Robert Vance, MD",
         "totalBeds": 40,
-        "occupiedBeds": 28
+        "occupiedBeds": 28,
+        "_id": "6acc7d4760a527a6ba6dd9d5"
       },
       {
         "id": "dep_neuro",
         "name": "Neurology & Stroke Institute",
         "head": "Dr. Maya Lin, MD",
         "totalBeds": 30,
-        "occupiedBeds": 18
+        "occupiedBeds": 18,
+        "_id": "6acc7d4760a527a6ba6dd9d6"
       },
       {
         "id": "dep_trauma",
         "name": "Emergency & Trauma Care",
         "head": "Dr. Julian Foster, MD",
         "totalBeds": 25,
-        "occupiedBeds": 22
+        "occupiedBeds": 22,
+        "_id": "6acc7d4760a527a6ba6dd9d7"
       },
       {
         "id": "dep_surg",
         "name": "General & Minimally Invasive Surgery",
         "head": "Dr. Catherine Blake, MD",
         "totalBeds": 35,
-        "occupiedBeds": 20
+        "occupiedBeds": 20,
+        "_id": "6acc7d4760a527a6ba6dd9d8"
       },
       {
         "id": "dep_icu",
         "name": "Intensive Critical Care Unit (ICU)",
         "head": "Dr. Arthur Pendelton",
         "totalBeds": 20,
-        "occupiedBeds": 16
+        "occupiedBeds": 16,
+        "_id": "6acc7d4760a527a6ba6dd9d9"
       }
     ],
     "wards": [
@@ -1106,28 +1174,32 @@
         "name": "Cardiology Ward 3",
         "department": "Cardiology",
         "capacity": 20,
-        "occupied": 15
+        "occupied": 15,
+        "_id": "6acc7d4760a527a6ba6dd9da"
       },
       {
         "id": "ward_t1",
         "name": "Emergency Trauma Bays",
         "department": "Emergency & Trauma",
         "capacity": 15,
-        "occupied": 12
+        "occupied": 12,
+        "_id": "6acc7d4760a527a6ba6dd9db"
       },
       {
         "id": "ward_icu",
         "name": "Main ICU Wing",
         "department": "ICU",
         "capacity": 20,
-        "occupied": 16
+        "occupied": 16,
+        "_id": "6acc7d4760a527a6ba6dd9dc"
       },
       {
         "id": "ward_s2",
         "name": "Surgical Recovery Ward",
         "department": "General Surgery",
         "capacity": 25,
-        "occupied": 14
+        "occupied": 14,
+        "_id": "6acc7d4760a527a6ba6dd9dd"
       }
     ],
     "systemPolicies": {
@@ -1138,7 +1210,7 @@
       "maxVitalsRetentionDays": 365,
       "mementoMaxSnapshots": 50
     },
-    "lastUpdated": "2026-09-01T06:52:58.889Z"
+    "lastUpdated": "2026-10-12T06:25:09.893Z"
   },
-  "savedAt": "2026-09-01T07:03:16.030Z"
+  "savedAt": "2026-10-12T07:59:28.568Z"
 }

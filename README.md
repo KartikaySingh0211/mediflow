@@ -81,8 +81,10 @@ flowchart TB
     end
 
     subgraph Backend ["Backend API Layer (Express + Node.js - Port 5001)"]
-        RestAPI["REST API Endpoints (25+ Routes)"]
-        DataStore["HospitalDataStore (Session Store + JSON Snapshot)"]
+        RestAPI["REST API Endpoints (30+ Routes)"]
+        AiEngine["AI Clinical & Operational Intelligence Engine"]
+        DataStore["HospitalDataStore (Atlas Synchronizer)"]
+        Mongo["MongoDB Atlas Cloud Cluster (15 Collections)"]
     end
 
     UI --> Context
@@ -90,32 +92,83 @@ flowchart TB
     GoF --> TraceBus
     TraceBus --> Trace
     Context --> Backend
+    Backend --> Mongo
 ```
+
+---
+
+## 🌐 Dedicated Multi-Portal Port Architecture
+
+MediFlow runs as a decoupled micro-frontend / multi-portal architecture, where each hospital persona operates in an independent application on a dedicated port:
+
+| Portal | Port | Dedicated Persona | URL |
+| :--- | :---: | :--- | :--- |
+| **Hospital Operations Gateway (Hub)** | `5173` | Cross-Department Operations | `http://localhost:5173` |
+| **Hospital Administration Portal** | `5174` | Dr. Arthur Pendelton (Administrator) | `http://localhost:5174` |
+| **Physician Clinical Workbench** | `5175` | Dr. Robert Vance, MD (Cardiologist) | `http://localhost:5175` |
+| **Inpatient Nursing Station** | `5176` | Elena Rostova, RN (Lead Nurse) | `http://localhost:5176` |
+| **Patient Intake & Reception** | `5177` | Sarah Jenkins (Triage Desk) | `http://localhost:5177` |
+| **Diagnostic Pathology & Imaging** | `5178` | David Chen, MSc (Lab Specialist) | `http://localhost:5178` |
+| **Central Hospital Pharmacy** | `5179` | Priya Sharma, PharmD (Chief Pharmacist) | `http://localhost:5179` |
+| **Patient Accounts & Billing** | `5180` | Marcus Holloway (Billing Officer) | `http://localhost:5180` |
+| **Backend REST API + Atlas Sync** | `5001` | Express + MongoDB Atlas Engine | `http://localhost:5001` |
+
+---
+
+## 🍃 MongoDB Atlas Cloud Integration & Data Persistence
+
+All static seed data and live clinical transactions are synchronized and stored in the user's **MongoDB Atlas Cluster**:
+- **Connection URI**: `mongodb+srv://kartikaysingh0211_db_user:zeIy09qvoUbpwF9l@design-patterns.zxidgwa.mongodb.net/mediflow?appName=design-patterns`
+- **15 Cloud Collections**: `users`, `doctors`, `patients`, `appointments`, `admissions`, `lab_orders`, `prescriptions`, `treatment_plans`, `bills`, `vitals_records`, `clinical_rules`, `care_events`, `hospital_config`, `audit_logs`, and `ai_analyses`.
+- **Database Seeding & Migration**: Run `npm run db:seed` from the root or server directory to seed or reset the Atlas cluster to a baseline.
+- **Dynamic Live Persistence**: Every newly registered patient, vital signs entry, lab completion, prescription dispensation, payment, and AI analysis is directly written to MongoDB Atlas.
+
+---
+
+## 🤖 AI Clinical Decision Support & Hospital Intelligence
+
+MediFlow incorporates deep machine learning and clinical heuristics engines directly connected to MongoDB Atlas (`ai_analyses` collection):
+
+1. **AI Clinical Acuity & Sepsis/Deterioration Synthesizer**:
+   - **Endpoint**: `POST /api/ai/analyze/patient/:id`
+   - **Location**: Physician Clinical Workbench (`DoctorDashboard.tsx` - Port 5175)
+   - **Capabilities**: Analyzes real-time SpO2 desaturation (<92%), tachycardia (>100 bpm), pyrexia, hypotension shock index, STAT critical biomarkers (Troponin, CTPA), and patient drug allergies to compute an Acuity Risk Score (0-100), contraindication warnings, and tailored physician action plans.
+2. **AI Pre-Submission Claim Denial Risk & Fraud/Necessity Audit**:
+   - **Endpoint**: `POST /api/ai/analyze/bill/:id`
+   - **Location**: Patient Accounts & Billing (`BillingDashboard.tsx` - Port 5180)
+   - **Capabilities**: Pre-audits composite charges, detects missing surgical pre-authorizations, checks expired policy riders, calculates denial probability (%), and projects insurance recovery yield.
+3. **AI Hospital Operational Intelligence & Bed Saturation Forecast**:
+   - **Endpoint**: `GET /api/ai/analyze/operations`
+   - **Location**: Hospital Administration (`AdminDashboard.tsx` - Port 5174)
+   - **Capabilities**: Real-time modeling of ICU and ward bed saturation rates, emergency triage surges, and diagnostic turnaround backlogs with automated discharge protocol recommendations.
 
 ---
 
 ## 🚀 Quick Start & Launch Guide
 
-### Prerequisites
-- **Node.js**: v18.0.0 or later
-- **npm**: v9.0.0 or later
-
-### 1. Start the Backend Server (Port 5001)
+### 1. Start the Backend Server (Express + MongoDB Atlas on Port 5001)
 ```bash
-cd server
-npm install
-npm run start
+npm run server
+# Or: npm --prefix server run start
 ```
-*The backend starts at `http://localhost:5001`. On first run, it initializes rich clinical seed data and persists state across sessions to `server/data_snapshot.json`.*
+*The server boots at `http://localhost:5001`, connects to MongoDB Atlas (`mediflow`), and synchronizes all collections.*
 
-### 2. Start the Frontend Client (Port 5173)
-In a separate terminal window:
+### 2. Launch All Portals Simultaneously (Or Individually)
+Run all 8 portals concurrently:
 ```bash
-cd client
-npm install
-npm run dev -- --host 127.0.0.1 --port 5173
+npm run dev:all
 ```
-*Open your browser and navigate to `http://127.0.0.1:5173/`.*
+Or launch any portal independently on its dedicated port:
+```bash
+npm run dev:doctor     # Physician Workbench (Port 5175)
+npm run dev:admin      # Hospital Administration (Port 5174)
+npm run dev:nurse      # Nursing Station (Port 5176)
+npm run dev:reception  # Patient Intake (Port 5177)
+npm run dev:lab        # Diagnostic Lab (Port 5178)
+npm run dev:pharmacy   # Central Pharmacy (Port 5179)
+npm run dev:billing    # Patient Accounts (Port 5180)
+npm run dev:hub        # Operations Gateway (Port 5173)
+```
 
 ---
 

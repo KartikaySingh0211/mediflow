@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { HospitalDataStore } from './store/dataStore.js';
 import { Patient, Appointment, Admission, LabOrder, Prescription, TreatmentPlan, Bill, VitalsRecord, ClinicalRule, CareEvent } from './store/seedData.js';
+import { AiAnalysisService } from './services/aiService.js';
+import { AiAnalysisModel } from './db/models.js';
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -20,6 +22,7 @@ app.get('/api/health', (req: Request, res: Response) => {
   res.json({
     status: 'healthy',
     system: 'MediFlow Hospital Management System Backend',
+    database: store.isMongoConnected ? 'MongoDB Atlas (Connected)' : 'Local Fallback',
     version: '1.0.0',
     port: PORT,
     timestamp: new Date().toISOString()
@@ -835,6 +838,90 @@ app.put('/api/care-events/:id/status', (req: Request, res: Response) => {
   res.json(event);
 });
 
+// AI Intelligence & Clinical Decision Support Endpoints (Stored in MongoDB Atlas)
+app.post('/api/ai/analyze/patient/:id', async (req: Request, res: Response) => {
+  try {
+    const patient = store.patients.find(p => p.id === req.params.id);
+    if (!patient) return res.status(404).json({ error: 'Patient not found' });
+    
+    const vitals = store.vitalsRecords.filter(v => v.patientId === patient.id).sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    const labs = store.labOrders.filter(l => l.patientId === patient.id);
+    const prescriptions = store.prescriptions.filter(p => p.patientId === patient.id);
+    const doctorName = req.body.analyzedBy || 'Dr. Robert Vance, MD';
+
+    const analysis = await AiAnalysisService.analyzePatient(patient, vitals, labs, prescriptions, doctorName);
+    
+    store.logAudit(doctorName, 'doctor', 'AI_CLINICAL_ANALYSIS', 'Clinical AI Intelligence', `Computed AI Acuity Risk (${analysis.riskScore}/100 [${analysis.riskLevel}]) for ${patient.name}`, 'Expert System / AI');
+
+    res.json(analysis);
+  } catch (error: any) {
+    console.error('[AI Analysis Error]', error);
+    res.status(500).json({ error: 'Failed to generate patient AI analysis', details: error.message });
+  }
+});
+
+app.post('/api/ai/analyze/bill/:id', async (req: Request, res: Response) => {
+  try {
+    const bill = store.bills.find(b => b.id === req.params.id);
+    if (!bill) return res.status(404).json({ error: 'Bill not found' });
+    
+    const auditorName = req.body.analyzedBy || 'Marcus Holloway';
+    const analysis = await AiAnalysisService.analyzeBill(bill, auditorName);
+
+    store.logAudit(auditorName, 'billing', 'AI_CLAIM_AUDIT', 'Financial AI Intelligence', `Pre-submission AI Denial Risk audit (${analysis.riskScore}% [${analysis.riskLevel}]) for Invoice #${bill.invoiceNumber}`, 'Predictive AI / Rules');
+
+    res.json(analysis);
+  } catch (error: any) {
+    console.error('[AI Bill Analysis Error]', error);
+    res.status(500).json({ error: 'Failed to generate bill AI analysis', details: error.message });
+  }
+});
+
+app.get('/api/ai/analyze/operations', async (req: Request, res: Response) => {
+  try {
+    const totalPatients = store.patients.length;
+    const criticalCount = store.patients.filter(p => p.priority === 'CRITICAL').length;
+    const totalBeds = store.config.wards.reduce((acc, w) => acc + w.capacity, 0);
+    const occupiedBeds = store.config.wards.reduce((acc, w) => acc + w.occupied, 0);
+    const pendingLabs = store.labOrders.filter(l => l.status !== 'COMPLETED' && l.status !== 'CANCELLED').length;
+
+    const analysis = await AiAnalysisService.analyzeHospitalOperations(
+      totalPatients,
+      criticalCount,
+      totalBeds,
+      occupiedBeds,
+      pendingLabs
+    );
+
+    res.json(analysis);
+  } catch (error: any) {
+    console.error('[AI Operations Error]', error);
+    res.status(500).json({ error: 'Failed to generate operational AI analysis', details: error.message });
+  }
+});
+
+app.get('/api/ai/analyses', async (req: Request, res: Response) => {
+  try {
+    const targetType = req.query.targetType as string;
+    const filter = targetType ? { targetType } : {};
+    const analyses = await AiAnalysisModel.find(filter).sort({ timestamp: -1 }).limit(100);
+    res.json(analyses);
+  } catch (error: any) {
+    console.error('[Get AI Analyses Error]', error);
+    res.status(500).json({ error: 'Failed to fetch AI analyses from MongoDB', details: error.message });
+  }
+});
+
+app.get('/api/ai/analyses/target/:targetId', async (req: Request, res: Response) => {
+  try {
+    const analyses = await AiAnalysisModel.find({ targetId: req.params.targetId }).sort({ timestamp: -1 });
+    res.json(analyses);
+  } catch (error: any) {
+    console.error('[Get AI Analyses Target Error]', error);
+    res.status(500).json({ error: 'Failed to fetch target AI analyses from MongoDB', details: error.message });
+  }
+});
+
 // Audit Logs
 app.get('/api/audit-logs', (req: Request, res: Response) => {
   res.json(store.auditLogs);
@@ -850,3 +937,4 @@ app.post('/api/reset-data', (req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`[MediFlow Backend] Server running on http://localhost:${PORT}`);
 });
+
