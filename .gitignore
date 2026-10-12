@@ -11,6 +11,12 @@ build/
 **/.vite/
 
 
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.env
+
 # Logs & Temporary Files
 *.log
 npm-debug.log*
@@ -22,3 +28,4 @@ yarn-error.log*
 # OS metadata
 .DS_Store
 Thumbs.db
+

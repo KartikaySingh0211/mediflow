@@ -1,6 +1,12 @@
+import 'dotenv/config';
 import mongoose from 'mongoose';
 
-const MONGODB_URI = 'mongodb+srv://kartikaysingh0211_db_user:zeIy09qvoUbpwF9l@design-patterns.zxidgwa.mongodb.net/mediflow?appName=design-patterns';
+const MONGODB_URI = process.env.MONGODB_URI || '';
+
+if (!MONGODB_URI) {
+  console.error('❌ MONGODB_URI environment variable is not defined. Please set it in your .env file.');
+  process.exit(1);
+}
 
 async function testConnection() {
   console.log('Testing MongoDB connection...');

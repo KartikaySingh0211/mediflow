@@ -118,7 +118,7 @@ MediFlow runs as a decoupled micro-frontend / multi-portal architecture, where e
 ## 🍃 MongoDB Atlas Cloud Integration & Data Persistence
 
 All static seed data and live clinical transactions are synchronized and stored in the user's **MongoDB Atlas Cluster**:
-- **Connection URI**: `mongodb+srv://kartikaysingh0211_db_user:zeIy09qvoUbpwF9l@design-patterns.zxidgwa.mongodb.net/mediflow?appName=design-patterns`
+- **Connection Configuration**: Configured securely via the `MONGODB_URI` environment variable in `.env` (refer to `.env.example`).
 - **15 Cloud Collections**: `users`, `doctors`, `patients`, `appointments`, `admissions`, `lab_orders`, `prescriptions`, `treatment_plans`, `bills`, `vitals_records`, `clinical_rules`, `care_events`, `hospital_config`, `audit_logs`, and `ai_analyses`.
 - **Database Seeding & Migration**: Run `npm run db:seed` from the root or server directory to seed or reset the Atlas cluster to a baseline.
 - **Dynamic Live Persistence**: Every newly registered patient, vital signs entry, lab completion, prescription dispensation, payment, and AI analysis is directly written to MongoDB Atlas.

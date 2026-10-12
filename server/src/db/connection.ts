@@ -1,11 +1,15 @@
+import 'dotenv/config';
 import mongoose from 'mongoose';
 
-export const MONGODB_URI = process.env.MONGODB_URI || 
-  'mongodb+srv://kartikaysingh0211_db_user:zeIy09qvoUbpwF9l@design-patterns.zxidgwa.mongodb.net/mediflow?appName=design-patterns';
+export const MONGODB_URI = process.env.MONGODB_URI || '';
 
 export async function connectToDatabase(): Promise<typeof mongoose> {
   if (mongoose.connection.readyState === 1) {
     return mongoose;
+  }
+
+  if (!MONGODB_URI) {
+    throw new Error('MONGODB_URI is not set in environment variables (.env). Please configure it.');
   }
 
   try {
