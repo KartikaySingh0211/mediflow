@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHospitalData } from '../../context/HospitalDataContext';
 import { GlassCard } from '../../components/common/GlassCard';
 import { GlassModal } from '../../components/common/GlassModal';
@@ -53,6 +53,12 @@ export const BillingDashboard: React.FC = () => {
 
   // Create Bill Form State (Composite)
   const [billPatientId, setBillPatientId] = useState(patients[0]?.id || '');
+
+  useEffect(() => {
+    if (!billPatientId && patients.length > 0) {
+      setBillPatientId(patients[0].id);
+    }
+  }, [patients, billPatientId]);
   const [consultationFee, setConsultationFee] = useState<number>(350);
   const [labCharges, setLabCharges] = useState<number>(275);
   const [roomCharges, setRoomCharges] = useState<number>(1350);
@@ -87,7 +93,7 @@ export const BillingDashboard: React.FC = () => {
 
   const handleCreateCompositeBillSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const patient = patients.find(p => p.id === billPatientId);
+    const patient = patients.find(p => p.id === billPatientId) || patients[0];
     if (!patient) return;
 
     const groupsData = [

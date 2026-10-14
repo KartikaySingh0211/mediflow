@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHospitalData } from '../../context/HospitalDataContext';
 import { GlassCard } from '../../components/common/GlassCard';
 import { GlassModal } from '../../components/common/GlassModal';
@@ -31,7 +31,15 @@ export const NurseDashboard: React.FC = () => {
     resolveCareEvent
   } = useHospitalData();
 
-  const [selectedPatient, setSelectedPatient] = useState<Patient>(patients[0] || null);
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(patients[0] || null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Sync selected patient when async patients array populates
+  useEffect(() => {
+    if (!selectedPatient && patients.length > 0) {
+      setSelectedPatient(patients[0]);
+    }
+  }, [patients, selectedPatient]);
 
   // Vitals Form State (Interpreter Pattern)
   const [temperature, setTemperature] = useState<number>(37.2);
@@ -52,29 +60,45 @@ export const NurseDashboard: React.FC = () => {
 
   const handleRecordVitalsSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedPatient) return;
+    const targetPatient = selectedPatient || patients[0];
+    if (!targetPatient) {
+      alert('Please wait for patient records to load or register a patient at Reception (Port 5177).');
+      return;
+    }
 
-    const record = await recordPatientVitals({
-      patientId: selectedPatient.id,
-      patientName: selectedPatient.name,
-      temperature: Number(temperature),
-      heartRate: Number(heartRate),
-      bloodPressureSys: Number(bloodPressureSys),
-      bloodPressureDia: Number(bloodPressureDia),
-      respiratoryRate: Number(respiratoryRate),
-      oxygenSaturation: Number(oxygenSaturation)
-    });
+    try {
+      setIsSubmitting(true);
+      const record = await recordPatientVitals({
+        patientId: targetPatient.id,
+        patientName: targetPatient.name,
+        temperature: Number(temperature),
+        heartRate: Number(heartRate),
+        bloodPressureSys: Number(bloodPressureSys),
+        bloodPressureDia: Number(bloodPressureDia),
+        respiratoryRate: Number(respiratoryRate),
+        oxygenSaturation: Number(oxygenSaturation)
+      });
 
-    setLastVitalsResult(record);
+      setLastVitalsResult(record);
+      if (!selectedPatient) {
+        setSelectedPatient(targetPatient);
+      }
+    } catch (err: any) {
+      console.error('Failed to evaluate vitals:', err);
+      alert('Error evaluating vitals: ' + (err.message || 'Server connection error'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleDispatchCareSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedPatient) return;
+    const targetPatient = selectedPatient || patients[0];
+    if (!targetPatient) return;
 
     await dispatchCareEvent(
-      selectedPatient.id,
-      selectedPatient.name,
+      targetPatient.id,
+      targetPatient.name,
       careTargetDept,
       careEventType,
       careUrgency,
@@ -162,7 +186,7 @@ export const NurseDashboard: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-slate-500">Patient:</span>
               <select
-                value={selectedPatient?.id}
+                value={selectedPatient?.id || patients[0]?.id || ''}
                 onChange={e => {
                   const p = patients.find(pat => pat.id === e.target.value);
                   if (p) setSelectedPatient(p);
@@ -299,9 +323,14 @@ export const NurseDashboard: React.FC = () => {
                 </button>
               </div>
 
-              <button type="submit" className="btn-primary">
-                <Activity size={16} />
-                Evaluate Vitals via Interpreter
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-primary"
+                style={{ opacity: isSubmitting ? 0.75 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+              >
+                <Activity size={16} className={isSubmitting ? 'animate-spin' : ''} />
+                {isSubmitting ? 'Evaluating via Interpreter...' : 'Evaluate Vitals via Interpreter'}
               </button>
             </div>
           </form>

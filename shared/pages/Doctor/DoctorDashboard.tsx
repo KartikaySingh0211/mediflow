@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHospitalData } from '../../context/HospitalDataContext';
 import { useAuth } from '../../context/AuthContext';
 import { GlassCard } from '../../components/common/GlassCard';
@@ -49,7 +49,13 @@ export const DoctorDashboard: React.FC = () => {
     getPatientTimelineIterator
   } = useHospitalData();
 
-  const [selectedPatient, setSelectedPatient] = useState<Patient>(patients[0] || null);
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(patients[0] || null);
+
+  useEffect(() => {
+    if (!selectedPatient && patients.length > 0) {
+      setSelectedPatient(patients[0]);
+    }
+  }, [patients, selectedPatient]);
 
   // Modals
   const [isLabModalOpen, setIsLabModalOpen] = useState(false);
@@ -237,7 +243,7 @@ export const DoctorDashboard: React.FC = () => {
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-500 uppercase">Consulting Patient:</span>
           <select
-            value={selectedPatient?.id}
+            value={selectedPatient?.id || patients[0]?.id || ''}
             onChange={e => {
               const p = patients.find(pat => pat.id === e.target.value);
               if (p) setSelectedPatient(p);
