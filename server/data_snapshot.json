@@ -201,6 +201,96 @@
   ],
   "patients": [
     {
+      "id": "pat_1791959946126",
+      "mrn": "MED-2026-8922",
+      "name": "Test Subject Alpha (test_1791959946094)",
+      "age": 48,
+      "gender": "Female",
+      "bloodGroup": "B+",
+      "contactNumber": "+1 (555) 019-2834",
+      "emergencyContact": "None provided",
+      "registrationType": "EMERGENCY",
+      "priority": "CRITICAL",
+      "status": "REGISTERED",
+      "allergies": [
+        "Penicillin",
+        "Sulfa drugs"
+      ],
+      "diagnosis": "Acute Coronary Syndrome with Troponin Elevation",
+      "medicalHistory": [
+        {
+          "id": "hist_1791959947512",
+          "date": "2026-10-14",
+          "type": "Prescription",
+          "title": "Medications Prescribed (1 items)",
+          "description": "undefined 80 mg PO",
+          "doctorName": "Dr. Robert Vance, MD"
+        },
+        {
+          "id": "hist_1791959947263",
+          "date": "2026-10-14",
+          "type": "Lab Result",
+          "title": "High-Sensitivity Troponin I & CK-MB Result Available",
+          "description": "Diagnostic test analysis completed.",
+          "doctorName": "Lab Technician"
+        },
+        {
+          "id": "hist_1791959946126",
+          "date": "2026-10-14",
+          "type": "Consultation",
+          "title": "Initial Intake Registration",
+          "description": "Patient registered via EMERGENCY workflow.",
+          "doctorName": "Triage Desk"
+        }
+      ],
+      "createdAt": "2026-10-14T06:39:06.126Z"
+    },
+    {
+      "id": "pat_1791959830545",
+      "mrn": "MED-2026-7909",
+      "name": "Test Subject Alpha (test_1791959830501)",
+      "age": 48,
+      "gender": "Female",
+      "bloodGroup": "B+",
+      "contactNumber": "+1 (555) 019-2834",
+      "emergencyContact": "None provided",
+      "registrationType": "EMERGENCY",
+      "priority": "CRITICAL",
+      "status": "REGISTERED",
+      "allergies": [
+        "Penicillin",
+        "Sulfa drugs"
+      ],
+      "diagnosis": "Acute Coronary Syndrome with Troponin Elevation",
+      "medicalHistory": [
+        {
+          "id": "hist_1791959831693",
+          "date": "2026-10-14",
+          "type": "Prescription",
+          "title": "Medications Prescribed (1 items)",
+          "description": "undefined 80 mg PO",
+          "doctorName": "Dr. Robert Vance, MD"
+        },
+        {
+          "id": "hist_1791959831442",
+          "date": "2026-10-14",
+          "type": "Lab Result",
+          "title": "High-Sensitivity Troponin I & CK-MB Result Available",
+          "description": "Diagnostic test analysis completed.",
+          "doctorName": "Lab Technician"
+        },
+        {
+          "id": "hist_1791959830545",
+          "date": "2026-10-14",
+          "type": "Consultation",
+          "title": "Initial Intake Registration",
+          "description": "Patient registered via EMERGENCY workflow.",
+          "doctorName": "Triage Desk"
+        }
+      ],
+      "createdAt": "2026-10-14T06:37:10.545Z"
+    },
+    {
       "_id": "6acc7d4760a527a6ba6dd9e9",
       "id": "pat_1",
       "mrn": "MED-2026-0891",
@@ -252,7 +342,7 @@
       ],
       "createdAt": "2026-08-15T09:30:00Z",
       "__v": 0,
-      "updatedAt": "2026-10-12T06:25:11.372Z"
+      "updatedAt": "2026-10-14T06:29:52.191Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dd9ed",
@@ -289,7 +379,7 @@
       ],
       "createdAt": "2026-08-31T22:15:00Z",
       "__v": 0,
-      "updatedAt": "2026-10-12T06:25:11.373Z"
+      "updatedAt": "2026-10-14T06:29:52.223Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dd9ef",
@@ -323,10 +413,123 @@
       ],
       "createdAt": "2026-08-10T14:00:00Z",
       "__v": 0,
-      "updatedAt": "2026-10-12T06:25:11.373Z"
+      "updatedAt": "2026-10-14T06:29:52.254Z"
+    },
+    {
+      "_id": "6acf215d6a3a2128064f619d",
+      "id": "pat_1791959389518",
+      "__v": 0,
+      "age": 48,
+      "allergies": [
+        "Penicillin",
+        "Sulfa drugs"
+      ],
+      "bloodGroup": "B+",
+      "contactNumber": "+1 (555) 019-2834",
+      "createdAt": "Wed Oct 14 2026 11:59:49 GMT+0530 (India Standard Time)",
+      "diagnosis": "Acute Coronary Syndrome with Troponin Elevation",
+      "emergencyContact": "None provided",
+      "gender": "Female",
+      "medicalHistory": [
+        {
+          "id": "hist_1791959390479",
+          "date": "2026-10-14",
+          "type": "Prescription",
+          "title": "Medications Prescribed (1 items)",
+          "description": "undefined 80 mg PO",
+          "doctorName": "Dr. Robert Vance, MD",
+          "_id": "6acf215f3307d5d4f5e3388f"
+        },
+        {
+          "id": "hist_1791959390370",
+          "date": "2026-10-14",
+          "type": "Lab Result",
+          "title": "High-Sensitivity Troponin I & CK-MB Result Available",
+          "description": "Diagnostic test analysis completed.",
+          "doctorName": "Lab Technician",
+          "_id": "6acf215f3307d5d4f5e33890"
+        },
+        {
+          "id": "hist_1791959389518",
+          "date": "2026-10-14",
+          "type": "Consultation",
+          "title": "Initial Intake Registration",
+          "description": "Patient registered via EMERGENCY workflow.",
+          "doctorName": "Triage Desk",
+          "_id": "6acf215f3307d5d4f5e33891"
+        }
+      ],
+      "mrn": "MED-2026-5687",
+      "name": "Test Subject Alpha (test_1791959389453)",
+      "priority": "CRITICAL",
+      "registrationType": "EMERGENCY",
+      "status": "REGISTERED",
+      "updatedAt": "2026-10-14T06:29:51.356Z"
     }
   ],
   "appointments": [
+    {
+      "id": "apt_1791959946514",
+      "patientId": "pat_1791959946126",
+      "patientName": "Test Subject Alpha (test_1791959946094)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "department": "Cardiology",
+      "date": "2026-10-14",
+      "time": "14:30",
+      "reason": "STAT cardiac evaluation",
+      "status": "CHECKED_IN",
+      "priority": "NORMAL",
+      "schedulingStrategyUsed": "MANUAL",
+      "history": [
+        {
+          "from": "NONE",
+          "to": "SCHEDULED",
+          "timestamp": "2026-10-14T06:39:06.514Z",
+          "action": "BookAppointmentCommand (MANUAL Strategy)",
+          "performedBy": "Receptionist"
+        },
+        {
+          "from": "SCHEDULED",
+          "to": "CHECKED_IN",
+          "timestamp": "2026-10-14T06:39:06.705Z",
+          "action": "Patient arrived at triage desk",
+          "performedBy": "Sarah Jenkins"
+        }
+      ],
+      "createdAt": "2026-10-14T06:39:06.514Z"
+    },
+    {
+      "id": "apt_1791959830895",
+      "patientId": "pat_1791959830545",
+      "patientName": "Test Subject Alpha (test_1791959830501)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "department": "Cardiology",
+      "date": "2026-10-14",
+      "time": "14:30",
+      "reason": "STAT cardiac evaluation",
+      "status": "CHECKED_IN",
+      "priority": "NORMAL",
+      "schedulingStrategyUsed": "MANUAL",
+      "history": [
+        {
+          "from": "NONE",
+          "to": "SCHEDULED",
+          "timestamp": "2026-10-14T06:37:10.895Z",
+          "action": "BookAppointmentCommand (MANUAL Strategy)",
+          "performedBy": "Receptionist"
+        },
+        {
+          "from": "SCHEDULED",
+          "to": "CHECKED_IN",
+          "timestamp": "2026-10-14T06:37:11.064Z",
+          "action": "Patient arrived at triage desk",
+          "performedBy": "Sarah Jenkins"
+        }
+      ],
+      "createdAt": "2026-10-14T06:37:10.895Z"
+    },
     {
       "_id": "6acc7d4760a527a6ba6dd9f1",
       "id": "apt_1",
@@ -361,7 +564,7 @@
       ],
       "createdAt": "2026-08-25T11:00:00Z",
       "__v": 0,
-      "updatedAt": "2026-10-12T06:25:11.373Z"
+      "updatedAt": "2026-10-14T06:29:52.327Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dd9f4",
@@ -405,7 +608,7 @@
       ],
       "createdAt": "2026-08-31T22:15:00Z",
       "__v": 0,
-      "updatedAt": "2026-10-12T06:25:11.373Z"
+      "updatedAt": "2026-10-14T06:29:52.361Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dd9f8",
@@ -433,7 +636,43 @@
       ],
       "createdAt": "2026-08-29T15:00:00Z",
       "__v": 0,
-      "updatedAt": "2026-10-12T06:25:11.373Z"
+      "updatedAt": "2026-10-14T06:29:52.390Z"
+    },
+    {
+      "_id": "6acf215e6a3a2128064f619e",
+      "id": "apt_1791959389841",
+      "__v": 0,
+      "createdAt": "Wed Oct 14 2026 11:59:50 GMT+0530 (India Standard Time)",
+      "date": "2026-10-14",
+      "department": "Cardiology",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "history": [
+        {
+          "from": "NONE",
+          "to": "SCHEDULED",
+          "timestamp": "2026-10-14T06:29:49.841Z",
+          "action": "BookAppointmentCommand (MANUAL Strategy)",
+          "performedBy": "Receptionist",
+          "_id": "6acf21603307d5d4f5e339ca"
+        },
+        {
+          "from": "SCHEDULED",
+          "to": "CHECKED_IN",
+          "timestamp": "2026-10-14T06:29:50.008Z",
+          "action": "Patient arrived at triage desk",
+          "performedBy": "Sarah Jenkins",
+          "_id": "6acf21603307d5d4f5e339cb"
+        }
+      ],
+      "patientId": "pat_1791959389518",
+      "patientName": "Test Subject Alpha (test_1791959389453)",
+      "priority": "NORMAL",
+      "reason": "STAT cardiac evaluation",
+      "schedulingStrategyUsed": "MANUAL",
+      "status": "CHECKED_IN",
+      "time": "14:30",
+      "updatedAt": "2026-10-14T06:29:52.285Z"
     }
   ],
   "admissions": [
@@ -456,10 +695,54 @@
       "notes": "Keep on strict telemetry monitoring. Low sodium diet. Bedside echocardiogram on Day 3.",
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.374Z",
-      "updatedAt": "2026-10-12T06:25:11.374Z"
+      "updatedAt": "2026-10-14T06:29:52.424Z"
     }
   ],
   "labOrders": [
+    {
+      "id": "lab_1791959946973",
+      "orderNumber": "LAB-2026-7543",
+      "patientId": "pat_1791959946126",
+      "patientName": "Test Subject Alpha (test_1791959946094)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "testCode": "CARD-TROP-I",
+      "testName": "High-Sensitivity Troponin I & CK-MB",
+      "category": "BLOOD",
+      "provider": "INTERNAL",
+      "priority": "STAT",
+      "status": "COMPLETED",
+      "orderDate": "2026-10-14T06:39:06.973Z",
+      "completionDate": "2026-10-14T06:39:07.263Z",
+      "isCritical": false,
+      "results": {
+        "summary": "Diagnostic test analysis completed.",
+        "parameters": [],
+        "technicianNotes": "Assayed on Beckman Coulter Access 2 via internal laboratory bridge."
+      }
+    },
+    {
+      "id": "lab_1791959831368",
+      "orderNumber": "LAB-2026-1097",
+      "patientId": "pat_1791959830545",
+      "patientName": "Test Subject Alpha (test_1791959830501)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "testCode": "CARD-TROP-I",
+      "testName": "High-Sensitivity Troponin I & CK-MB",
+      "category": "BLOOD",
+      "provider": "INTERNAL",
+      "priority": "STAT",
+      "status": "COMPLETED",
+      "orderDate": "2026-10-14T06:37:11.368Z",
+      "completionDate": "2026-10-14T06:37:11.442Z",
+      "isCritical": false,
+      "results": {
+        "summary": "Diagnostic test analysis completed.",
+        "parameters": [],
+        "technicianNotes": "Assayed on Beckman Coulter Access 2 via internal laboratory bridge."
+      }
+    },
     {
       "_id": "6acc7d4760a527a6ba6dd9fb",
       "id": "lab_1",
@@ -509,7 +792,7 @@
       "isCritical": false,
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.376Z",
-      "updatedAt": "2026-10-12T06:25:11.376Z"
+      "updatedAt": "2026-10-14T06:29:53.166Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dd9ff",
@@ -551,7 +834,7 @@
       "isCritical": true,
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.376Z",
-      "updatedAt": "2026-10-12T06:25:11.376Z"
+      "updatedAt": "2026-10-14T06:29:53.197Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dda02",
@@ -574,10 +857,80 @@
       "isCritical": false,
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.376Z",
-      "updatedAt": "2026-10-12T06:25:11.376Z"
+      "updatedAt": "2026-10-14T06:29:53.230Z"
+    },
+    {
+      "_id": "6acf215e6a3a2128064f61a1",
+      "id": "lab_1791959390329",
+      "__v": 0,
+      "category": "BLOOD",
+      "completionDate": "2026-10-14T06:29:50.370Z",
+      "createdAt": "2026-10-14T06:29:50.386Z",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "isCritical": false,
+      "orderDate": "2026-10-14T06:29:50.329Z",
+      "orderNumber": "LAB-2026-6197",
+      "patientId": "pat_1791959389518",
+      "patientName": "Test Subject Alpha (test_1791959389453)",
+      "priority": "STAT",
+      "provider": "INTERNAL",
+      "results": {
+        "summary": "Diagnostic test analysis completed.",
+        "parameters": [],
+        "technicianNotes": "Assayed on Beckman Coulter Access 2 via internal laboratory bridge."
+      },
+      "status": "COMPLETED",
+      "testCode": "CARD-TROP-I",
+      "testName": "High-Sensitivity Troponin I & CK-MB",
+      "updatedAt": "2026-10-14T06:29:52.460Z"
     }
   ],
   "prescriptions": [
+    {
+      "id": "rx_1791959947512",
+      "prescriptionNumber": "RX-2026-1572",
+      "patientId": "pat_1791959946126",
+      "patientName": "Test Subject Alpha (test_1791959946094)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "date": "2026-10-14",
+      "status": "DISPENSED",
+      "items": [
+        {
+          "medicationId": "med_atorvastatin",
+          "dosage": "80 mg PO",
+          "frequency": "Once daily at bedtime",
+          "duration": "30 days",
+          "timing": "Take after evening meal with water",
+          "warning": "Absolute contraindication with grapefruit; monitor liver enzymes",
+          "dispensed": true
+        }
+      ],
+      "notes": "Prescribed via Flyweight Medication Formulary with Decorator clinical warnings."
+    },
+    {
+      "id": "rx_1791959831693",
+      "prescriptionNumber": "RX-2026-3360",
+      "patientId": "pat_1791959830545",
+      "patientName": "Test Subject Alpha (test_1791959830501)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "date": "2026-10-14",
+      "status": "DISPENSED",
+      "items": [
+        {
+          "medicationId": "med_atorvastatin",
+          "dosage": "80 mg PO",
+          "frequency": "Once daily at bedtime",
+          "duration": "30 days",
+          "timing": "Take after evening meal with water",
+          "warning": "Absolute contraindication with grapefruit; monitor liver enzymes",
+          "dispensed": true
+        }
+      ],
+      "notes": "Prescribed via Flyweight Medication Formulary with Decorator clinical warnings."
+    },
     {
       "_id": "6acc7d4760a527a6ba6dda03",
       "id": "rx_1",
@@ -631,10 +984,165 @@
       "notes": "Prescription enriched with Dosage, Timing, and Warning decorators.",
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.374Z",
-      "updatedAt": "2026-10-12T06:25:11.374Z"
+      "updatedAt": "2026-10-14T06:29:53.292Z"
+    },
+    {
+      "_id": "6acf215f6a3a2128064f61a3",
+      "id": "rx_1791959390479",
+      "__v": 0,
+      "createdAt": "2026-10-14T06:29:51.177Z",
+      "date": "2026-10-14",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "items": [
+        {
+          "medicationId": "med_atorvastatin",
+          "dosage": "80 mg PO",
+          "frequency": "Once daily at bedtime",
+          "duration": "30 days",
+          "instructions": [],
+          "warnings": [],
+          "dispensed": true,
+          "_id": "6acf21613307d5d4f5e33b2e"
+        }
+      ],
+      "notes": "Prescribed via Flyweight Medication Formulary with Decorator clinical warnings.",
+      "patientId": "pat_1791959389518",
+      "patientName": "Test Subject Alpha (test_1791959389453)",
+      "prescriptionNumber": "RX-2026-4575",
+      "status": "DISPENSED",
+      "updatedAt": "2026-10-14T06:29:53.260Z"
     }
   ],
   "treatmentPlans": [
+    {
+      "id": "tp_1791959947370",
+      "patientId": "pat_1791959946126",
+      "patientName": "Test Subject Alpha (test_1791959946094)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "name": "Acute Coronary Syndrome Protocol - Post-Lab Titration",
+      "diagnosis": "STEMI Confirmed via Troponin I 4.8 ng/mL",
+      "medications": [
+        "Aspirin 325mg PO STAT",
+        "Ticagrelor 90mg BID",
+        "Atorvastatin 80mg QHS",
+        "Heparin IV continuous infusion"
+      ],
+      "instructions": [
+        "Continuous hemodynamic monitoring",
+        "Transfer to Cath Lab"
+      ],
+      "followUpSchedule": "Immediate coronary angiogram",
+      "status": "ACTIVE",
+      "versions": [
+        {
+          "version": 1,
+          "timestamp": "2026-10-14T06:39:07.370Z",
+          "note": "Initial plan created / cloned from Prototype template",
+          "snapshot": {
+            "name": "Acute Coronary Syndrome Initial Protocol",
+            "diagnosis": "STEMI / Unstable Angina",
+            "medications": [
+              "Aspirin 325mg PO STAT",
+              "Ticagrelor 90mg BID",
+              "Atorvastatin 80mg QHS"
+            ],
+            "instructions": [
+              "Bed rest with continuous 12-lead ECG telemetry",
+              "Low-flow O2 via nasal cannula"
+            ],
+            "followUpSchedule": "ICU cardiology rounds Q4H"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2026-10-14T06:39:07.441Z",
+          "note": "Updated clinical plan to Version 2",
+          "snapshot": {
+            "name": "Acute Coronary Syndrome Protocol - Post-Lab Titration",
+            "diagnosis": "STEMI Confirmed via Troponin I 4.8 ng/mL",
+            "medications": [
+              "Aspirin 325mg PO STAT",
+              "Ticagrelor 90mg BID",
+              "Atorvastatin 80mg QHS",
+              "Heparin IV continuous infusion"
+            ],
+            "instructions": [
+              "Continuous hemodynamic monitoring",
+              "Transfer to Cath Lab"
+            ],
+            "followUpSchedule": "Immediate coronary angiogram"
+          }
+        }
+      ],
+      "createdAt": "2026-10-14T06:39:07.370Z",
+      "updatedAt": "2026-10-14T06:39:07.441Z"
+    },
+    {
+      "id": "tp_1791959831548",
+      "patientId": "pat_1791959830545",
+      "patientName": "Test Subject Alpha (test_1791959830501)",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "name": "Acute Coronary Syndrome Protocol - Post-Lab Titration",
+      "diagnosis": "STEMI Confirmed via Troponin I 4.8 ng/mL",
+      "medications": [
+        "Aspirin 325mg PO STAT",
+        "Ticagrelor 90mg BID",
+        "Atorvastatin 80mg QHS",
+        "Heparin IV continuous infusion"
+      ],
+      "instructions": [
+        "Continuous hemodynamic monitoring",
+        "Transfer to Cath Lab"
+      ],
+      "followUpSchedule": "Immediate coronary angiogram",
+      "status": "ACTIVE",
+      "versions": [
+        {
+          "version": 1,
+          "timestamp": "2026-10-14T06:37:11.548Z",
+          "note": "Initial plan created / cloned from Prototype template",
+          "snapshot": {
+            "name": "Acute Coronary Syndrome Initial Protocol",
+            "diagnosis": "STEMI / Unstable Angina",
+            "medications": [
+              "Aspirin 325mg PO STAT",
+              "Ticagrelor 90mg BID",
+              "Atorvastatin 80mg QHS"
+            ],
+            "instructions": [
+              "Bed rest with continuous 12-lead ECG telemetry",
+              "Low-flow O2 via nasal cannula"
+            ],
+            "followUpSchedule": "ICU cardiology rounds Q4H"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2026-10-14T06:37:11.621Z",
+          "note": "Updated clinical plan to Version 2",
+          "snapshot": {
+            "name": "Acute Coronary Syndrome Protocol - Post-Lab Titration",
+            "diagnosis": "STEMI Confirmed via Troponin I 4.8 ng/mL",
+            "medications": [
+              "Aspirin 325mg PO STAT",
+              "Ticagrelor 90mg BID",
+              "Atorvastatin 80mg QHS",
+              "Heparin IV continuous infusion"
+            ],
+            "instructions": [
+              "Continuous hemodynamic monitoring",
+              "Transfer to Cath Lab"
+            ],
+            "followUpSchedule": "Immediate coronary angiogram"
+          }
+        }
+      ],
+      "createdAt": "2026-10-14T06:37:11.548Z",
+      "updatedAt": "2026-10-14T06:37:11.621Z"
+    },
     {
       "_id": "6acc7d4760a527a6ba6dda06",
       "id": "tp_1",
@@ -705,11 +1213,283 @@
         }
       ],
       "createdAt": "2026-08-28T10:30:00Z",
-      "updatedAt": "2026-08-29T11:00:00Z",
+      "updatedAt": "Wed Oct 14 2026 11:59:53 GMT+0530 (India Standard Time)",
       "__v": 0
+    },
+    {
+      "_id": "6acf215e6a3a2128064f61a2",
+      "id": "tp_1791959390408",
+      "__v": 0,
+      "createdAt": "Wed Oct 14 2026 11:59:50 GMT+0530 (India Standard Time)",
+      "diagnosis": "STEMI Confirmed via Troponin I 4.8 ng/mL",
+      "doctorId": "doc_vance",
+      "doctorName": "Dr. Robert Vance, MD",
+      "followUpSchedule": "Immediate coronary angiogram",
+      "instructions": [
+        "Continuous hemodynamic monitoring",
+        "Transfer to Cath Lab"
+      ],
+      "medications": [
+        "Aspirin 325mg PO STAT",
+        "Ticagrelor 90mg BID",
+        "Atorvastatin 80mg QHS",
+        "Heparin IV continuous infusion"
+      ],
+      "name": "Acute Coronary Syndrome Protocol - Post-Lab Titration",
+      "patientId": "pat_1791959389518",
+      "patientName": "Test Subject Alpha (test_1791959389453)",
+      "status": "ACTIVE",
+      "updatedAt": "Wed Oct 14 2026 11:59:53 GMT+0530 (India Standard Time)",
+      "versions": [
+        {
+          "version": 1,
+          "timestamp": "2026-10-14T06:29:50.408Z",
+          "note": "Initial plan created / cloned from Prototype template",
+          "snapshot": {
+            "name": "Acute Coronary Syndrome Initial Protocol",
+            "diagnosis": "STEMI / Unstable Angina",
+            "medications": [
+              "Aspirin 325mg PO STAT",
+              "Ticagrelor 90mg BID",
+              "Atorvastatin 80mg QHS"
+            ],
+            "instructions": [
+              "Bed rest with continuous 12-lead ECG telemetry",
+              "Low-flow O2 via nasal cannula"
+            ],
+            "followUpSchedule": "ICU cardiology rounds Q4H"
+          },
+          "_id": "6acf21613307d5d4f5e33b62"
+        },
+        {
+          "version": 2,
+          "timestamp": "2026-10-14T06:29:50.444Z",
+          "note": "Updated clinical plan to Version 2",
+          "snapshot": {
+            "name": "Acute Coronary Syndrome Protocol - Post-Lab Titration",
+            "diagnosis": "STEMI Confirmed via Troponin I 4.8 ng/mL",
+            "medications": [
+              "Aspirin 325mg PO STAT",
+              "Ticagrelor 90mg BID",
+              "Atorvastatin 80mg QHS",
+              "Heparin IV continuous infusion"
+            ],
+            "instructions": [
+              "Continuous hemodynamic monitoring",
+              "Transfer to Cath Lab"
+            ],
+            "followUpSchedule": "Immediate coronary angiogram"
+          },
+          "_id": "6acf21613307d5d4f5e33b63"
+        }
+      ]
     }
   ],
   "bills": [
+    {
+      "id": "bill_1791959947696",
+      "invoiceNumber": "INV-2026-7175",
+      "patientId": "pat_1791959946126",
+      "patientName": "Test Subject Alpha (test_1791959946094)",
+      "date": "2026-10-14",
+      "status": "PAID",
+      "groups": [
+        {
+          "name": "Critical Care Cardiology Consultations",
+          "items": [
+            {
+              "name": "Initial Emergency Triage Assessment",
+              "category": "Consultation",
+              "amount": 350,
+              "quantity": 1
+            },
+            {
+              "name": "Specialist Cardiology Direct Bedside Consult",
+              "category": "Consultation",
+              "amount": 650,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "STAT Diagnostic Pathology & Biomarkers",
+          "items": [
+            {
+              "name": "High-Sensitivity Troponin I & CK-MB Panel",
+              "category": "Laboratory",
+              "amount": 240,
+              "quantity": 1
+            },
+            {
+              "name": "Continuous 12-Lead Electrocardiography (ECG)",
+              "category": "Diagnostics",
+              "amount": 180,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Inpatient Pharmaceuticals",
+          "items": [
+            {
+              "name": "Atorvastatin 80mg High-Intensity Statin Pack",
+              "category": "Pharmacy",
+              "amount": 85,
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "subtotal": 0,
+      "tax": 0,
+      "discount": 0,
+      "total": 0,
+      "payments": [
+        {
+          "id": "pay_1791959947842",
+          "amount": 250,
+          "date": "2026-10-14T06:39:07.842Z",
+          "method": "CARD",
+          "transactionRef": "TX-CARD-473775"
+        }
+      ],
+      "insuranceClaim": {
+        "claimId": "CLM-2026-2637",
+        "provider": "Standard Health Insurance",
+        "policyNumber": "BC-ACS-992144-H9",
+        "claimAmount": 0,
+        "approvedAmount": 0,
+        "status": "APPROVED",
+        "stages": [
+          {
+            "stage": "Policy Validator",
+            "passed": true,
+            "message": "Policy BC-ACS-992144-H9 verified active with undefined.",
+            "timestamp": "2026-10-14T06:39:07.767Z"
+          },
+          {
+            "stage": "Coverage Validator",
+            "passed": true,
+            "message": "Hospital service categories eligible for comprehensive coverage.",
+            "timestamp": "2026-10-14T06:39:07.767Z"
+          },
+          {
+            "stage": "Amount Validator",
+            "passed": true,
+            "message": "Claim amount ($0.00) is within max per-incident threshold.",
+            "timestamp": "2026-10-14T06:39:07.767Z"
+          },
+          {
+            "stage": "Document Validator",
+            "passed": true,
+            "message": "Composite itemized invoice breakdown and medical orders verified.",
+            "timestamp": "2026-10-14T06:39:07.767Z"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bill_1791959831889",
+      "invoiceNumber": "INV-2026-1159",
+      "patientId": "pat_1791959830545",
+      "patientName": "Test Subject Alpha (test_1791959830501)",
+      "date": "2026-10-14",
+      "status": "PAID",
+      "groups": [
+        {
+          "name": "Critical Care Cardiology Consultations",
+          "items": [
+            {
+              "name": "Initial Emergency Triage Assessment",
+              "category": "Consultation",
+              "amount": 350,
+              "quantity": 1
+            },
+            {
+              "name": "Specialist Cardiology Direct Bedside Consult",
+              "category": "Consultation",
+              "amount": 650,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "STAT Diagnostic Pathology & Biomarkers",
+          "items": [
+            {
+              "name": "High-Sensitivity Troponin I & CK-MB Panel",
+              "category": "Laboratory",
+              "amount": 240,
+              "quantity": 1
+            },
+            {
+              "name": "Continuous 12-Lead Electrocardiography (ECG)",
+              "category": "Diagnostics",
+              "amount": 180,
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Inpatient Pharmaceuticals",
+          "items": [
+            {
+              "name": "Atorvastatin 80mg High-Intensity Statin Pack",
+              "category": "Pharmacy",
+              "amount": 85,
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "subtotal": 0,
+      "tax": 0,
+      "discount": 0,
+      "total": 0,
+      "payments": [
+        {
+          "id": "pay_1791959832045",
+          "amount": 250,
+          "date": "2026-10-14T06:37:12.045Z",
+          "method": "CARD",
+          "transactionRef": "TX-CARD-298193"
+        }
+      ],
+      "insuranceClaim": {
+        "claimId": "CLM-2026-5613",
+        "provider": "Standard Health Insurance",
+        "policyNumber": "BC-ACS-992144-H9",
+        "claimAmount": 0,
+        "approvedAmount": 0,
+        "status": "APPROVED",
+        "stages": [
+          {
+            "stage": "Policy Validator",
+            "passed": true,
+            "message": "Policy BC-ACS-992144-H9 verified active with undefined.",
+            "timestamp": "2026-10-14T06:37:11.974Z"
+          },
+          {
+            "stage": "Coverage Validator",
+            "passed": true,
+            "message": "Hospital service categories eligible for comprehensive coverage.",
+            "timestamp": "2026-10-14T06:37:11.974Z"
+          },
+          {
+            "stage": "Amount Validator",
+            "passed": true,
+            "message": "Claim amount ($0.00) is within max per-incident threshold.",
+            "timestamp": "2026-10-14T06:37:11.974Z"
+          },
+          {
+            "stage": "Document Validator",
+            "passed": true,
+            "message": "Composite itemized invoice breakdown and medical orders verified.",
+            "timestamp": "2026-10-14T06:37:11.974Z"
+          }
+        ]
+      }
+    },
     {
       "_id": "6acc7d4760a527a6ba6dda09",
       "id": "bill_1",
@@ -879,10 +1659,163 @@
       ],
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.376Z",
-      "updatedAt": "2026-10-12T06:25:11.376Z"
+      "updatedAt": "2026-10-14T06:29:53.415Z"
+    },
+    {
+      "_id": "6acf215f6a3a2128064f61a4",
+      "id": "bill_1791959391162",
+      "__v": 0,
+      "createdAt": "2026-10-14T06:29:51.528Z",
+      "date": "2026-10-14",
+      "discount": 0,
+      "groups": [
+        {
+          "name": "Critical Care Cardiology Consultations",
+          "items": [
+            {
+              "name": "Initial Emergency Triage Assessment",
+              "category": "Consultation",
+              "amount": 350,
+              "quantity": 1,
+              "_id": "6acf21613307d5d4f5e33b8a"
+            },
+            {
+              "name": "Specialist Cardiology Direct Bedside Consult",
+              "category": "Consultation",
+              "amount": 650,
+              "quantity": 1,
+              "_id": "6acf21613307d5d4f5e33b8b"
+            }
+          ],
+          "_id": "6acf21613307d5d4f5e33b89"
+        },
+        {
+          "name": "STAT Diagnostic Pathology & Biomarkers",
+          "items": [
+            {
+              "name": "High-Sensitivity Troponin I & CK-MB Panel",
+              "category": "Laboratory",
+              "amount": 240,
+              "quantity": 1,
+              "_id": "6acf21613307d5d4f5e33b8d"
+            },
+            {
+              "name": "Continuous 12-Lead Electrocardiography (ECG)",
+              "category": "Diagnostics",
+              "amount": 180,
+              "quantity": 1,
+              "_id": "6acf21613307d5d4f5e33b8e"
+            }
+          ],
+          "_id": "6acf21613307d5d4f5e33b8c"
+        },
+        {
+          "name": "Inpatient Pharmaceuticals",
+          "items": [
+            {
+              "name": "Atorvastatin 80mg High-Intensity Statin Pack",
+              "category": "Pharmacy",
+              "amount": 85,
+              "quantity": 1,
+              "_id": "6acf21613307d5d4f5e33b90"
+            }
+          ],
+          "_id": "6acf21613307d5d4f5e33b8f"
+        }
+      ],
+      "insuranceClaim": {
+        "claimId": "CLM-2026-6951",
+        "provider": "Standard Health Insurance",
+        "policyNumber": "BC-ACS-992144-H9",
+        "claimAmount": 0,
+        "approvedAmount": 0,
+        "status": "APPROVED",
+        "stages": [
+          {
+            "stage": "Policy Validator",
+            "passed": true,
+            "message": "Policy BC-ACS-992144-H9 verified active with undefined.",
+            "timestamp": "2026-10-14T06:29:51.254Z",
+            "_id": "6acf21613307d5d4f5e33b84"
+          },
+          {
+            "stage": "Coverage Validator",
+            "passed": true,
+            "message": "Hospital service categories eligible for comprehensive coverage.",
+            "timestamp": "2026-10-14T06:29:51.254Z",
+            "_id": "6acf21613307d5d4f5e33b85"
+          },
+          {
+            "stage": "Amount Validator",
+            "passed": true,
+            "message": "Claim amount ($0.00) is within max per-incident threshold.",
+            "timestamp": "2026-10-14T06:29:51.254Z",
+            "_id": "6acf21613307d5d4f5e33b86"
+          },
+          {
+            "stage": "Document Validator",
+            "passed": true,
+            "message": "Composite itemized invoice breakdown and medical orders verified.",
+            "timestamp": "2026-10-14T06:29:51.254Z",
+            "_id": "6acf21613307d5d4f5e33b87"
+          }
+        ]
+      },
+      "invoiceNumber": "INV-2026-7648",
+      "patientId": "pat_1791959389518",
+      "patientName": "Test Subject Alpha (test_1791959389453)",
+      "payments": [
+        {
+          "id": "pay_1791959391347",
+          "amount": 250,
+          "date": "2026-10-14T06:29:51.347Z",
+          "method": "CARD",
+          "transactionRef": "TX-CARD-242500",
+          "_id": "6acf21613307d5d4f5e33b88"
+        }
+      ],
+      "status": "PAID",
+      "subtotal": 0,
+      "tax": 0,
+      "total": 0,
+      "updatedAt": "2026-10-14T06:29:53.383Z"
     }
   ],
   "vitalsRecords": [
+    {
+      "id": "vit_1791959946830",
+      "patientId": "pat_1791959946126",
+      "patientName": "Test Subject Alpha (test_1791959946094)",
+      "recordedBy": "Elena Rostova, RN",
+      "timestamp": "2026-10-14T06:39:06.830Z",
+      "temperature": 38.9,
+      "heartRate": 115,
+      "bloodPressureSys": 165,
+      "bloodPressureDia": 102,
+      "respiratoryRate": 24,
+      "oxygenSaturation": 89,
+      "alertsGenerated": [
+        "CRITICAL: Critical Hypoxia Alert (oxygenSaturation=89 < 92)",
+        "HIGH: Tachycardia Warning (heartRate=115 > 100)"
+      ]
+    },
+    {
+      "id": "vit_1791959831194",
+      "patientId": "pat_1791959830545",
+      "patientName": "Test Subject Alpha (test_1791959830501)",
+      "recordedBy": "Elena Rostova, RN",
+      "timestamp": "2026-10-14T06:37:11.194Z",
+      "temperature": 38.9,
+      "heartRate": 115,
+      "bloodPressureSys": 165,
+      "bloodPressureDia": 102,
+      "respiratoryRate": 24,
+      "oxygenSaturation": 89,
+      "alertsGenerated": [
+        "CRITICAL: Critical Hypoxia Alert (oxygenSaturation=89 < 92)",
+        "HIGH: Tachycardia Warning (heartRate=115 > 100)"
+      ]
+    },
     {
       "_id": "6acc7d4760a527a6ba6dda1d",
       "id": "vit_1",
@@ -899,7 +1832,7 @@
       "alertsGenerated": [],
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.374Z",
-      "updatedAt": "2026-10-12T06:25:11.374Z"
+      "updatedAt": "2026-10-14T06:29:53.484Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dda1e",
@@ -921,7 +1854,28 @@
       ],
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.374Z",
-      "updatedAt": "2026-10-12T06:25:11.374Z"
+      "updatedAt": "2026-10-14T06:29:53.516Z"
+    },
+    {
+      "_id": "6acf215e6a3a2128064f619f",
+      "id": "vit_1791959390163",
+      "__v": 0,
+      "alertsGenerated": [
+        "CRITICAL: Critical Hypoxia Alert (oxygenSaturation=89 < 92)",
+        "HIGH: Tachycardia Warning (heartRate=115 > 100)"
+      ],
+      "bloodPressureDia": 102,
+      "bloodPressureSys": 165,
+      "createdAt": "2026-10-14T06:29:50.170Z",
+      "heartRate": 115,
+      "oxygenSaturation": 89,
+      "patientId": "pat_1791959389518",
+      "patientName": "Test Subject Alpha (test_1791959389453)",
+      "recordedBy": "Elena Rostova, RN",
+      "respiratoryRate": 24,
+      "temperature": 38.9,
+      "timestamp": "2026-10-14T06:29:50.163Z",
+      "updatedAt": "2026-10-14T06:29:53.453Z"
     }
   ],
   "clinicalRules": [
@@ -988,6 +1942,32 @@
   ],
   "careEvents": [
     {
+      "id": "care_1791959946830",
+      "patientId": "pat_1791959946126",
+      "patientName": "Test Subject Alpha (test_1791959946094)",
+      "senderRole": "Nurse",
+      "senderName": "Elena Rostova, RN",
+      "targetDepartment": "Cardiology & Internal Medicine",
+      "eventType": "PATIENT_MONITORING_REQUIRED",
+      "urgency": "EMERGENCY",
+      "message": "Abnormal vitals detected: CRITICAL: Critical Hypoxia Alert (oxygenSaturation=89 < 92) | HIGH: Tachycardia Warning (heartRate=115 > 100)",
+      "status": "OPEN",
+      "timestamp": "2026-10-14T06:39:06.830Z"
+    },
+    {
+      "id": "care_1791959831194",
+      "patientId": "pat_1791959830545",
+      "patientName": "Test Subject Alpha (test_1791959830501)",
+      "senderRole": "Nurse",
+      "senderName": "Elena Rostova, RN",
+      "targetDepartment": "Cardiology & Internal Medicine",
+      "eventType": "PATIENT_MONITORING_REQUIRED",
+      "urgency": "EMERGENCY",
+      "message": "Abnormal vitals detected: CRITICAL: Critical Hypoxia Alert (oxygenSaturation=89 < 92) | HIGH: Tachycardia Warning (heartRate=115 > 100)",
+      "status": "OPEN",
+      "timestamp": "2026-10-14T06:37:11.194Z"
+    },
+    {
       "_id": "6acc7d4760a527a6ba6dda23",
       "id": "care_1",
       "patientId": "pat_2",
@@ -1002,7 +1982,7 @@
       "timestamp": "2026-08-31T22:32:00Z",
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.375Z",
-      "updatedAt": "2026-10-12T06:25:11.375Z"
+      "updatedAt": "2026-10-14T06:29:53.578Z"
     },
     {
       "_id": "6acc7d4760a527a6ba6dda24",
@@ -1019,10 +1999,537 @@
       "timestamp": "2026-08-31T22:45:00Z",
       "__v": 0,
       "createdAt": "2026-10-12T06:25:11.375Z",
-      "updatedAt": "2026-10-12T06:25:11.375Z"
+      "updatedAt": "2026-10-14T06:29:53.610Z"
+    },
+    {
+      "_id": "6acf215e6a3a2128064f61a0",
+      "id": "care_1791959390163",
+      "__v": 0,
+      "createdAt": "2026-10-14T06:29:50.302Z",
+      "eventType": "PATIENT_MONITORING_REQUIRED",
+      "message": "Abnormal vitals detected: CRITICAL: Critical Hypoxia Alert (oxygenSaturation=89 < 92) | HIGH: Tachycardia Warning (heartRate=115 > 100)",
+      "patientId": "pat_1791959389518",
+      "patientName": "Test Subject Alpha (test_1791959389453)",
+      "senderName": "Elena Rostova, RN",
+      "senderRole": "Nurse",
+      "status": "OPEN",
+      "targetDepartment": "Cardiology & Internal Medicine",
+      "timestamp": "2026-10-14T06:29:50.163Z",
+      "updatedAt": "2026-10-14T06:29:53.547Z",
+      "urgency": "EMERGENCY"
     }
   ],
   "auditLogs": [
+    {
+      "id": "aud_1791959948016_9ag9",
+      "timestamp": "2026-10-14T06:39:08.016Z",
+      "actor": "Marcus Holloway",
+      "role": "billing",
+      "action": "AI_CLAIM_AUDIT",
+      "module": "Financial AI Intelligence",
+      "details": "Pre-submission AI Denial Risk audit (12% [LOW]) for Invoice #INV-2026-7175",
+      "patternUsed": "Predictive AI / Rules"
+    },
+    {
+      "id": "aud_1791959947947_frhb",
+      "timestamp": "2026-10-14T06:39:07.947Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "AI_CLINICAL_ANALYSIS",
+      "module": "Clinical AI Intelligence",
+      "details": "Computed AI Acuity Risk (80/100 [CRITICAL]) for Test Subject Alpha (test_1791959946094)",
+      "patternUsed": "Expert System / AI"
+    },
+    {
+      "id": "aud_1791959947876_q8hh",
+      "timestamp": "2026-10-14T06:39:07.876Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "RECORD_PAYMENT",
+      "module": "Billing",
+      "details": "Recorded payment of $250.00 for INV-2026-7175",
+      "patternUsed": "Composite"
+    },
+    {
+      "id": "aud_1791959947803_6edb",
+      "timestamp": "2026-10-14T06:39:07.803Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "PROCESS_INSURANCE_CLAIM",
+      "module": "Insurance",
+      "details": "Claim CLM-2026-2637 evaluated via Chain of Responsibility (APPROVED)",
+      "patternUsed": "Chain of Responsibility"
+    },
+    {
+      "id": "aud_1791959947731_rwgr",
+      "timestamp": "2026-10-14T06:39:07.731Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "GENERATE_COMPOSITE_BILL",
+      "module": "Billing",
+      "details": "Generated composite invoice INV-2026-7175 for $0.00",
+      "patternUsed": "Composite"
+    },
+    {
+      "id": "aud_1791959947660_ap5g",
+      "timestamp": "2026-10-14T06:39:07.660Z",
+      "actor": "Priya Sharma, PharmD",
+      "role": "pharmacist",
+      "action": "DISPENSE_PRESCRIPTION",
+      "module": "Pharmacy",
+      "details": "Dispensed prescription RX-2026-1572",
+      "patternUsed": "Decorator"
+    },
+    {
+      "id": "aud_1791959947588_ndyb",
+      "timestamp": "2026-10-14T06:39:07.588Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_PRESCRIPTION",
+      "module": "Pharmacy",
+      "details": "Prescribed 1 items for Test Subject Alpha (test_1791959946094)",
+      "patternUsed": "Flyweight + Decorator"
+    },
+    {
+      "id": "aud_1791959947474_8lln",
+      "timestamp": "2026-10-14T06:39:07.474Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "SAVE_PLAN_SNAPSHOT",
+      "module": "Treatment Plans",
+      "details": "Saved Memento snapshot v2 for plan Acute Coronary Syndrome Protocol - Post-Lab Titration",
+      "patternUsed": "Memento"
+    },
+    {
+      "id": "aud_1791959947404_fqni",
+      "timestamp": "2026-10-14T06:39:07.404Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_TREATMENT_PLAN",
+      "module": "Treatment Plans",
+      "details": "Created treatment plan Acute Coronary Syndrome Initial Protocol for Test Subject Alpha (test_1791959946094)",
+      "patternUsed": "Prototype + Memento"
+    },
+    {
+      "id": "aud_1791959947332_9b8z",
+      "timestamp": "2026-10-14T06:39:07.332Z",
+      "actor": "Lab Tech",
+      "role": "lab_tech",
+      "action": "COMPLETE_LAB_RESULT",
+      "module": "Diagnostics",
+      "details": "Completed test High-Sensitivity Troponin I & CK-MB (Critical: false)",
+      "patternUsed": "Adapter + Observer"
+    },
+    {
+      "id": "aud_1791959947008_7ruu",
+      "timestamp": "2026-10-14T06:39:07.008Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_LAB_ORDER",
+      "module": "Diagnostics",
+      "details": "Ordered High-Sensitivity Troponin I & CK-MB via INTERNAL provider",
+      "patternUsed": "Abstract Factory + Bridge"
+    },
+    {
+      "id": "aud_1791959946895_5ixp",
+      "timestamp": "2026-10-14T06:39:06.895Z",
+      "actor": "Elena Rostova, RN",
+      "role": "nurse",
+      "action": "RECORD_VITALS",
+      "module": "Clinical Rules",
+      "details": "Evaluated vitals for Test Subject Alpha (test_1791959946094); generated 2 alerts",
+      "patternUsed": "Interpreter + Observer"
+    },
+    {
+      "id": "aud_1791959946751_gmrj",
+      "timestamp": "2026-10-14T06:39:06.751Z",
+      "actor": "Sarah Jenkins",
+      "role": "doctor",
+      "action": "UPDATE_APPOINTMENT_STATE",
+      "module": "Appointments",
+      "details": "Changed appointment status SCHEDULED -> CHECKED_IN",
+      "patternUsed": "State"
+    },
+    {
+      "id": "aud_1791959946547_ms63",
+      "timestamp": "2026-10-14T06:39:06.547Z",
+      "actor": "Receptionist",
+      "role": "receptionist",
+      "action": "BOOK_APPOINTMENT",
+      "module": "Appointments",
+      "details": "Booked appointment for Test Subject Alpha (test_1791959946094) with Dr. Robert Vance, MD",
+      "patternUsed": "Command + Strategy"
+    },
+    {
+      "id": "aud_1791959946160_qr1j",
+      "timestamp": "2026-10-14T06:39:06.161Z",
+      "actor": "Sarah Jenkins (Reception Desk)",
+      "role": "receptionist",
+      "action": "REGISTER_PATIENT",
+      "module": "Patient Management",
+      "details": "Registered Test Subject Alpha (test_1791959946094) [EMERGENCY]",
+      "patternUsed": "Factory Method"
+    },
+    {
+      "id": "aud_1791959832232_vvju",
+      "timestamp": "2026-10-14T06:37:12.232Z",
+      "actor": "Marcus Holloway",
+      "role": "billing",
+      "action": "AI_CLAIM_AUDIT",
+      "module": "Financial AI Intelligence",
+      "details": "Pre-submission AI Denial Risk audit (12% [LOW]) for Invoice #INV-2026-1159",
+      "patternUsed": "Predictive AI / Rules"
+    },
+    {
+      "id": "aud_1791959832164_hr8x",
+      "timestamp": "2026-10-14T06:37:12.164Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "AI_CLINICAL_ANALYSIS",
+      "module": "Clinical AI Intelligence",
+      "details": "Computed AI Acuity Risk (80/100 [CRITICAL]) for Test Subject Alpha (test_1791959830501)",
+      "patternUsed": "Expert System / AI"
+    },
+    {
+      "id": "aud_1791959832082_jorj",
+      "timestamp": "2026-10-14T06:37:12.082Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "RECORD_PAYMENT",
+      "module": "Billing",
+      "details": "Recorded payment of $250.00 for INV-2026-1159",
+      "patternUsed": "Composite"
+    },
+    {
+      "id": "aud_1791959832012_rgus",
+      "timestamp": "2026-10-14T06:37:12.012Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "PROCESS_INSURANCE_CLAIM",
+      "module": "Insurance",
+      "details": "Claim CLM-2026-5613 evaluated via Chain of Responsibility (APPROVED)",
+      "patternUsed": "Chain of Responsibility"
+    },
+    {
+      "id": "aud_1791959831927_zhtj",
+      "timestamp": "2026-10-14T06:37:11.927Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "GENERATE_COMPOSITE_BILL",
+      "module": "Billing",
+      "details": "Generated composite invoice INV-2026-1159 for $0.00",
+      "patternUsed": "Composite"
+    },
+    {
+      "id": "aud_1791959831854_o6y9",
+      "timestamp": "2026-10-14T06:37:11.854Z",
+      "actor": "Priya Sharma, PharmD",
+      "role": "pharmacist",
+      "action": "DISPENSE_PRESCRIPTION",
+      "module": "Pharmacy",
+      "details": "Dispensed prescription RX-2026-3360",
+      "patternUsed": "Decorator"
+    },
+    {
+      "id": "aud_1791959831770_b2kr",
+      "timestamp": "2026-10-14T06:37:11.770Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_PRESCRIPTION",
+      "module": "Pharmacy",
+      "details": "Prescribed 1 items for Test Subject Alpha (test_1791959830501)",
+      "patternUsed": "Flyweight + Decorator"
+    },
+    {
+      "id": "aud_1791959831658_80e3",
+      "timestamp": "2026-10-14T06:37:11.658Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "SAVE_PLAN_SNAPSHOT",
+      "module": "Treatment Plans",
+      "details": "Saved Memento snapshot v2 for plan Acute Coronary Syndrome Protocol - Post-Lab Titration",
+      "patternUsed": "Memento"
+    },
+    {
+      "id": "aud_1791959831585_smle",
+      "timestamp": "2026-10-14T06:37:11.585Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_TREATMENT_PLAN",
+      "module": "Treatment Plans",
+      "details": "Created treatment plan Acute Coronary Syndrome Initial Protocol for Test Subject Alpha (test_1791959830501)",
+      "patternUsed": "Prototype + Memento"
+    },
+    {
+      "id": "aud_1791959831513_catm",
+      "timestamp": "2026-10-14T06:37:11.513Z",
+      "actor": "Lab Tech",
+      "role": "lab_tech",
+      "action": "COMPLETE_LAB_RESULT",
+      "module": "Diagnostics",
+      "details": "Completed test High-Sensitivity Troponin I & CK-MB (Critical: false)",
+      "patternUsed": "Adapter + Observer"
+    },
+    {
+      "id": "aud_1791959831404_21bp",
+      "timestamp": "2026-10-14T06:37:11.404Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_LAB_ORDER",
+      "module": "Diagnostics",
+      "details": "Ordered High-Sensitivity Troponin I & CK-MB via INTERNAL provider",
+      "patternUsed": "Abstract Factory + Bridge"
+    },
+    {
+      "id": "aud_1791959831266_2tnw",
+      "timestamp": "2026-10-14T06:37:11.266Z",
+      "actor": "Elena Rostova, RN",
+      "role": "nurse",
+      "action": "RECORD_VITALS",
+      "module": "Clinical Rules",
+      "details": "Evaluated vitals for Test Subject Alpha (test_1791959830501); generated 2 alerts",
+      "patternUsed": "Interpreter + Observer"
+    },
+    {
+      "id": "aud_1791959831100_ysq5",
+      "timestamp": "2026-10-14T06:37:11.100Z",
+      "actor": "Sarah Jenkins",
+      "role": "doctor",
+      "action": "UPDATE_APPOINTMENT_STATE",
+      "module": "Appointments",
+      "details": "Changed appointment status SCHEDULED -> CHECKED_IN",
+      "patternUsed": "State"
+    },
+    {
+      "id": "aud_1791959830931_147v",
+      "timestamp": "2026-10-14T06:37:10.931Z",
+      "actor": "Receptionist",
+      "role": "receptionist",
+      "action": "BOOK_APPOINTMENT",
+      "module": "Appointments",
+      "details": "Booked appointment for Test Subject Alpha (test_1791959830501) with Dr. Robert Vance, MD",
+      "patternUsed": "Command + Strategy"
+    },
+    {
+      "id": "aud_1791959830594_op53",
+      "timestamp": "2026-10-14T06:37:10.594Z",
+      "actor": "Sarah Jenkins (Reception Desk)",
+      "role": "receptionist",
+      "action": "REGISTER_PATIENT",
+      "module": "Patient Management",
+      "details": "Registered Test Subject Alpha (test_1791959830501) [EMERGENCY]",
+      "patternUsed": "Factory Method"
+    },
+    {
+      "_id": "6acf215f3307d5d4f5e3392b",
+      "id": "aud_1791959391596_bhd6",
+      "timestamp": "2026-10-14T06:29:51.596Z",
+      "actor": "Marcus Holloway",
+      "role": "billing",
+      "action": "AI_CLAIM_AUDIT",
+      "module": "Financial AI Intelligence",
+      "details": "Pre-submission AI Denial Risk audit (12% [LOW]) for Invoice #INV-2026-7648",
+      "patternUsed": "Predictive AI / Rules",
+      "createdAt": "2026-10-14T06:29:51.597Z",
+      "updatedAt": "2026-10-14T06:29:51.597Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215f3307d5d4f5e338de",
+      "id": "aud_1791959391518_z905",
+      "timestamp": "2026-10-14T06:29:51.518Z",
+      "actor": "Dr. Robert Vance, MD",
+      "role": "doctor",
+      "action": "AI_CLINICAL_ANALYSIS",
+      "module": "Clinical AI Intelligence",
+      "details": "Computed AI Acuity Risk (80/100 [CRITICAL]) for Test Subject Alpha (test_1791959389453)",
+      "patternUsed": "Expert System / AI",
+      "createdAt": "2026-10-14T06:29:51.521Z",
+      "updatedAt": "2026-10-14T06:29:51.521Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215f3307d5d4f5e33882",
+      "id": "aud_1791959391348_qzv4",
+      "timestamp": "2026-10-14T06:29:51.348Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "RECORD_PAYMENT",
+      "module": "Billing",
+      "details": "Recorded payment of $250.00 for INV-2026-7648",
+      "patternUsed": "Composite",
+      "createdAt": "2026-10-14T06:29:51.350Z",
+      "updatedAt": "2026-10-14T06:29:51.350Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215f3307d5d4f5e3385d",
+      "id": "aud_1791959391255_fx0c",
+      "timestamp": "2026-10-14T06:29:51.255Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "PROCESS_INSURANCE_CLAIM",
+      "module": "Insurance",
+      "details": "Claim CLM-2026-6951 evaluated via Chain of Responsibility (APPROVED)",
+      "patternUsed": "Chain of Responsibility",
+      "createdAt": "2026-10-14T06:29:51.257Z",
+      "updatedAt": "2026-10-14T06:29:51.257Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215f3307d5d4f5e3382c",
+      "id": "aud_1791959391163_bfgd",
+      "timestamp": "2026-10-14T06:29:51.163Z",
+      "actor": "Billing Officer",
+      "role": "billing_officer",
+      "action": "GENERATE_COMPOSITE_BILL",
+      "module": "Billing",
+      "details": "Generated composite invoice INV-2026-7648 for $0.00",
+      "patternUsed": "Composite",
+      "createdAt": "2026-10-14T06:29:51.165Z",
+      "updatedAt": "2026-10-14T06:29:51.165Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e33802",
+      "id": "aud_1791959390516_71a9",
+      "timestamp": "2026-10-14T06:29:50.516Z",
+      "actor": "Priya Sharma, PharmD",
+      "role": "pharmacist",
+      "action": "DISPENSE_PRESCRIPTION",
+      "module": "Pharmacy",
+      "details": "Dispensed prescription RX-2026-4575",
+      "patternUsed": "Decorator",
+      "createdAt": "2026-10-14T06:29:50.518Z",
+      "updatedAt": "2026-10-14T06:29:50.518Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e337e4",
+      "id": "aud_1791959390480_rlbk",
+      "timestamp": "2026-10-14T06:29:50.480Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_PRESCRIPTION",
+      "module": "Pharmacy",
+      "details": "Prescribed 1 items for Test Subject Alpha (test_1791959389453)",
+      "patternUsed": "Flyweight + Decorator",
+      "createdAt": "2026-10-14T06:29:50.482Z",
+      "updatedAt": "2026-10-14T06:29:50.482Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e337c9",
+      "id": "aud_1791959390445_irie",
+      "timestamp": "2026-10-14T06:29:50.445Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "SAVE_PLAN_SNAPSHOT",
+      "module": "Treatment Plans",
+      "details": "Saved Memento snapshot v2 for plan Acute Coronary Syndrome Protocol - Post-Lab Titration",
+      "patternUsed": "Memento",
+      "createdAt": "2026-10-14T06:29:50.447Z",
+      "updatedAt": "2026-10-14T06:29:50.447Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e337ac",
+      "id": "aud_1791959390409_i6zf",
+      "timestamp": "2026-10-14T06:29:50.409Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_TREATMENT_PLAN",
+      "module": "Treatment Plans",
+      "details": "Created treatment plan Acute Coronary Syndrome Initial Protocol for Test Subject Alpha (test_1791959389453)",
+      "patternUsed": "Prototype + Memento",
+      "createdAt": "2026-10-14T06:29:50.411Z",
+      "updatedAt": "2026-10-14T06:29:50.411Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e33793",
+      "id": "aud_1791959390371_dgmj",
+      "timestamp": "2026-10-14T06:29:50.371Z",
+      "actor": "Lab Tech",
+      "role": "lab_tech",
+      "action": "COMPLETE_LAB_RESULT",
+      "module": "Diagnostics",
+      "details": "Completed test High-Sensitivity Troponin I & CK-MB (Critical: false)",
+      "patternUsed": "Adapter + Observer",
+      "createdAt": "2026-10-14T06:29:50.373Z",
+      "updatedAt": "2026-10-14T06:29:50.373Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e3377d",
+      "id": "aud_1791959390330_xndw",
+      "timestamp": "2026-10-14T06:29:50.330Z",
+      "actor": "Doctor",
+      "role": "doctor",
+      "action": "CREATE_LAB_ORDER",
+      "module": "Diagnostics",
+      "details": "Ordered High-Sensitivity Troponin I & CK-MB via INTERNAL provider",
+      "patternUsed": "Abstract Factory + Bridge",
+      "createdAt": "2026-10-14T06:29:50.332Z",
+      "updatedAt": "2026-10-14T06:29:50.332Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e3374b",
+      "id": "aud_1791959390164_wlxo",
+      "timestamp": "2026-10-14T06:29:50.164Z",
+      "actor": "Elena Rostova, RN",
+      "role": "nurse",
+      "action": "RECORD_VITALS",
+      "module": "Clinical Rules",
+      "details": "Evaluated vitals for Test Subject Alpha (test_1791959389453); generated 2 alerts",
+      "patternUsed": "Interpreter + Observer",
+      "createdAt": "2026-10-14T06:29:50.166Z",
+      "updatedAt": "2026-10-14T06:29:50.166Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215e3307d5d4f5e33713",
+      "id": "aud_1791959390009_qa2g",
+      "timestamp": "2026-10-14T06:29:50.009Z",
+      "actor": "Sarah Jenkins",
+      "role": "doctor",
+      "action": "UPDATE_APPOINTMENT_STATE",
+      "module": "Appointments",
+      "details": "Changed appointment status SCHEDULED -> CHECKED_IN",
+      "patternUsed": "State",
+      "createdAt": "2026-10-14T06:29:50.011Z",
+      "updatedAt": "2026-10-14T06:29:50.011Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215d3307d5d4f5e336f2",
+      "id": "aud_1791959389842_kpdl",
+      "timestamp": "2026-10-14T06:29:49.842Z",
+      "actor": "Receptionist",
+      "role": "receptionist",
+      "action": "BOOK_APPOINTMENT",
+      "module": "Appointments",
+      "details": "Booked appointment for Test Subject Alpha (test_1791959389453) with Dr. Robert Vance, MD",
+      "patternUsed": "Command + Strategy",
+      "createdAt": "2026-10-14T06:29:49.844Z",
+      "updatedAt": "2026-10-14T06:29:49.844Z",
+      "__v": 0
+    },
+    {
+      "_id": "6acf215d3307d5d4f5e336d3",
+      "id": "aud_1791959389520_9qo6",
+      "timestamp": "2026-10-14T06:29:49.520Z",
+      "actor": "Sarah Jenkins (Reception Desk)",
+      "role": "receptionist",
+      "action": "REGISTER_PATIENT",
+      "module": "Patient Management",
+      "details": "Registered Test Subject Alpha (test_1791959389453) [EMERGENCY]",
+      "patternUsed": "Factory Method",
+      "createdAt": "2026-10-14T06:29:49.531Z",
+      "updatedAt": "2026-10-14T06:29:49.531Z",
+      "__v": 0
+    },
     {
       "_id": "6acc936003dec323a92f81af",
       "id": "aud_1791791968568_5h4d",
@@ -1224,5 +2731,5 @@
     },
     "lastUpdated": "2026-10-12T06:25:09.893Z"
   },
-  "savedAt": "2026-10-12T09:56:12.218Z"
+  "savedAt": "2026-10-14T06:39:08.016Z"
 }

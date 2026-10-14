@@ -19,8 +19,11 @@
     "dev:lab": "npm --prefix portals/lab run dev",
     "dev:pharmacy": "npm --prefix portals/pharmacy run dev",
     "dev:billing": "npm --prefix portals/billing run dev",
-    "dev:all": "concurrently -n \"SERVER,HUB,ADMIN,DOCTOR,NURSE,RECEPTION,LAB,PHARMACY,BILLING\" -c \"blue,cyan,indigo,green,red,yellow,magenta,teal,gray\" \"npm run server\" \"npm run dev:hub\" \"npm run dev:admin\" \"npm run dev:doctor\" \"npm run dev:nurse\" \"npm run dev:reception\" \"npm run dev:lab\" \"npm run dev:pharmacy\" \"npm run dev:billing\""
+    "dev:portals": "concurrently -n \"HUB,ADMIN,DOCTOR,NURSE,RECEPTION,LAB,PHARMACY,BILLING\" -c \"cyan,indigo,green,red,yellow,magenta,teal,gray\" \"npm run dev:hub\" \"npm run dev:admin\" \"npm run dev:doctor\" \"npm run dev:nurse\" \"npm run dev:reception\" \"npm run dev:lab\" \"npm run dev:pharmacy\" \"npm run dev:billing\"",
+    "dev:all": "concurrently -n \"SERVER,HUB,ADMIN,DOCTOR,NURSE,RECEPTION,LAB,PHARMACY,BILLING\" -c \"blue,cyan,indigo,green,red,yellow,magenta,teal,gray\" \"npm run server\" \"npm run dev:hub\" \"npm run dev:admin\" \"npm run dev:doctor\" \"npm run dev:nurse\" \"npm run dev:reception\" \"npm run dev:lab\" \"npm run dev:pharmacy\" \"npm run dev:billing\"",
+    "verify:crud": "npx tsx server/src/verify_mongo_crud.ts"
   },
+
   "devDependencies": {
     "concurrently": "^9.2.5"
   },

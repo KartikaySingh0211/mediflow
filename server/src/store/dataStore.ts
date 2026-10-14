@@ -181,6 +181,24 @@ export class HospitalDataStore {
     console.log('[DataStore] Initialized fresh seed data.');
   }
 
+  public async persistEntity(model: any, entity: any): Promise<void> {
+    if (this.isMongoConnected && entity) {
+      try {
+        let filter: any = { id: entity.id };
+        if (entity.singletonKey) {
+          filter = { singletonKey: entity.singletonKey };
+        } else if (!entity.id && entity._id) {
+          filter = { _id: entity._id };
+        }
+        await model.updateOne(filter, { $set: entity }, { upsert: true });
+      } catch (err) {
+        console.error(`[DataStore] Error persisting entity to MongoDB:`, err);
+      }
+    }
+    this.saveLocalSnapshot();
+  }
+
+
   public persist() {
     // 1. Save local snapshot
     this.saveLocalSnapshot();
@@ -192,6 +210,7 @@ export class HospitalDataStore {
       });
     }
   }
+
 
   private saveLocalSnapshot() {
     try {

@@ -4,7 +4,12 @@ import cors from 'cors';
 import { HospitalDataStore } from './store/dataStore.js';
 import { Patient, Appointment, Admission, LabOrder, Prescription, TreatmentPlan, Bill, VitalsRecord, ClinicalRule, CareEvent } from './store/seedData.js';
 import { AiAnalysisService } from './services/aiService.js';
-import { AiAnalysisModel } from './db/models.js';
+import { 
+  UserModel, DoctorModel, PatientModel, AppointmentModel,
+  AdmissionModel, LabOrderModel, PrescriptionModel, TreatmentPlanModel,
+  BillModel, VitalsRecordModel, ClinicalRuleModel, CareEventModel,
+  HospitalConfigModel, AuditLogModel, AiAnalysisModel 
+} from './db/models.js';
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -70,9 +75,9 @@ app.get('/api/config', (req: Request, res: Response) => {
   res.json(store.config);
 });
 
-app.put('/api/config', (req: Request, res: Response) => {
+app.put('/api/config', async (req: Request, res: Response) => {
   store.config = { ...store.config, ...req.body, lastUpdated: new Date().toISOString() };
-  store.persist();
+  await store.persistEntity(HospitalConfigModel, { ...store.config, singletonKey: 'GLOBAL_CONFIG' });
   store.logAudit('Admin', 'admin', 'UPDATE_CONFIG', 'System Configuration', 'Updated global hospital settings', 'Singleton');
   res.json(store.config);
 });
@@ -93,7 +98,7 @@ app.get('/api/patients/:id', (req: Request, res: Response) => {
   res.json(patient);
 });
 
-app.post('/api/patients', (req: Request, res: Response) => {
+app.post('/api/patients', async (req: Request, res: Response) => {
   const data = req.body;
   const newPatient: Patient = {
     id: `pat_${Date.now()}`,
@@ -127,18 +132,18 @@ app.post('/api/patients', (req: Request, res: Response) => {
   };
 
   store.patients.unshift(newPatient);
-  store.persist();
+  await store.persistEntity(PatientModel, newPatient);
   store.logAudit(data.actorName || 'Receptionist', 'receptionist', 'REGISTER_PATIENT', 'Patient Management', `Registered ${newPatient.name} [${newPatient.registrationType}]`, 'Factory Method');
 
   res.status(201).json(newPatient);
 });
 
-app.put('/api/patients/:id', (req: Request, res: Response) => {
+app.put('/api/patients/:id', async (req: Request, res: Response) => {
   const index = store.patients.findIndex(p => p.id === req.params.id);
   if (index === -1) return res.status(404).json({ error: 'Patient not found' });
 
   store.patients[index] = { ...store.patients[index], ...req.body };
-  store.persist();
+  await store.persistEntity(PatientModel, store.patients[index]);
   res.json(store.patients[index]);
 });
 
@@ -147,7 +152,7 @@ app.get('/api/appointments', (req: Request, res: Response) => {
   res.json(store.appointments);
 });
 
-app.post('/api/appointments', (req: Request, res: Response) => {
+app.post('/api/appointments', async (req: Request, res: Response) => {
   const data = req.body;
   const newAppointment: Appointment = {
     id: `apt_${Date.now()}`,
@@ -180,15 +185,16 @@ app.post('/api/appointments', (req: Request, res: Response) => {
   const doctor = store.doctors.find(d => d.id === data.doctorId);
   if (doctor) {
     doctor.currentActivePatients += 1;
+    await store.persistEntity(DoctorModel, doctor);
   }
 
-  store.persist();
+  await store.persistEntity(AppointmentModel, newAppointment);
   store.logAudit(data.actorName || 'Receptionist', 'receptionist', 'BOOK_APPOINTMENT', 'Appointments', `Booked appointment for ${newAppointment.patientName} with ${newAppointment.doctorName}`, 'Command + Strategy');
 
   res.status(201).json(newAppointment);
 });
 
-app.put('/api/appointments/:id/status', (req: Request, res: Response) => {
+app.put('/api/appointments/:id/status', async (req: Request, res: Response) => {
   const { status, actorName, actionNote } = req.body;
   const appointment = store.appointments.find(a => a.id === req.params.id);
   if (!appointment) return res.status(404).json({ error: 'Appointment not found' });
@@ -206,24 +212,31 @@ app.put('/api/appointments/:id/status', (req: Request, res: Response) => {
   // If patient in consultation, update patient status
   if (status === 'IN_CONSULTATION') {
     const patient = store.patients.find(p => p.id === appointment.patientId);
-    if (patient) patient.status = 'IN_CONSULTATION';
+    if (patient) {
+      patient.status = 'IN_CONSULTATION';
+      await store.persistEntity(PatientModel, patient);
+    }
   } else if (status === 'COMPLETED') {
     const patient = store.patients.find(p => p.id === appointment.patientId);
-    if (patient && patient.status === 'IN_CONSULTATION') patient.status = 'REGISTERED';
+    if (patient && patient.status === 'IN_CONSULTATION') {
+      patient.status = 'REGISTERED';
+      await store.persistEntity(PatientModel, patient);
+    }
   }
 
-  store.persist();
+  await store.persistEntity(AppointmentModel, appointment);
   store.logAudit(actorName || 'Staff', 'doctor', 'UPDATE_APPOINTMENT_STATE', 'Appointments', `Changed appointment status ${prevStatus} -> ${status}`, 'State');
 
   res.json(appointment);
 });
+
 
 // Admissions (Builder Pattern Context)
 app.get('/api/admissions', (req: Request, res: Response) => {
   res.json(store.admissions);
 });
 
-app.post('/api/admissions', (req: Request, res: Response) => {
+app.post('/api/admissions', async (req: Request, res: Response) => {
   const data = req.body;
   const newAdmission: Admission = {
     id: `adm_${Date.now()}`,
@@ -260,15 +273,16 @@ app.post('/api/admissions', (req: Request, res: Response) => {
       description: newAdmission.reason,
       doctorName: newAdmission.doctorName
     });
+    await store.persistEntity(PatientModel, patient);
   }
 
-  store.persist();
+  await store.persistEntity(AdmissionModel, newAdmission);
   store.logAudit(data.actorName || 'Doctor', 'doctor', 'CREATE_ADMISSION', 'Admissions', `Admitted ${newAdmission.patientName} to ${newAdmission.room} - ${newAdmission.bed}`, 'Builder');
 
   res.status(201).json(newAdmission);
 });
 
-app.put('/api/admissions/:id', (req: Request, res: Response) => {
+app.put('/api/admissions/:id', async (req: Request, res: Response) => {
   const index = store.admissions.findIndex(a => a.id === req.params.id);
   if (index === -1) return res.status(404).json({ error: 'Admission not found' });
 
@@ -287,10 +301,11 @@ app.put('/api/admissions/:id', (req: Request, res: Response) => {
         description: `Discharged from ${prev.ward}, ${prev.room}. Clinical discharge summary provided.`,
         doctorName: prev.doctorName
       });
+      await store.persistEntity(PatientModel, patient);
     }
   }
 
-  store.persist();
+  await store.persistEntity(AdmissionModel, store.admissions[index]);
   res.json(store.admissions[index]);
 });
 
@@ -299,7 +314,7 @@ app.get('/api/lab-orders', (req: Request, res: Response) => {
   res.json(store.labOrders);
 });
 
-app.post('/api/lab-orders', (req: Request, res: Response) => {
+app.post('/api/lab-orders', async (req: Request, res: Response) => {
   const data = req.body;
   const newOrder: LabOrder = {
     id: `lab_${Date.now()}`,
@@ -318,22 +333,22 @@ app.post('/api/lab-orders', (req: Request, res: Response) => {
   };
 
   store.labOrders.unshift(newOrder);
-  store.persist();
+  await store.persistEntity(LabOrderModel, newOrder);
   store.logAudit(data.actorName || 'Doctor', 'doctor', 'CREATE_LAB_ORDER', 'Diagnostics', `Ordered ${newOrder.testName} via ${newOrder.provider} provider`, 'Abstract Factory + Bridge');
 
   res.status(201).json(newOrder);
 });
 
-app.put('/api/lab-orders/:id/process', (req: Request, res: Response) => {
+app.put('/api/lab-orders/:id/process', async (req: Request, res: Response) => {
   const order = store.labOrders.find(l => l.id === req.params.id);
   if (!order) return res.status(404).json({ error: 'Lab order not found' });
 
   order.status = 'PROCESSING';
-  store.persist();
+  await store.persistEntity(LabOrderModel, order);
   res.json(order);
 });
 
-app.put('/api/lab-orders/:id/results', (req: Request, res: Response) => {
+app.put('/api/lab-orders/:id/results', async (req: Request, res: Response) => {
   const order = store.labOrders.find(l => l.id === req.params.id);
   if (!order) return res.status(404).json({ error: 'Lab order not found' });
 
@@ -358,11 +373,12 @@ app.put('/api/lab-orders/:id/results', (req: Request, res: Response) => {
       description: order.results.summary,
       doctorName: actorName || 'Lab Technician'
     });
+    await store.persistEntity(PatientModel, patient);
   }
 
   // If critical, trigger Care Event automatically
   if (order.isCritical) {
-    store.careEvents.unshift({
+    const careEvt: CareEvent = {
       id: `care_${Date.now()}`,
       patientId: order.patientId,
       patientName: order.patientName,
@@ -374,21 +390,24 @@ app.put('/api/lab-orders/:id/results', (req: Request, res: Response) => {
       message: `CRITICAL ALERT: Critical lab values detected on ${order.testName} for ${order.patientName}!`,
       status: 'OPEN',
       timestamp: new Date().toISOString()
-    });
+    };
+    store.careEvents.unshift(careEvt);
+    await store.persistEntity(CareEventModel, careEvt);
   }
 
-  store.persist();
+  await store.persistEntity(LabOrderModel, order);
   store.logAudit(actorName || 'Lab Tech', 'lab_tech', 'COMPLETE_LAB_RESULT', 'Diagnostics', `Completed test ${order.testName} (Critical: ${order.isCritical})`, 'Adapter + Observer');
 
   res.json(order);
 });
+
 
 // Prescriptions (Flyweight & Decorator Patterns)
 app.get('/api/prescriptions', (req: Request, res: Response) => {
   res.json(store.prescriptions);
 });
 
-app.post('/api/prescriptions', (req: Request, res: Response) => {
+app.post('/api/prescriptions', async (req: Request, res: Response) => {
   const data = req.body;
   const newPrescription: Prescription = {
     id: `rx_${Date.now()}`,
@@ -416,22 +435,23 @@ app.post('/api/prescriptions', (req: Request, res: Response) => {
       description: newPrescription.items.map(i => `${i.medicationName} ${i.dosage}`).join(', '),
       doctorName: newPrescription.doctorName
     });
+    await store.persistEntity(PatientModel, patient);
   }
 
-  store.persist();
+  await store.persistEntity(PrescriptionModel, newPrescription);
   store.logAudit(data.actorName || 'Doctor', 'doctor', 'CREATE_PRESCRIPTION', 'Pharmacy', `Prescribed ${newPrescription.items.length} items for ${newPrescription.patientName}`, 'Flyweight + Decorator');
 
   res.status(201).json(newPrescription);
 });
 
-app.put('/api/prescriptions/:id/dispense', (req: Request, res: Response) => {
+app.put('/api/prescriptions/:id/dispense', async (req: Request, res: Response) => {
   const rx = store.prescriptions.find(p => p.id === req.params.id);
   if (!rx) return res.status(404).json({ error: 'Prescription not found' });
 
   rx.status = 'DISPENSED';
   rx.items.forEach(item => { item.dispensed = true; });
 
-  store.persist();
+  await store.persistEntity(PrescriptionModel, rx);
   store.logAudit(req.body.actorName || 'Pharmacist', 'pharmacist', 'DISPENSE_PRESCRIPTION', 'Pharmacy', `Dispensed prescription ${rx.prescriptionNumber}`, 'Decorator');
 
   res.json(rx);
@@ -447,7 +467,7 @@ app.get('/api/treatment-plans/patient/:patientId', (req: Request, res: Response)
   res.json(plans);
 });
 
-app.post('/api/treatment-plans', (req: Request, res: Response) => {
+app.post('/api/treatment-plans', async (req: Request, res: Response) => {
   const data = req.body;
   const newPlan: TreatmentPlan = {
     id: `tp_${Date.now()}`,
@@ -480,13 +500,13 @@ app.post('/api/treatment-plans', (req: Request, res: Response) => {
   };
 
   store.treatmentPlans.unshift(newPlan);
-  store.persist();
+  await store.persistEntity(TreatmentPlanModel, newPlan);
   store.logAudit(data.actorName || 'Doctor', 'doctor', 'CREATE_TREATMENT_PLAN', 'Treatment Plans', `Created treatment plan ${newPlan.name} for ${newPlan.patientName}`, 'Prototype + Memento');
 
   res.status(201).json(newPlan);
 });
 
-app.put('/api/treatment-plans/:id/version', (req: Request, res: Response) => {
+app.put('/api/treatment-plans/:id/version', async (req: Request, res: Response) => {
   const plan = store.treatmentPlans.find(tp => tp.id === req.params.id);
   if (!plan) return res.status(404).json({ error: 'Treatment plan not found' });
 
@@ -513,13 +533,13 @@ app.put('/api/treatment-plans/:id/version', (req: Request, res: Response) => {
   });
   plan.updatedAt = new Date().toISOString();
 
-  store.persist();
+  await store.persistEntity(TreatmentPlanModel, plan);
   store.logAudit(actorName || 'Doctor', 'doctor', 'SAVE_PLAN_SNAPSHOT', 'Treatment Plans', `Saved Memento snapshot v${nextVersion} for plan ${plan.name}`, 'Memento');
 
   res.json(plan);
 });
 
-app.put('/api/treatment-plans/:id/restore', (req: Request, res: Response) => {
+app.put('/api/treatment-plans/:id/restore', async (req: Request, res: Response) => {
   const plan = store.treatmentPlans.find(tp => tp.id === req.params.id);
   if (!plan) return res.status(404).json({ error: 'Treatment plan not found' });
 
@@ -550,18 +570,19 @@ app.put('/api/treatment-plans/:id/restore', (req: Request, res: Response) => {
     }
   });
 
-  store.persist();
+  await store.persistEntity(TreatmentPlanModel, plan);
   store.logAudit(actorName || 'Doctor', 'doctor', 'RESTORE_PLAN_MEMENTO', 'Treatment Plans', `Restored plan ${plan.name} to version ${targetVersion}`, 'Memento');
 
   res.json(plan);
 });
+
 
 // Billing & Insurance (Composite & Chain of Responsibility Patterns)
 app.get('/api/bills', (req: Request, res: Response) => {
   res.json(store.bills);
 });
 
-app.post('/api/bills', (req: Request, res: Response) => {
+app.post('/api/bills', async (req: Request, res: Response) => {
   const data = req.body;
   const newBill: Bill = {
     id: `bill_${Date.now()}`,
@@ -579,13 +600,13 @@ app.post('/api/bills', (req: Request, res: Response) => {
   };
 
   store.bills.unshift(newBill);
-  store.persist();
+  await store.persistEntity(BillModel, newBill);
   store.logAudit(data.actorName || 'Billing Officer', 'billing_officer', 'GENERATE_COMPOSITE_BILL', 'Billing', `Generated composite invoice ${newBill.invoiceNumber} for $${newBill.total.toFixed(2)}`, 'Composite');
 
   res.status(201).json(newBill);
 });
 
-app.post('/api/bills/:id/claim', (req: Request, res: Response) => {
+app.post('/api/bills/:id/claim', async (req: Request, res: Response) => {
   const bill = store.bills.find(b => b.id === req.params.id);
   if (!bill) return res.status(404).json({ error: 'Bill not found' });
 
@@ -661,13 +682,13 @@ app.post('/api/bills/:id/claim', (req: Request, res: Response) => {
     }
   }
 
-  store.persist();
+  await store.persistEntity(BillModel, bill);
   store.logAudit(actorName || 'Billing Officer', 'billing_officer', 'PROCESS_INSURANCE_CLAIM', 'Insurance', `Claim ${bill.insuranceClaim.claimId} evaluated via Chain of Responsibility (${bill.insuranceClaim.status})`, 'Chain of Responsibility');
 
   res.json(bill);
 });
 
-app.post('/api/bills/:id/pay', (req: Request, res: Response) => {
+app.post('/api/bills/:id/pay', async (req: Request, res: Response) => {
   const bill = store.bills.find(b => b.id === req.params.id);
   if (!bill) return res.status(404).json({ error: 'Bill not found' });
 
@@ -689,7 +710,7 @@ app.post('/api/bills/:id/pay', (req: Request, res: Response) => {
     bill.status = 'PARTIAL';
   }
 
-  store.persist();
+  await store.persistEntity(BillModel, bill);
   store.logAudit(actorName || 'Billing Officer', 'billing_officer', 'RECORD_PAYMENT', 'Billing', `Recorded payment of $${payAmt.toFixed(2)} for ${bill.invoiceNumber}`, 'Composite');
 
   res.json(bill);
@@ -700,7 +721,7 @@ app.get('/api/vitals', (req: Request, res: Response) => {
   res.json(store.vitalsRecords);
 });
 
-app.post('/api/vitals', (req: Request, res: Response) => {
+app.post('/api/vitals', async (req: Request, res: Response) => {
   const data = req.body;
   const temp = Number(data.temperature);
   const hr = Number(data.heartRate);
@@ -750,7 +771,7 @@ app.post('/api/vitals', (req: Request, res: Response) => {
 
   // If alerts generated, create Care Event via Mediator pattern
   if (alerts.length > 0) {
-    store.careEvents.unshift({
+    const careEvt: CareEvent = {
       id: `care_${Date.now()}`,
       patientId: data.patientId,
       patientName: data.patientName,
@@ -762,10 +783,12 @@ app.post('/api/vitals', (req: Request, res: Response) => {
       message: `Abnormal vitals detected: ${alerts.join(' | ')}`,
       status: 'OPEN',
       timestamp: new Date().toISOString()
-    });
+    };
+    store.careEvents.unshift(careEvt);
+    await store.persistEntity(CareEventModel, careEvt);
   }
 
-  store.persist();
+  await store.persistEntity(VitalsRecordModel, record);
   store.logAudit(data.recordedBy || 'Nurse', 'nurse', 'RECORD_VITALS', 'Clinical Rules', `Evaluated vitals for ${data.patientName}; generated ${alerts.length} alerts`, 'Interpreter + Observer');
 
   res.status(201).json(record);
@@ -776,7 +799,7 @@ app.get('/api/clinical-rules', (req: Request, res: Response) => {
   res.json(store.clinicalRules);
 });
 
-app.post('/api/clinical-rules', (req: Request, res: Response) => {
+app.post('/api/clinical-rules', async (req: Request, res: Response) => {
   const newRule: ClinicalRule = {
     id: `rule_${Date.now()}`,
     name: req.body.name || 'New Custom Clinical Rule',
@@ -790,16 +813,16 @@ app.post('/api/clinical-rules', (req: Request, res: Response) => {
   };
 
   store.clinicalRules.unshift(newRule);
-  store.persist();
+  await store.persistEntity(ClinicalRuleModel, newRule);
   res.status(201).json(newRule);
 });
 
-app.put('/api/clinical-rules/:id', (req: Request, res: Response) => {
+app.put('/api/clinical-rules/:id', async (req: Request, res: Response) => {
   const index = store.clinicalRules.findIndex(r => r.id === req.params.id);
   if (index === -1) return res.status(404).json({ error: 'Rule not found' });
 
   store.clinicalRules[index] = { ...store.clinicalRules[index], ...req.body };
-  store.persist();
+  await store.persistEntity(ClinicalRuleModel, store.clinicalRules[index]);
   res.json(store.clinicalRules[index]);
 });
 
@@ -808,7 +831,7 @@ app.get('/api/care-events', (req: Request, res: Response) => {
   res.json(store.careEvents);
 });
 
-app.post('/api/care-events', (req: Request, res: Response) => {
+app.post('/api/care-events', async (req: Request, res: Response) => {
   const newEvent: CareEvent = {
     id: `care_${Date.now()}`,
     patientId: req.body.patientId,
@@ -824,20 +847,21 @@ app.post('/api/care-events', (req: Request, res: Response) => {
   };
 
   store.careEvents.unshift(newEvent);
-  store.persist();
+  await store.persistEntity(CareEventModel, newEvent);
   store.logAudit(newEvent.senderName, newEvent.senderRole.toLowerCase(), 'DISPATCH_CARE_EVENT', 'Care Coordination', `Dispatched care request to ${newEvent.targetDepartment}`, 'Mediator');
 
   res.status(201).json(newEvent);
 });
 
-app.put('/api/care-events/:id/status', (req: Request, res: Response) => {
+app.put('/api/care-events/:id/status', async (req: Request, res: Response) => {
   const event = store.careEvents.find(c => c.id === req.params.id);
   if (!event) return res.status(404).json({ error: 'Care event not found' });
 
   event.status = req.body.status || 'RESOLVED';
-  store.persist();
+  await store.persistEntity(CareEventModel, event);
   res.json(event);
 });
+
 
 // AI Intelligence & Clinical Decision Support Endpoints (Stored in MongoDB Atlas)
 app.post('/api/ai/analyze/patient/:id', async (req: Request, res: Response) => {
