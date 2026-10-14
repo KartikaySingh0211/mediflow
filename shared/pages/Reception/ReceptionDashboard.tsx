@@ -334,25 +334,102 @@ export const ReceptionDashboard: React.FC = () => {
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
               Select PatientCreator Factory
             </label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-3">
               {[
-                { type: 'REGULAR', title: 'Regular Intake', desc: 'Normal Priority, Standard Queue', color: 'cyan' },
-                { type: 'EMERGENCY', title: 'Emergency Trauma', desc: 'CRITICAL Priority, Immediate Consult', color: 'rose' },
-                { type: 'REFERRED', title: 'Specialist Referral', desc: 'Normal Priority, Source Required', color: 'indigo' }
+                { 
+                  type: 'REGULAR', 
+                  title: 'Regular Intake', 
+                  badge: 'Standard Queue',
+                  desc: 'Normal Priority, Standard Outpatient Triage', 
+                  icon: <UserCheck size={16} />,
+                  activeBg: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
+                  activeBorder: '#0284c7',
+                  activeShadow: '0 6px 18px rgba(2, 132, 199, 0.35)',
+                  inactiveBg: '#f0f9ff',
+                  inactiveBorder: '#bae6fd',
+                  inactiveTitle: '#0369a1',
+                  inactiveDesc: '#0284c7',
+                  badgeBg: '#e0f2fe',
+                  badgeColor: '#0369a1'
+                },
+                { 
+                  type: 'EMERGENCY', 
+                  title: 'Emergency Trauma', 
+                  badge: '⚡ CRITICAL',
+                  desc: 'CRITICAL Priority, Immediate Trauma Care', 
+                  icon: <Zap size={16} />,
+                  activeBg: 'linear-gradient(135deg, #f43f5e 0%, #be123c 100%)',
+                  activeBorder: '#e11d48',
+                  activeShadow: '0 6px 20px rgba(225, 29, 72, 0.45)',
+                  inactiveBg: '#fff1f2',
+                  inactiveBorder: '#fecdd3',
+                  inactiveTitle: '#be123c',
+                  inactiveDesc: '#9f1239',
+                  badgeBg: '#ffe4e6',
+                  badgeColor: '#be123c'
+                },
+                { 
+                  type: 'REFERRED', 
+                  title: 'Specialist Referral', 
+                  badge: 'Specialist Source',
+                  desc: 'Normal Priority, External Doctor / Clinic', 
+                  icon: <Stethoscope size={16} />,
+                  activeBg: 'linear-gradient(135deg, #6366f1 0%, #4338ca 100%)',
+                  activeBorder: '#4f46e5',
+                  activeShadow: '0 6px 18px rgba(79, 70, 229, 0.35)',
+                  inactiveBg: '#eef2ff',
+                  inactiveBorder: '#c7d2fe',
+                  inactiveTitle: '#4338ca',
+                  inactiveDesc: '#4f46e5',
+                  badgeBg: '#e0e7ff',
+                  badgeColor: '#4338ca'
+                }
               ].map(c => {
                 const isSelected = regType === c.type;
                 return (
                   <div
                     key={c.type}
                     onClick={() => setRegType(c.type as any)}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all ${
-                      isSelected
-                        ? 'border-indigo-600 bg-indigo-50/80 shadow-sm'
-                        : 'border-slate-200 bg-white/70 hover:bg-slate-50'
-                    }`}
+                    style={{
+                      padding: '0.85rem 0.9rem',
+                      borderRadius: '0.875rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                      border: isSelected ? `2.5px solid ${c.activeBorder}` : `2px solid ${c.inactiveBorder}`,
+                      background: isSelected ? c.activeBg : c.inactiveBg,
+                      color: isSelected ? '#ffffff' : c.inactiveTitle,
+                      boxShadow: isSelected ? c.activeShadow : '0 2px 6px rgba(0,0,0,0.03)',
+                      transform: isSelected ? 'translateY(-2px)' : 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.4rem',
+                      position: 'relative'
+                    }}
                   >
-                    <h5 className="text-xs font-bold text-slate-900">{c.title}</h5>
-                    <p className="text-xs text-muted mt-1 leading-tight">{c.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <span style={{ color: isSelected ? '#ffffff' : c.inactiveTitle }}>{c.icon}</span>
+                        <h5 style={{ fontWeight: 800, fontSize: '0.825rem', color: isSelected ? '#ffffff' : c.inactiveTitle }}>
+                          {c.title}
+                        </h5>
+                      </div>
+                      <span
+                        style={{
+                          fontSize: '0.65rem',
+                          fontWeight: 800,
+                          padding: '0.15rem 0.45rem',
+                          borderRadius: '9999px',
+                          background: isSelected ? 'rgba(255, 255, 255, 0.25)' : c.badgeBg,
+                          color: isSelected ? '#ffffff' : c.badgeColor,
+                          border: isSelected ? 'none' : `1px solid ${c.inactiveBorder}`
+                        }}
+                      >
+                        {c.badge}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: '0.72rem', opacity: isSelected ? 0.95 : 0.85, lineHeight: 1.3, color: isSelected ? '#f8fafc' : c.inactiveDesc }}>
+                      {c.desc}
+                    </p>
                   </div>
                 );
               })}
@@ -450,7 +527,10 @@ export const ReceptionDashboard: React.FC = () => {
             <button type="button" onClick={() => setIsRegisterModalOpen(false)} className="btn-secondary">
               Cancel
             </button>
-            <button type="submit" className={regType === 'EMERGENCY' ? 'btn-rose' : 'btn-primary'}>
+            <button
+              type="submit"
+              className={regType === 'EMERGENCY' ? 'btn-rose' : (regType === 'REFERRED' ? 'btn-indigo' : 'btn-primary')}
+            >
               <UserPlus size={16} />
               Execute Factory & Register Patient
             </button>
@@ -473,25 +553,102 @@ export const ReceptionDashboard: React.FC = () => {
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
               Select Physician Assignment Strategy (GoF Strategy Pattern)
             </label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-3">
               {[
-                { id: 'LEAST_BUSY', title: 'Least Busy Doctor', desc: 'Load balancing across lowest active patient queue' },
-                { id: 'FIRST_AVAILABLE', title: 'First Available', desc: 'Selects next open clinical workstation' },
-                { id: 'MANUAL', title: 'Manual Selection', desc: 'Explicitly designate attending physician' }
+                { 
+                  id: 'LEAST_BUSY', 
+                  title: 'Least Busy Doctor', 
+                  badge: 'Balanced Load',
+                  desc: 'Balances appointments across lowest queue count', 
+                  icon: <Activity size={16} />,
+                  activeBg: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  activeBorder: '#059669',
+                  activeShadow: '0 6px 18px rgba(5, 150, 105, 0.35)',
+                  inactiveBg: '#ecfdf5',
+                  inactiveBorder: '#a7f3d0',
+                  inactiveTitle: '#047857',
+                  inactiveDesc: '#059669',
+                  badgeBg: '#d1fae5',
+                  badgeColor: '#065f46'
+                },
+                { 
+                  id: 'FIRST_AVAILABLE', 
+                  title: 'First Available', 
+                  badge: 'Earliest Slot',
+                  desc: 'Greedy slot match to next open workstation', 
+                  icon: <Clock size={16} />,
+                  activeBg: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
+                  activeBorder: '#0284c7',
+                  activeShadow: '0 6px 18px rgba(2, 132, 199, 0.35)',
+                  inactiveBg: '#f0f9ff',
+                  inactiveBorder: '#bae6fd',
+                  inactiveTitle: '#0369a1',
+                  inactiveDesc: '#0284c7',
+                  badgeBg: '#e0f2fe',
+                  badgeColor: '#0369a1'
+                },
+                { 
+                  id: 'MANUAL', 
+                  title: 'Manual Selection', 
+                  badge: 'Designated MD',
+                  desc: 'Explicitly designate attending physician and clinic', 
+                  icon: <UserCheck size={16} />,
+                  activeBg: 'linear-gradient(135deg, #6366f1 0%, #4338ca 100%)',
+                  activeBorder: '#4f46e5',
+                  activeShadow: '0 6px 18px rgba(79, 70, 229, 0.35)',
+                  inactiveBg: '#eef2ff',
+                  inactiveBorder: '#c7d2fe',
+                  inactiveTitle: '#4338ca',
+                  inactiveDesc: '#4f46e5',
+                  badgeBg: '#e0e7ff',
+                  badgeColor: '#4338ca'
+                }
               ].map(strat => {
                 const isSelected = schedulingStrategy === strat.id;
                 return (
                   <div
                     key={strat.id}
                     onClick={() => setSchedulingStrategy(strat.id as any)}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all ${
-                      isSelected
-                        ? 'border-indigo-600 bg-indigo-50/80 shadow-sm'
-                        : 'border-slate-200 bg-white/70 hover:bg-slate-50'
-                    }`}
+                    style={{
+                      padding: '0.85rem 0.9rem',
+                      borderRadius: '0.875rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                      border: isSelected ? `2.5px solid ${strat.activeBorder}` : `2px solid ${strat.inactiveBorder}`,
+                      background: isSelected ? strat.activeBg : strat.inactiveBg,
+                      color: isSelected ? '#ffffff' : strat.inactiveTitle,
+                      boxShadow: isSelected ? strat.activeShadow : '0 2px 6px rgba(0,0,0,0.03)',
+                      transform: isSelected ? 'translateY(-2px)' : 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.4rem',
+                      position: 'relative'
+                    }}
                   >
-                    <h5 className="text-xs font-bold text-slate-900">{strat.title}</h5>
-                    <p className="text-xs text-muted mt-1 leading-tight">{strat.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <span style={{ color: isSelected ? '#ffffff' : strat.inactiveTitle }}>{strat.icon}</span>
+                        <h5 style={{ fontWeight: 800, fontSize: '0.825rem', color: isSelected ? '#ffffff' : strat.inactiveTitle }}>
+                          {strat.title}
+                        </h5>
+                      </div>
+                      <span
+                        style={{
+                          fontSize: '0.65rem',
+                          fontWeight: 800,
+                          padding: '0.15rem 0.45rem',
+                          borderRadius: '9999px',
+                          background: isSelected ? 'rgba(255, 255, 255, 0.25)' : strat.badgeBg,
+                          color: isSelected ? '#ffffff' : strat.badgeColor,
+                          border: isSelected ? 'none' : `1px solid ${strat.inactiveBorder}`
+                        }}
+                      >
+                        {strat.badge}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: '0.72rem', opacity: isSelected ? 0.95 : 0.85, lineHeight: 1.3, color: isSelected ? '#f8fafc' : strat.inactiveDesc }}>
+                      {strat.desc}
+                    </p>
                   </div>
                 );
               })}
