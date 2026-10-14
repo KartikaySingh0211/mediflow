@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { usePatternTrace } from '../../pattern-tracing/PatternTraceContext';
 import { PatternCategory } from '../../pattern-tracing/types';
 import { 
@@ -101,17 +102,17 @@ export const LivePatternTraceDrawer: React.FC<LivePatternTraceDrawerProps> = ({
       </div>
 
       {/* Drawer Overlay & Panel */}
-      {isDrawerOpen && (
+      {isDrawerOpen && typeof document !== 'undefined' && createPortal(
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 45,
+            zIndex: 9998,
             display: 'flex',
             justifyContent: 'flex-end',
-            background: 'rgba(15, 23, 42, 0.25)',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)'
+            background: 'rgba(15, 23, 42, 0.45)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)'
           }}
           onClick={() => setIsDrawerOpen(false)}
         >
@@ -313,7 +314,8 @@ export const LivePatternTraceDrawer: React.FC<LivePatternTraceDrawerProps> = ({
               MediFlow Pattern Observability Engine Active
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
